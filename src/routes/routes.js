@@ -22,6 +22,7 @@ const routes = [
     exact: true,
     auth: false,
     path: "/Register",
+
     component: Register,
   },
   {
@@ -31,14 +32,12 @@ const routes = [
     routes: [
       {
         exact: true,
-        auth: true,
-        path: "/dashboard/exercises",
+        path: "/exercises",
         component: Exercises,
       },
       {
         exact: true,
-        auth: true,
-        path: "/dashboard/workouts",
+        path: "workouts",
         component: Workouts,
       },
     ],
