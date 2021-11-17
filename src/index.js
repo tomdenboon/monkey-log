@@ -5,13 +5,26 @@ import routes from "./routes/routes";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import persistStore from "redux-persist/lib/persistStore";
+import { PersistGate } from "redux-persist/integration/react";
+import persistedReducer from "./store/configureStore";
+
+let store = createStore(persistedReducer);
+let persistor = persistStore(store);
+
 ReactDOM.render(
   <React.StrictMode>
-    <div className="text-gray-500 bg-gray-100">
-      <Router>
-        <CustomSwitch routes={routes} />
-      </Router>
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <div className="text-gray-500 bg-gray-100">
+          <Router>
+            <CustomSwitch routes={routes} />
+          </Router>
+        </div>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

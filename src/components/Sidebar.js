@@ -1,14 +1,23 @@
 import {
   FiUser,
+  FiLogOut,
   FiBarChart,
   FiZap,
   FiFolder,
   FiList,
   FiPackage,
 } from "react-icons/fi";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import * as action from "../store/actions";
+import { useDispatch } from "react-redux";
 
 function Sidebar() {
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(action.authLogout());
+  };
+
   function StyledSidebarItem(props) {
     return (
       <NavLink
@@ -25,9 +34,12 @@ function Sidebar() {
   }
   return (
     <div className="flex flex-col gap-1 p-1 bg-gray-50 h-screen w-72 overflow-auto">
-      <Link to="/" className="p-2 font-bold text-2xl">
-        MonkeyLog
-      </Link>
+      <div className="flex justify-between items-center p-2">
+        <div className="font-bold text-2xl select-none">MonkeyLog</div>
+        <button className="hover:text-red-600" onClick={logout}>
+          <FiLogOut />
+        </button>
+      </div>
       <StyledSidebarItem to="/dashboard/settings">
         <FiUser />
         Tom den Boon

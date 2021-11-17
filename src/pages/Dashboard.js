@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import CustomSwitch from "../routes";
 
