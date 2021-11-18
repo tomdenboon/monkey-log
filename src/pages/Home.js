@@ -18,10 +18,34 @@ function Home(props) {
     }
   } else {
     return (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <button className="bg-gray-800 rounded-sm p-1" onClick={login}>
-          Log in
-        </button>
+      <div className="flex w-full min-h-screen items-center justify-center">
+        <div className="flex flex-col xl:flex-row w-full items-center justify-between max-w-6xl gap-5 p-5">
+          <div className="flex flex-col items-center w-full p-10 max-w-sm gap-5">
+            <div className=" text-6xl font-bold text-gray-700">MonkeyLog</div>
+            <div className=" text-2xl">Minimalistic workout logger.</div>
+          </div>
+
+          <div className="flex flex-col rounded-lg w-full filter shadow-xl l items-center bg-gray-100 p-5 gap-5 max-w-sm">
+            <div className=" p-3 rounded-lg w-full text-xl  border border-gray-300">
+              username
+            </div>
+            <div className=" p-3 rounded-lg w-full text-xl  border border-gray-300">
+              password
+            </div>
+            <button
+              className="bg-blue-500 py-3 rounded-lg w-full text-white text-xl font-bold"
+              onClick={login}
+            >
+              Log in
+            </button>
+            <button
+              className="bg-green-500 py-3 rounded-lg w-full text-white text-xl font-bold"
+              onClick={login}
+            >
+              Register
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
