@@ -13,10 +13,12 @@ const initialState = {
 };
 
 const login = (state, payload) => {
-  const { access_token: AccessToken, user } = payload;
+  console.log(payload);
   const stateObj = {
     ...state,
     isAuthenticated: true,
+    accesToken: payload.access_token,
+    user: payload.user,
   };
   return stateObj;
 };

@@ -12,6 +12,7 @@ module.exports = {
       },
       animation: {
         press: "smallpress 500ms ease-in-out",
+        "spin-slow": "spin 2s linear infinite",
       },
     },
   },

@@ -1,15 +1,45 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as action from "../store/actions";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router";
+import { FiLoader } from "react-icons/fi";
+import MonkeyAxios from "../MonkeyAxios";
 
 function Home(props) {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+  const [message, setMessage] = useState("");
+
   const dispatch = useDispatch();
+  const axios = MonkeyAxios();
 
   const login = () => {
-    dispatch(action.authLogin({ isAuthenticated: true }));
+    axios
+      .post("login", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        dispatch(action.authLogin(res.data));
+      })
+      .catch((err) => {
+        setIsLogin(false);
+        setEmail("");
+        setPassword("");
+        setMessage(err.response.data.message);
+        console.log(err.response.data);
+      });
   };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    setIsLogin(true);
+    login();
+  };
+
   if (isAuthenticated) {
     if (props.history.location.from) {
       return <Redirect to={props.history.location.from} />;
@@ -19,32 +49,58 @@ function Home(props) {
   } else {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">
-        <div className="flex flex-col xl:flex-row w-full items-center justify-between max-w-6xl gap-5 p-5">
-          <div className="flex flex-col items-center w-full p-10 max-w-sm gap-5">
-            <div className=" text-6xl font-bold text-gray-700">MonkeyLog</div>
-            <div className=" text-2xl">Minimalistic workout logger.</div>
-          </div>
-
-          <div className="flex flex-col rounded-lg w-full filter shadow-xl l items-center bg-gray-100 p-5 gap-5 max-w-sm">
-            <div className=" p-3 rounded-lg w-full text-xl  border border-gray-300">
-              username
+        <div className="relative rounded-lg w-full filter shadow-xl  bg-gray-100 p-5 m-5 max-w-sm">
+          {isLogin && (
+            <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex">
+              <FiLoader className="animate-spin-slow" />
             </div>
-            <div className=" p-3 rounded-lg w-full text-xl  border border-gray-300">
-              password
+          )}
+          <form
+            className={
+              "flex flex-col gap-5 " + (isLogin ? "invisible" : "visible")
+            }
+            onSubmit={handleSubmit}
+          >
+            <div className="flex flex-col items-center w-full max-w-sm gap-1">
+              <div className=" text-4xl font-bold text-gray-700">MonkeyLog</div>
+              <div className=" text-sm">Minimalistic workout logger.</div>
             </div>
-            <button
-              className="bg-blue-500 py-3 rounded-lg w-full text-white text-xl font-bold"
-              onClick={login}
-            >
+            {message ? (
+              <div className="text-xs text-red-500 text-center">{message}</div>
+            ) : (
+              <div className="text-xs invisible">no error</div>
+            )}
+            <input
+              className={
+                "p-2 rounded-md border   outline-none " +
+                (message
+                  ? "border-red-500 "
+                  : "border-gray-300 focus:border-blue-700")
+              }
+              type="text"
+              value={email}
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className={
+                "p-2 rounded-md border outline-none " +
+                (message
+                  ? "border-red-500 "
+                  : "border-gray-300 focus:border-blue-700")
+              }
+              type="password"
+              value={password}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button className="py-2 font-bold rounded-md bg-blue-500 hover:bg-blue-600 text-white cursor-pointer">
               Log in
             </button>
-            <button
-              className="bg-green-500 py-3 rounded-lg w-full text-white text-xl font-bold"
-              onClick={login}
-            >
+            <button className="py-2 font-bold rounded-md bg-green-500 hover:bg-green-600 text-white cursor-pointer">
               Register
             </button>
-          </div>
+          </form>
         </div>
       </div>
     );

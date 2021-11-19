@@ -1,5 +1,5 @@
 function Workouts() {
-  return <div>Workouts</div>;
+  return <div>hallo</div>;
 }
 
 export default Workouts;

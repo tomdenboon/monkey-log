@@ -30,7 +30,7 @@ const routes = [
       },
       {
         exact: true,
-        path: "/dashboard/workouts",
+        path: "/dashboard/workout",
         component: Workouts,
       },
     ],

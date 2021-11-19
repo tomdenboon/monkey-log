@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   FiAward,
   FiUser,
+  FiLoader,
   FiLogOut,
   FiBarChart,
   FiSettings,
@@ -11,6 +12,7 @@ import {
 import { NavLink } from "react-router-dom";
 import * as action from "../store/actions";
 import { useDispatch } from "react-redux";
+import MonkeyAxios from "../MonkeyAxios";
 
 function StyledSidebarItem(props) {
   const [effect, setEffect] = useState(false);
@@ -34,7 +36,24 @@ function StyledSidebarItem(props) {
 }
 
 function Sidebar() {
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState({});
+  const axios = MonkeyAxios();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("user")
+      .then((res) => {
+        setUser(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
+  }, [axios]);
+
   const logout = () => {
     dispatch(action.authLogout());
   };
@@ -51,7 +70,9 @@ function Sidebar() {
       </div>
       <StyledSidebarItem to="/dashboard/profile">
         <FiUser />
-        Tom den Boon
+        <div>
+          {loading ? <FiLoader className=" animate-spin-slow" /> : user.name}
+        </div>
       </StyledSidebarItem>
       <StyledSidebarItem to="/dashboard/exercises">
         <FiFolder />
