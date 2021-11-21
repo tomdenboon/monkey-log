@@ -59,7 +59,7 @@ function Sidebar() {
   };
 
   return (
-    <div className="flex flex-col gap-1 p-1 bg-gray-100 h-screen w-72 overflow-auto">
+    <div className="flex flex-col gap-1 p-1 bg-gray-100 h-screen w-72 overflow-auto flex-shrink-0">
       <div className="flex justify-between items-center p-2">
         <div className="font-bold text-gray-700 text-2xl select-none">
           MonkeyLog

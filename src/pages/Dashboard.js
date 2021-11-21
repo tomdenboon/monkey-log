@@ -3,8 +3,10 @@ import CustomSwitch from "../routes";
 
 function Dashboard(props) {
   return (
-    <div className="flex">
-      <Sidebar />
+    <div className="flex w-screen">
+      <div className="hidden md:flex">
+        <Sidebar />
+      </div>
       <CustomSwitch routes={props.routes} />
     </div>
   );
