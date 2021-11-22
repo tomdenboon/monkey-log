@@ -43,7 +43,7 @@ function LoginCard(props) {
   return (
     <div
       className={
-        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-gray-100 m-auto flex-shrink-0"
+        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-gray-50 m-auto flex-shrink-0"
       }
     >
       {isLogin && (
