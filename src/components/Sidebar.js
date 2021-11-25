@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   FiAward,
   FiUser,
@@ -14,12 +14,13 @@ import * as action from "../store/actions";
 import { useDispatch } from "react-redux";
 import MonkeyAxios from "../MonkeyAxios";
 
-function StyledSidebarItem(props) {
+function StyledSidebarItem({ to, children }) {
   const [effect, setEffect] = useState(false);
+
   return (
     <NavLink
       exact
-      to={props.to}
+      to={to}
       className={(isActive) =>
         (isActive ? "bg-white shadow-sm text-blue-500 " : "") +
         (effect ? "animate-press " : "") +
@@ -30,16 +31,19 @@ function StyledSidebarItem(props) {
       }}
       onAnimationEnd={() => setEffect(false)}
     >
-      {props.children}
+      {children}
     </NavLink>
   );
 }
 
-function Sidebar() {
+function Sidebar(props) {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
+  const { setShowSidebar } = props;
+
   const axios = MonkeyAxios();
   const dispatch = useDispatch();
+  const ref = useRef(null);
 
   useEffect(() => {
     axios
@@ -54,12 +58,35 @@ function Sidebar() {
       });
   }, [axios]);
 
+  useEffect(() => {
+    /**
+     * Alert if clicked on outside of element
+     */
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setShowSidebar(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref, setShowSidebar]);
+
   const logout = () => {
     dispatch(action.authLogout());
   };
 
   return (
-    <div className="flex flex-col gap-1 p-1 bg-gray-100 h-screen w-72 overflow-auto flex-shrink-0">
+    <div
+      ref={ref}
+      className={
+        (props.show ? "flex " : "hidden ") +
+        "md:flex md:relative absolute flex-col gap-1 p-1 z-10 " +
+        "bg-gray-100 h-screen w-72 overflow-auto flex-shrink-0 shadow-xl"
+      }
+    >
       <div className="flex justify-between items-center p-2">
         <div className="font-bold text-gray-700 text-2xl select-none">
           MonkeyLog
