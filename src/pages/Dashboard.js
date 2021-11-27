@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
-import { Switch } from "react-router";
+import { Switch, useLocation } from "react-router";
 import PrivateRoute from "../routes/PrivateRoute";
 
 function Dashboard(props) {
   const [showSidebar, setShowSidebar] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setShowSidebar(false);
+  }, [location]);
 
   const changeShowSidebar = (val) => {
-    console.log(val);
     setShowSidebar(val);
   };
 

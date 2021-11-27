@@ -19,7 +19,6 @@ function StyledSidebarItem({ to, children }) {
 
   return (
     <NavLink
-      exact
       to={to}
       className={(isActive) =>
         (isActive ? "bg-white shadow-sm text-blue-500 " : "") +
@@ -84,7 +83,7 @@ function Sidebar(props) {
       className={
         (props.show ? "flex " : "hidden ") +
         "md:flex md:relative absolute flex-col gap-1 p-1 z-10 " +
-        "bg-gray-100 h-screen w-72 overflow-auto flex-shrink-0 shadow-xl"
+        "bg-gray-50 h-screen w-72 overflow-auto flex-shrink-0 shadow-xl"
       }
     >
       <div className="flex justify-between items-center p-2">
@@ -101,7 +100,7 @@ function Sidebar(props) {
           {loading ? <FiLoader className=" animate-spin-slow" /> : user.name}
         </div>
       </StyledSidebarItem>
-      <StyledSidebarItem to="/dashboard/exercises">
+      <StyledSidebarItem to="/dashboard/exercise">
         <FiFolder />
         Exercises
       </StyledSidebarItem>

@@ -1,30 +1,14 @@
 import { useState, useEffect } from "react";
+import { FiLoader, FiPlus, FiMoreVertical } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
-import { FiLoader, FiX, FiArrowLeft } from "react-icons/fi";
+import FirstHeader from "../components/FirstHeader";
 
 function ExerciseItem({ exercise }) {
   return (
-    <li className="flex justify-between w-full p-4 items-center font-medium rounded-sm shadow-sm bg-gray-50 hover:bg-white ">
+    <li className="flex justify-between w-full p-4 items-center font-semibold rounded-sm shadow bg-gray-50 hover:bg-white ">
       {exercise.name}
-      <FiX />
+      <FiMoreVertical />
     </li>
-  );
-}
-
-function ExerciseHeader({ setShowSidebar }) {
-  return (
-    <div
-      className="flex items-center bg-gray-200 text-blue-500 text-2xl md:text-4xl font-bold gap-2 
-    sticky top-0 shadow-md md:shadow-none p-2 md:p-5"
-    >
-      <button
-        className="md:hidden hover:bg-gray-300 rounded-full p-1"
-        onClick={setShowSidebar}
-      >
-        <FiArrowLeft />
-      </button>
-      Exercises
-    </div>
   );
 }
 
@@ -38,7 +22,6 @@ function Exercises({ setShowSidebar }) {
     axios
       .get("exercise")
       .then((res) => {
-        console.log(res.data);
         setExerciseList(res.data.data);
         setLoading(false);
       })
@@ -55,9 +38,13 @@ function Exercises({ setShowSidebar }) {
           <FiLoader className="animate-spin-slow" />
         </div>
       )}
-
-      <ExerciseHeader setShowSidebar={setShowSidebar} />
-      <div className="px-5 pb-5 pt-4 md:pt-0">
+      <FirstHeader
+        setShowSidebar={setShowSidebar}
+        title="Exercises"
+        IconRight={FiPlus}
+        linkToRight="exercise/create"
+      />
+      <div className="px-2 md:px-5 pb-5 pt-4 md:pt-0">
         <ul
           className={
             "flex w-full gap-1 flex-col " + (loading ? "invisible" : "visible")

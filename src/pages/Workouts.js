@@ -1,14 +1,19 @@
 import { useState, useEffect } from "react";
+import { FiMoreVertical } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
-import { FiMoreVertical, FiArrowLeft } from "react-icons/fi";
+import FirstHeader from "../components/FirstHeader";
+import { Link } from "react-router-dom";
+import { FiPlus, FiLoader } from "react-icons/fi";
 
 function WorkoutCard(props) {
   const { workout } = props;
   return (
-    <div className="flex w-full  flex-col rounded-sm p-5 bg-gray-50 hover:bg-white cursor-pointer shadow">
+    <div className="flex w-full  flex-col rounded-sm p-5 bg-white cursor-pointer shadow">
       <div className="flex pb-5 text-xl font-bold items-center justify-between truncate">
         {workout.name}
-        <FiMoreVertical className="hover:text-blue-500 flex-shrink-0" />
+        <Link to={"/dashboard/workout/" + workout.id + "/edit"}>
+          <FiMoreVertical className="hover:text-blue-500 flex-shrink-0" />
+        </Link>
       </div>
       <ul>
         {workout.exercise_groups.map((exercise_group, index) => (
@@ -17,23 +22,6 @@ function WorkoutCard(props) {
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function WorkoutHeader({ setShowSidebar }) {
-  return (
-    <div
-      className="flex items-center bg-gray-200 text-blue-500 text-2xl md:text-4xl font-bold gap-2 
-    sticky top-0 shadow-md md:shadow-none p-2 md:p-5"
-    >
-      <button
-        className="md:hidden hover:bg-gray-300 rounded-full p-1"
-        onClick={setShowSidebar}
-      >
-        <FiArrowLeft />
-      </button>
-      Workout
     </div>
   );
 }
@@ -48,7 +36,6 @@ function Workouts(props) {
     axios
       .get("workout_template")
       .then((res) => {
-        console.log(res.data.data);
         setTemplateList(res.data.data);
         setLoading(false);
       })
@@ -59,13 +46,24 @@ function Workouts(props) {
   }, [axios]);
   return (
     <div className="relative flex flex-col w-full h-screen overflow-auto">
-      <WorkoutHeader setShowSidebar={setShowSidebar} />
-      <div className="px-5 pb-5 pt-4 md:pt-0">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 ">
-          {templateList.map((workoutTemplate, index) => (
-            <WorkoutCard workout={workoutTemplate} key={index} />
-          ))}
-        </div>
+      <FirstHeader
+        setShowSidebar={setShowSidebar}
+        title="Workout"
+        IconRight={FiPlus}
+        linkToRight="/dashboard/workout/create"
+      />
+      <div className="px-2 pb-2 pt-2 md:px-5 ">
+        {loading ? (
+          <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
+            <FiLoader className="animate-spin-slow" />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
+            {templateList.map((workoutTemplate, index) => (
+              <WorkoutCard workout={workoutTemplate} key={index} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

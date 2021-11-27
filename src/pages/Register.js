@@ -61,7 +61,7 @@ function RegisterCard(props) {
   return (
     <div
       className={
-        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-gray-100 m-auto flex-shrink-0"
+        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-white m-auto flex-shrink-0"
       }
     >
       {isRegister && (
@@ -87,7 +87,7 @@ function RegisterCard(props) {
               "p-2 rounded-md border w-full outline-none " +
               ("name" in errors
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-700")
+                : "border-gray-300 focus:border-blue-500")
             }
             type="text"
             value={name}
@@ -99,7 +99,7 @@ function RegisterCard(props) {
               "p-2 rounded-md border outline-none w-full " +
               ("email" in errors
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-700")
+                : "border-gray-300 focus:border-blue-500")
             }
             type="text"
             value={email}
@@ -111,7 +111,7 @@ function RegisterCard(props) {
               "p-2 rounded-md border w-full outline-none " +
               ("password" in errors
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-700")
+                : "border-gray-300 focus:border-blue-500")
             }
             type="password"
             value={password}
@@ -123,7 +123,7 @@ function RegisterCard(props) {
               "p-2 rounded-md border w-full outline-none " +
               ("password" in errors
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-700")
+                : "border-gray-300 focus:border-blue-500")
             }
             type="password"
             value={passwordConfirm}

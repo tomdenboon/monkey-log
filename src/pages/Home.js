@@ -43,7 +43,7 @@ function LoginCard(props) {
   return (
     <div
       className={
-        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-gray-50 m-auto flex-shrink-0"
+        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-white m-auto flex-shrink-0"
       }
     >
       {isLogin && (
@@ -75,7 +75,7 @@ function LoginCard(props) {
               "p-2 rounded-md border w-full outline-none " +
               (message
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-700")
+                : "border-gray-300 focus:border-blue-400")
             }
             type="text"
             value={email}
@@ -87,7 +87,7 @@ function LoginCard(props) {
               "p-2 rounded-md border outline-none w-full " +
               (message
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-700")
+                : "border-gray-300 focus:border-blue-400")
             }
             type="password"
             value={password}
