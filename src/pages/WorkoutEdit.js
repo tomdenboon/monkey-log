@@ -238,7 +238,7 @@ function AddExerciseModal({ showModal, setShowModal }) {
         ref={ref}
       >
         <div className="p-4 border-b text-lg font-bold">Add exercises</div>
-        <div className="flex flex-col overflow-auto bg-gray-100">
+        <div className="flex flex-col overflow-auto overscroll-contain bg-gray-100">
           <ul className="flex flex-col h-full ">
             {exerciseList.map((exercise, index) => (
               <li
@@ -250,7 +250,9 @@ function AddExerciseModal({ showModal, setShowModal }) {
             ))}
           </ul>
         </div>
-        <button className="flex p-4 border-t text-blue-500">Save</button>
+        <button className="flex p-4 border-t text-blue-500 mt-auto">
+          Save
+        </button>
       </div>
     </div>
   );
@@ -294,12 +296,7 @@ function WorkoutEdit() {
   };
 
   return (
-    <div
-      className={
-        "relative flex flex-col w-full h-screen overflow-auto " +
-        (showModal ? "overflow-hidden" : "overflow-auto")
-      }
-    >
+    <div className={"relative flex flex-col w-full h-screen overflow-auto "}>
       <Header />
       <AddExerciseModal showModal={showModal} setShowModal={setShowModal} />
       {loading ? (

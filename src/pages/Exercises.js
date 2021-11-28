@@ -1,16 +1,8 @@
 import { useState, useEffect } from "react";
-import { FiLoader, FiPlus, FiMoreVertical } from "react-icons/fi";
+import { FiLoader, FiPlus } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import FirstHeader from "../components/FirstHeader";
-
-function ExerciseItem({ exercise }) {
-  return (
-    <li className="flex justify-between w-full p-4 items-center font-semibold rounded-sm shadow bg-gray-50 hover:bg-white ">
-      {exercise.name}
-      <FiMoreVertical />
-    </li>
-  );
-}
+import Dropdown from "../components/Dropdown";
 
 function Exercises({ setShowSidebar }) {
   const [loading, setLoading] = useState(true);
@@ -31,6 +23,16 @@ function Exercises({ setShowSidebar }) {
       });
   }, [axios]);
 
+  const deleteExercise = (index) => {
+    axios
+      .delete("/exercise/" + exerciseList[index].id)
+      .then((res) => {
+        const temp = [...exerciseList];
+        temp.splice(index, 1);
+        setExerciseList(temp);
+      })
+      .catch((err) => {});
+  };
   return (
     <div className="relative flex flex-col w-full h-screen overflow-auto">
       {loading && (
@@ -51,7 +53,17 @@ function Exercises({ setShowSidebar }) {
           }
         >
           {exerciseList.map((exercise, index) => (
-            <ExerciseItem exercise={exercise} key={index} />
+            <li
+              key={index}
+              className="flex justify-between w-full p-4 items-center font-semibold rounded-sm shadow bg-white "
+            >
+              {exercise.name}
+              <Dropdown
+                options={[
+                  { name: "Delete", func: () => deleteExercise(index) },
+                ]}
+              />
+            </li>
           ))}
         </ul>
       </div>

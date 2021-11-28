@@ -7,7 +7,7 @@ import MonkeyAxios from "../MonkeyAxios";
 function ExerciseHeader({ submit }) {
   return (
     <div
-      className="flex items-center justify-between bg-gray-200 text-blue-500 text-2xl font-bold gap-2 
+      className="flex items-center justify-between bg-gray-100 text-blue-500 text-2xl font-bold gap-2 
       sticky md:relative top-0 p-2 py-4 md:p-5"
     >
       <div className="flex items-center">
