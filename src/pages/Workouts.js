@@ -1,24 +1,46 @@
 import { useState, useEffect } from "react";
-import { FiMoreVertical } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
-import FirstHeader from "../components/FirstHeader";
-import { Link } from "react-router-dom";
+import { FirstHeader } from "../components/headers";
 import { FiPlus, FiLoader } from "react-icons/fi";
+import { useHistory } from "react-router";
+import Dropdown from "../components/Dropdown";
 
-function WorkoutCard(props) {
-  const { workout } = props;
+function WorkoutCard({ template, deleteAt, at }) {
+  const [workout, setWorkout] = useState(template);
+  const history = useHistory();
+  const axios = MonkeyAxios();
+
+  useEffect(() => {
+    setWorkout(template);
+  }, [template]);
+
+  const toEditWorkout = () => {
+    history.push("/dashboard/workout/" + workout.id + "/edit");
+  };
+
+  const deleteWorkout = () => {
+    axios.delete("workout/" + workout.id).then((res) => {
+      deleteAt(at);
+    });
+  };
+
   return (
-    <div className="flex w-full  flex-col rounded-sm p-5 bg-white cursor-pointer shadow">
-      <div className="flex pb-5 text-xl font-bold items-center justify-between truncate">
-        {workout.name}
-        <Link to={"/dashboard/workout/" + workout.id + "/edit"}>
-          <FiMoreVertical className="hover:text-blue-500 flex-shrink-0" />
-        </Link>
+    <div className="group flex w-full flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all">
+      <div className="flex pb-5 text-xl font-bold items-center justify-between">
+        <p className="group-hover:text-blue-500 focus transition">
+          {workout.name}
+        </p>
+        <Dropdown
+          options={[
+            { name: "Edit", func: toEditWorkout },
+            { name: "Delete", func: deleteWorkout },
+          ]}
+        />
       </div>
       <ul>
         {workout.exercise_groups.map((exercise_group, index) => (
           <li key={index} className="truncate">
-            {exercise_group.sets} sets of {exercise_group.name}
+            {exercise_group.sets} x {exercise_group.name}
           </li>
         ))}
       </ul>
@@ -44,6 +66,14 @@ function Workouts(props) {
         console.log(err);
       });
   }, [axios]);
+
+  const deleteAt = (index) => {
+    let tempArr = [...templateList];
+    tempArr.splice(index, 1);
+    console.log(tempArr);
+    setTemplateList(tempArr);
+  };
+
   return (
     <div className="relative flex flex-col w-full h-screen overflow-auto">
       <FirstHeader
@@ -60,7 +90,12 @@ function Workouts(props) {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
             {templateList.map((workoutTemplate, index) => (
-              <WorkoutCard workout={workoutTemplate} key={index} />
+              <WorkoutCard
+                template={workoutTemplate}
+                key={index}
+                at={index}
+                deleteAt={deleteAt}
+              />
             ))}
           </div>
         )}

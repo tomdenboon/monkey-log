@@ -25,7 +25,7 @@ function Dropdown({ options }) {
   return (
     <div ref={ref} className="relative">
       <button
-        className="rounded-full p-1 flex-shrink-0 hover:bg-gray-100"
+        className="rounded-full p-1 flex-shrink-0 hover:bg-gray-100 focus:bg-gray-100 outline-none"
         type="button"
         onClick={() => setShow(!show)}
       >
@@ -34,19 +34,21 @@ function Dropdown({ options }) {
       <ul
         className={
           (show ? "flex" : "hidden") +
-          " absolute rounded bg-gray-700 hover:bg-gray-800 z-10 text-white font-semibold text-sm right-0 w-32"
+          " flex flex-col absolute rounded bg-gray-700 z-10 text-sm text-white right-0 w-32 overflow-hidden"
         }
       >
         {options.map((option, index) => (
-          <li
-            key={index}
-            className="w-full p-2 cursor-pointer"
-            onClick={() => {
-              option.func();
-              setShow(false);
-            }}
-          >
-            {option.name}
+          <li key={index}>
+            <button
+              onClick={() => {
+                option.func();
+                setShow(false);
+              }}
+              type="button"
+              className="w-full hover:bg-gray-800 text-left p-2 cursor-pointer outline-none focus-visible:bg-gray-800"
+            >
+              {option.name}
+            </button>
           </li>
         ))}
       </ul>

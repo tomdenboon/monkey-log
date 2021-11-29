@@ -3,47 +3,47 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FiArrowLeft, FiLoader } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
+import HeaderStyle from "../components/headers";
 
 function Header({ submit }) {
   return (
-    <div
-      className="flex items-center justify-between bg-gray-200 text-blue-500 text-2xl font-bold gap-2 
-      sticky md:relative top-0 p-2 py-4 md:p-5"
-    >
+    <HeaderStyle>
       <div className="flex items-center">
         <Link
-          className=" hover:bg-gray-300 rounded-full p-1 text-xl"
+          className=" hover:bg-gray-300 rounded-full p-1"
           to="/dashboard/workout"
         >
           <FiArrowLeft />
         </Link>
         Create workout
       </div>
-      <button className="p-1 font-normal text-xl" onClick={submit}>
+      <button className=" font-normal text-xl" onClick={submit}>
         Save
       </button>
-    </div>
+    </HeaderStyle>
   );
 }
 
-function WorkoutCreate(props) {
+function WorkoutCreate() {
   const [isWaiting, setIsWaiting] = useState(false);
   const history = useHistory();
   const [workout, setWorkout] = useState({
     name: "",
+    is_template: true,
   });
   const axios = MonkeyAxios();
 
-  const createExercise = () => {
+  const createWorkout = () => {
     axios
-      .post("workout", {
-        workout,
-      })
+      .post("workout", workout)
       .then((res) => {
         setIsWaiting(false);
-        history.push("/dashboard/workout");
+        console.log("here");
+
+        history.push("/dashboard/workout/" + res.data.data.id + "/edit");
       })
       .catch((err) => {
+        console.log("catch");
         setIsWaiting(false);
       });
   };
@@ -51,7 +51,7 @@ function WorkoutCreate(props) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     setIsWaiting(true);
-    createExercise();
+    createWorkout();
   };
 
   return (
@@ -71,7 +71,6 @@ function WorkoutCreate(props) {
               placeholder="Name"
               onChange={(e) => setWorkout({ ...workout, name: e.target.value })}
             />
-            <button>add exercise</button>
           </form>
         )}
       </div>

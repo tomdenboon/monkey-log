@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { FiLoader, FiPlus } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
-import FirstHeader from "../components/FirstHeader";
+import { FirstHeader } from "../components/headers";
 import Dropdown from "../components/Dropdown";
 
 function Exercises({ setShowSidebar }) {
@@ -33,6 +33,9 @@ function Exercises({ setShowSidebar }) {
       })
       .catch((err) => {});
   };
+
+  const toEditExercise = (index) => {};
+
   return (
     <div className="relative flex flex-col w-full h-screen overflow-auto">
       {loading && (
@@ -49,17 +52,18 @@ function Exercises({ setShowSidebar }) {
       <div className="px-2 md:px-5 pb-5 pt-4 md:pt-0">
         <ul
           className={
-            "flex w-full gap-1 flex-col " + (loading ? "invisible" : "visible")
+            "flex w-full gap-px flex-col " + (loading ? "invisible" : "visible")
           }
         >
           {exerciseList.map((exercise, index) => (
             <li
               key={index}
-              className="flex justify-between w-full p-4 items-center font-semibold rounded-sm shadow bg-white "
+              className="flex justify-between w-full p-4 items-center font-semibold rounded-sm bg-white"
             >
-              {exercise.name}
+              <p className="truncate">{exercise.name}</p>
               <Dropdown
                 options={[
+                  { name: "Edit", func: () => toEditExercise(index) },
                   { name: "Delete", func: () => deleteExercise(index) },
                 ]}
               />

@@ -23,7 +23,8 @@ function StyledSidebarItem({ to, children }) {
       className={(isActive) =>
         (isActive ? "bg-white shadow-sm text-blue-500 " : "") +
         (effect ? "animate-press " : "") +
-        "flex gap-2 hover:bg-white p-2 h-10 w-full rounded items-center filter hover:shadow-sm"
+        "flex gap-2 hover:bg-white focus:bg-white focus:shadow-sm " +
+        "p-2 h-10 w-full rounded items-center filter hover:shadow-sm outline-none"
       }
       onClick={() => {
         setEffect(true);
@@ -81,9 +82,9 @@ function Sidebar(props) {
     <div
       ref={ref}
       className={
-        (props.show ? "flex " : "hidden ") +
-        "md:flex md:relative absolute flex-col gap-1 p-1 z-10 " +
-        "bg-gray-50 h-screen w-72 overflow-auto flex-shrink-0 shadow-xl"
+        (props.show ? "visible " : "invisible md:visible ") +
+        "flex md:relative absolute flex-col gap-1 p-1 z-20 " +
+        "bg-gray-50 h-screen w-72 overflow-auto flex-shrink-0"
       }
     >
       <div className="flex justify-between items-center p-2">
