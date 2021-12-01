@@ -66,7 +66,7 @@ function ExerciseModal({ showModal, setShowModal, save }) {
       <div
         className={
           (showModal ? "flex" : "hidden") +
-          " fixed left-0 top-0 h-full w-full  bg-black bg-opacity-5 z-20"
+          " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-5 z-20 md:pl-72"
         }
       >
         <div

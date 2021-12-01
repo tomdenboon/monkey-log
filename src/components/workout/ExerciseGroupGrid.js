@@ -42,13 +42,13 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center gap-2 ">
       <ExerciseModal
         showModal={showModal}
         setShowModal={setShowModal}
         save={addExerciseGroups}
       />
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         {exerciseGroups.map((exercise_group, index) => {
           console.log("render");
           return (
@@ -62,8 +62,12 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
           );
         })}
       </div>
-      <button type="button" onClick={() => setShowModal(true)}>
-        add exercise
+      <button
+        className=" self-center p-2 bg-blue-500 text-white hover:bg-blue-600 rounded"
+        type="button"
+        onClick={() => setShowModal(true)}
+      >
+        Add exercise
       </button>
     </div>
   );

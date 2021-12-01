@@ -37,7 +37,7 @@ function Exercises({ setShowSidebar }) {
   const toEditExercise = (index) => {};
 
   return (
-    <div className="relative flex flex-col w-full h-screen overflow-auto">
+    <div className="flex flex-col">
       {loading && (
         <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
           <FiLoader className="animate-spin-slow" />
@@ -49,7 +49,7 @@ function Exercises({ setShowSidebar }) {
         IconRight={FiPlus}
         linkToRight="exercise/create"
       />
-      <div className="px-2 md:px-5 pb-5 pt-4 md:pt-0">
+      <div className="px-1 md:px-5 pb-5 pt-2">
         <ul
           className={
             "flex w-full gap-px flex-col " + (loading ? "invisible" : "visible")

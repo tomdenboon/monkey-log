@@ -78,7 +78,7 @@ function WorkoutEdit() {
   }
 
   return (
-    <div className={"relative flex flex-col w-full h-screen overflow-auto "}>
+    <div className={"relative flex flex-col w-full "}>
       <Header />
       {loading ? (
         <div className="flex w-full">

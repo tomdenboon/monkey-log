@@ -83,8 +83,8 @@ function Sidebar(props) {
       ref={ref}
       className={
         (props.show ? "visible " : "invisible md:visible ") +
-        "flex md:relative absolute flex-col gap-1 p-1 z-20 " +
-        "bg-gray-50 h-screen w-72 overflow-auto flex-shrink-0"
+        "flex md:relative absolute flex-col gap-1 p-1 z-30 " +
+        "bg-gray-50 h-screen w-72 max-w-full overflow-auto flex-shrink-0"
       }
     >
       <div className="flex justify-between items-center p-2">

@@ -65,31 +65,28 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
   };
 
   const deleteExercise = (exercise, index) => {
-    axios
-      .delete("/weighted_exercise/" + exercise.id)
-      .then((res) => {
-        exerciseGroup.weighted_exercises.splice(index, 1);
-        setExerciseGroup({
-          ...exerciseGroup,
-          weighted_exercises: exerciseGroup.weighted_exercises,
-        });
-      })
-      .catch((err) => {});
+    if (exerciseGroup.weighted_exercises.length <= 1) {
+      deleteThis();
+    } else {
+      axios
+        .delete("/weighted_exercise/" + exercise.id)
+        .then((res) => {
+          exerciseGroup.weighted_exercises.splice(index, 1);
+          setExerciseGroup({
+            ...exerciseGroup,
+            weighted_exercises: exerciseGroup.weighted_exercises,
+          });
+        })
+        .catch((err) => {});
+    }
   };
 
   const deleteThis = () => {
     deleteExerciseGroup(exerciseGroup.id, at);
   };
 
-  useEffect(() => {
-    if (exerciseGroup.weighted_exercises.length <= 0) {
-      deleteThis();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exerciseGroup]);
-
   return (
-    <div className="flex w-full flex-col rounded-sm bg-white">
+    <div className="flex w-full flex-col rounded-md bg-white">
       <div className="flex font-bold items-center justify-between pt-4 px-4">
         <p className="truncate">{exerciseGroup.name}</p>
 
