@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-import { FiX, FiCheck } from "react-icons/fi";
+import { FiX, FiCheck, FiLoader } from "react-icons/fi";
 import FocusTrap from "focus-trap-react";
 import MonkeyAxios from "../../MonkeyAxios";
 
-function ExerciseModal({ showModal, setShowModal, save }) {
+function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
   const [exerciseList, setExerciseList] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isSubmit, setIsSubmit] = useState(false);
   const ref = useRef();
   const axios = MonkeyAxios();
 
@@ -19,10 +19,8 @@ function ExerciseModal({ showModal, setShowModal, save }) {
           temp.push({ ...exercise, selected: false });
         }
         setExerciseList(temp);
-        setLoading(false);
       })
       .catch((err) => {
-        setLoading(false);
         console.log(err);
       });
   }, [axios]);
@@ -57,6 +55,34 @@ function ExerciseModal({ showModal, setShowModal, save }) {
     setExerciseList(tempArr);
   };
 
+  const addExercises = (exerciseList) => {
+    setIsSubmit(true);
+    let promises = [];
+    exerciseList.forEach(function (exercise) {
+      if (exercise.selected) {
+        promises.push(
+          axios.post("workout/" + workoutId + "/exercise_group", {
+            exercise_id: exercise.id,
+            order: 1,
+          })
+        );
+      }
+    });
+    Promise.all(promises)
+      .then(function (results) {
+        let newArr = [];
+        results.forEach(function (response) {
+          newArr.push(response.data.data);
+        });
+        add(newArr);
+        setIsSubmit(false);
+        setShowModal(false);
+      })
+      .catch((err) => {
+        setIsSubmit(false);
+      });
+  };
+
   const closeModal = () => {
     setShowModal(false);
   };
@@ -70,10 +96,10 @@ function ExerciseModal({ showModal, setShowModal, save }) {
         }
       >
         <div
-          className="flex flex-col w-4/5 bg-white h-2/3 m-auto rounded-lg"
+          className="relative flex flex-col w-4/5 bg-white h-2/3 m-auto rounded-lg"
           ref={ref}
         >
-          <div className="p-4 border-b text-lg font-bold flex justify-between">
+          <div className="h-14 items-center px-4 border-b text-lg font-bold flex justify-between">
             Select exercises
             <button
               onClick={closeModal}
@@ -108,13 +134,19 @@ function ExerciseModal({ showModal, setShowModal, save }) {
               ))}
             </ul>
           </div>
-          <button
-            className="flex p-4 border-t text-blue-500 mt-auto"
-            type="button"
-            onClick={() => save(exerciseList)}
-          >
-            Add
-          </button>
+          <div className="flex items-center w-full mt-auto border-t px-4 h-14 text-blue-500">
+            {isSubmit ? (
+              <FiLoader className="animate-spin-slow" />
+            ) : (
+              <button
+                className=""
+                type="button"
+                onClick={() => addExercises(exerciseList)}
+              >
+                Add
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </FocusTrap>

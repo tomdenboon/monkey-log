@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import MonkeyAxios from "../../MonkeyAxios";
 import ExerciseGroupCard from "./ExerciseGroupCard";
 import ExerciseModal from "./ExerciseModal";
@@ -19,26 +19,11 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
       .catch((err) => {});
   };
 
-  const addExerciseGroups = (exerciseList) => {
-    let promises = [];
-    exerciseList.forEach(function (exercise) {
-      if (exercise.selected) {
-        promises.push(
-          axios.post("workout/" + workout_id + "/exercise_group", {
-            exercise_id: exercise.id,
-            order: 1,
-          })
-        );
-      }
-    });
-    Promise.all(promises).then(function (results) {
-      let newArr = [...exerciseGroups];
-      results.forEach(function (response) {
-        newArr.push(response.data.data);
-      });
-      setExerciseGroups(newArr);
-      setShowModal(false);
-    });
+  const addExerciseGroups = (addExerciseGroups) => {
+    setExerciseGroups((exerciseGroups) => [
+      ...exerciseGroups,
+      ...addExerciseGroups,
+    ]);
   };
 
   return (
@@ -46,7 +31,8 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
       <ExerciseModal
         showModal={showModal}
         setShowModal={setShowModal}
-        save={addExerciseGroups}
+        add={addExerciseGroups}
+        workoutId={workout_id}
       />
       <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         {exerciseGroups.map((exercise_group, index) => {

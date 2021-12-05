@@ -1,31 +1,26 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
 import { FiPlus, FiLoader } from "react-icons/fi";
 import { useHistory } from "react-router";
 import Dropdown from "../components/Dropdown";
 
-function WorkoutCard({ template, deleteAt, at, add }) {
-  const [workout, setWorkout] = useState(template);
+function TemplateCard({ template, deleteAt, at, add }) {
   const history = useHistory();
   const axios = MonkeyAxios();
 
-  useEffect(() => {
-    setWorkout(template);
-  }, [template]);
-
-  const toEditWorkout = () => {
-    history.push("/dashboard/workout/" + workout.id + "/edit");
+  const toEditTemplate = () => {
+    history.push("/dashboard/template/" + template.id + "/edit");
   };
 
-  const deleteWorkout = () => {
-    axios.delete("workout/" + workout.id).then((res) => {
+  const deleteTemplate = () => {
+    axios.delete("workout/" + template.workout.id).then((res) => {
       deleteAt(at);
     });
   };
 
-  const duplicateWorkout = () => {
-    axios.post("template/" + workout.id + "/clone").then((res) => {
+  const duplicateTemplate = () => {
+    axios.post("template/" + template.id + "/clone").then((res) => {
       add(res.data.data);
     });
   };
@@ -34,18 +29,18 @@ function WorkoutCard({ template, deleteAt, at, add }) {
     <div className="group flex w-full flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all">
       <div className="flex pb-5 text-xl font-bold items-center justify-between">
         <p className="group-hover:text-blue-500 focus transition">
-          {workout.name}
+          {template.workout.name}
         </p>
         <Dropdown
           options={[
-            { name: "Edit", func: toEditWorkout },
-            { name: "Duplicate", func: duplicateWorkout },
-            { name: "Delete", func: deleteWorkout },
+            { name: "Edit", func: toEditTemplate },
+            { name: "Duplicate", func: duplicateTemplate },
+            { name: "Delete", func: deleteTemplate },
           ]}
         />
       </div>
       <ul>
-        {workout.exercise_groups.map((exercise_group, index) => (
+        {template.workout.exercise_groups.map((exercise_group, index) => (
           <li key={index} className="truncate">
             {exercise_group.sets} x {exercise_group.name}
           </li>
@@ -55,7 +50,7 @@ function WorkoutCard({ template, deleteAt, at, add }) {
   );
 }
 
-function Workouts(props) {
+function Template(props) {
   const [loading, setLoading] = useState(true);
   const [templateList, setTemplateList] = useState([]);
   const { setShowSidebar } = props;
@@ -66,6 +61,7 @@ function Workouts(props) {
       .get("template")
       .then((res) => {
         setTemplateList(res.data.data);
+        console.log(res.data.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -93,7 +89,7 @@ function Workouts(props) {
         setShowSidebar={setShowSidebar}
         title="Workout"
         IconRight={FiPlus}
-        linkToRight="/dashboard/workout/create"
+        linkToRight="/dashboard/template/create"
       />
       <div className="px-1 pb-2 pt-2 md:px-5 ">
         {loading ? (
@@ -102,9 +98,9 @@ function Workouts(props) {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
-            {templateList.map((workoutTemplate, index) => (
-              <WorkoutCard
-                template={workoutTemplate}
+            {templateList.map((template, index) => (
+              <TemplateCard
+                template={template}
                 key={index}
                 at={index}
                 add={add}
@@ -118,4 +114,4 @@ function Workouts(props) {
   );
 }
 
-export default Workouts;
+export default Template;

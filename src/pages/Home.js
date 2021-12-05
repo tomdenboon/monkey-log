@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as action from "../store/actions";
 import { useSelector } from "react-redux";
@@ -97,7 +97,10 @@ function LoginCard(props) {
           <button className="w-full py-2 font-bold rounded-md bg-blue-500 hover:bg-blue-600 text-white cursor-pointer">
             Sign in
           </button>
-          <button className="text-xs text-blue-500 cursor-pointer hover:underline">
+          <button
+            className="text-xs text-blue-500 cursor-pointer hover:underline"
+            type="button"
+          >
             Forgot password?
           </button>
         </form>

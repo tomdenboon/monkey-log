@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { FiMenu } from "react-icons/fi";
 
@@ -17,7 +18,7 @@ function FirstHeader({ setShowSidebar, title, IconRight, linkToRight }) {
     <HeaderStyle>
       <div className="flex">
         <button
-          className="md:hidden hover:bg-gray-300 text-xl rounded-full p-2"
+          className="md:hidden hover:bg-gray-300 text-xl rounded-full p-3"
           onClick={setShowSidebar}
         >
           <FiMenu />
@@ -27,7 +28,7 @@ function FirstHeader({ setShowSidebar, title, IconRight, linkToRight }) {
       {linkToRight && (
         <Link
           to={linkToRight}
-          className="hover:bg-gray-300 rounded-full p-1 text-xl"
+          className="hover:bg-gray-300 rounded-full p-3 text-xl"
         >
           <IconRight />
         </Link>

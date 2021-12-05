@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FiArrowLeft, FiLoader } from "react-icons/fi";
@@ -9,10 +9,7 @@ function Header({ submit }) {
   return (
     <HeaderStyle>
       <div className="flex items-center">
-        <Link
-          className=" hover:bg-gray-300 rounded-full p-1"
-          to="/dashboard/workout"
-        >
+        <Link to="/dashboard/template">
           <FiArrowLeft />
         </Link>
         Create workout
@@ -24,23 +21,20 @@ function Header({ submit }) {
   );
 }
 
-function WorkoutCreate() {
+function TemplateCreate() {
   const [isWaiting, setIsWaiting] = useState(false);
   const history = useHistory();
   const [workout, setWorkout] = useState({
     name: "",
-    is_template: true,
   });
   const axios = MonkeyAxios();
 
   const createWorkout = () => {
     axios
-      .post("workout", workout)
+      .post("template", workout)
       .then((res) => {
         setIsWaiting(false);
-        console.log("here");
-
-        history.push("/dashboard/workout/" + res.data.data.id + "/edit");
+        history.push("/dashboard/template/" + res.data.data.id + "/edit");
       })
       .catch((err) => {
         console.log("catch");
@@ -78,4 +72,4 @@ function WorkoutCreate() {
   );
 }
 
-export default WorkoutCreate;
+export default TemplateCreate;

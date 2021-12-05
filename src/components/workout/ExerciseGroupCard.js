@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import MonkeyAxios from "../../MonkeyAxios";
 import Dropdown from "../Dropdown";
 import { FiX, FiPlus, FiCheck } from "react-icons/fi";
@@ -113,6 +113,12 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
         </li>
         {exerciseGroup.weighted_exercises.map((weighted_exercise, index) => (
           <li key={index} className="flex w-full gap-1 py-1 px-4">
+            <button
+              type="button"
+              className="h-full text-blue-500  w-8 outline-none focus:bg-gray-100 hover:bg-gray-100 rounded border border-gray-200"
+            >
+              {index}
+            </button>
             <input
               className="w-1/2 rounded outline-none border border-gray-200 text-center"
               name="reps"
@@ -158,7 +164,7 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
           <button
             type="button"
             onClick={submitNewExercise}
-            className="h-full w-8 outline-none focus:bg-gray-100 hover:bg-gray-100 rounded border border-gray-200"
+            className="h-8 w-8 outline-none flex-shrink-0 focus:bg-gray-100 hover:bg-gray-100 rounded border border-gray-200"
           >
             <FiPlus className="h-full w-full text-blue-500" />
           </button>

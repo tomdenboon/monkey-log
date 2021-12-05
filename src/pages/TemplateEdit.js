@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { FiArrowLeft, FiLoader } from "react-icons/fi";
@@ -31,12 +31,12 @@ function WorkoutFormInput({ workout_id, workout_name }) {
   );
 }
 
-function WorkoutEdit() {
+function TemplateEdit() {
   const [loading, setLoading] = useState(true);
-  const [exerciseGroups, setExerciseGroups] = useState([]);
   const [workout, setWorkout] = useState({
     id: null,
     name: "",
+    exercise_groups: [],
   });
 
   const axios = MonkeyAxios();
@@ -45,14 +45,10 @@ function WorkoutEdit() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("workout/" + String(id))
+      .get("template/" + String(id))
       .then((res) => {
-        let newWorkout = res.data.data;
-        setWorkout({
-          id: newWorkout.id,
-          name: newWorkout.name,
-        });
-        setExerciseGroups(newWorkout.exercise_groups);
+        let template = res.data.data;
+        setWorkout(template.workout);
         setLoading(false);
       })
       .catch((err) => {
@@ -67,7 +63,7 @@ function WorkoutEdit() {
         <div className="flex items-center">
           <Link
             className=" hover:bg-gray-300 rounded-full p-1 text-xl"
-            to="/dashboard/workout"
+            to="/dashboard/template"
           >
             <FiArrowLeft />
           </Link>
@@ -92,8 +88,8 @@ function WorkoutEdit() {
               workout_name={workout.name}
             />
             <ExerciseGroupGrid
-              workout_id={id}
-              exercise_groups={exerciseGroups}
+              workout_id={workout.id}
+              exercise_groups={workout.exercise_groups}
             />
           </div>
         </div>
@@ -102,4 +98,4 @@ function WorkoutEdit() {
   );
 }
 
-export default WorkoutEdit;
+export default TemplateEdit;

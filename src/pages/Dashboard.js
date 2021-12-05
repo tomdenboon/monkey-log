@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import { Switch, useLocation } from "react-router";
 import PrivateRoute from "../routes/PrivateRoute";

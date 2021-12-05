@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useRef } from "react";
 import { FiMoreVertical } from "react-icons/fi";
 

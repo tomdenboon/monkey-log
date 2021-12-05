@@ -1,3 +1,4 @@
+import React from "react";
 import { FirstHeader } from "../components/headers";
 
 function Profile({ setShowSidebar }) {

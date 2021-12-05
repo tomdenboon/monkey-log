@@ -2,14 +2,14 @@ import Dashboard from "../pages/Dashboard";
 import Exercises from "../pages/Exercises";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
-import Workouts from "../pages/Workouts";
+import Template from "../pages/Template";
 import History from "../pages/History";
 import Settings from "../pages/Settings";
 import Statistics from "../pages/Statistics";
 import Profile from "../pages/Profile";
 import CreateExercise from "../pages/CreateExercise";
-import WorkoutCreate from "../pages/WorkoutCreate";
-import WorkoutEdit from "../pages/WorkoutEdit";
+import TemplateCreate from "../pages/TemplateCreate";
+import TemplateEdit from "../pages/TemplateEdit";
 
 const routes = [
   {
@@ -52,18 +52,18 @@ const routes = [
       },
       {
         exact: true,
-        path: "/dashboard/workout",
-        component: Workouts,
+        path: "/dashboard/template",
+        component: Template,
       },
       {
         exact: true,
-        path: "/dashboard/workout/create",
-        component: WorkoutCreate,
+        path: "/dashboard/template/create",
+        component: TemplateCreate,
       },
       {
         exact: true,
-        path: "/dashboard/workout/:id/edit",
-        component: WorkoutEdit,
+        path: "/dashboard/template/:id/edit",
+        component: TemplateEdit,
       },
       {
         exact: true,

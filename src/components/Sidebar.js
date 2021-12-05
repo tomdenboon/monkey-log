@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   FiAward,
   FiUser,
@@ -84,7 +84,7 @@ function Sidebar(props) {
       className={
         (props.show ? "visible " : "invisible md:visible ") +
         "flex md:relative absolute flex-col gap-1 p-1 z-30 " +
-        "bg-gray-50 h-screen w-72 max-w-full overflow-auto flex-shrink-0"
+        "bg-gray-100 h-screen w-72 max-w-full overflow-auto flex-shrink-0"
       }
     >
       <div className="flex justify-between items-center p-2">
@@ -105,7 +105,7 @@ function Sidebar(props) {
         <FiFolder />
         Exercises
       </StyledSidebarItem>
-      <StyledSidebarItem to="/dashboard/workout">
+      <StyledSidebarItem to="/dashboard/template">
         <FiAward />
         Workout
       </StyledSidebarItem>
