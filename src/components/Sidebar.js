@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   FiAward,
-  FiUser,
-  FiLoader,
   FiLogOut,
   FiBarChart,
   FiSettings,
@@ -37,7 +35,6 @@ function StyledSidebarItem({ to, children }) {
 }
 
 function Sidebar(props) {
-  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState({});
   const { setShowSidebar } = props;
 
@@ -50,10 +47,8 @@ function Sidebar(props) {
       .get("user")
       .then((res) => {
         setUser(res.data);
-        setLoading(false);
       })
       .catch((err) => {
-        setLoading(false);
         console.log(err);
       });
   }, [axios]);
@@ -90,32 +85,29 @@ function Sidebar(props) {
       <div className="flex justify-between items-center p-2">
         <div className="font-bold text-gray-700 text-2xl select-none">
           MonkeyLog
+          <div className="flex items-center gap-1 text-sm font-normal text-gray-500">
+            {user.name}
+          </div>
         </div>
         <button className="hover:text-red-500" onClick={logout}>
           <FiLogOut />
         </button>
       </div>
-      <StyledSidebarItem to="/dashboard/profile">
-        <FiUser />
-        <div>
-          {loading ? <FiLoader className=" animate-spin-slow" /> : user.name}
-        </div>
+      <StyledSidebarItem to="/dashboard/template">
+        <FiAward />
+        Workout
       </StyledSidebarItem>
       <StyledSidebarItem to="/dashboard/exercise">
         <FiFolder />
         Exercises
       </StyledSidebarItem>
-      <StyledSidebarItem to="/dashboard/template">
-        <FiAward />
-        Workout
+      <StyledSidebarItem to="/dashboard/history">
+        <FiClock />
+        History
       </StyledSidebarItem>
       <StyledSidebarItem to="/dashboard/statistics">
         <FiBarChart />
         Statistics
-      </StyledSidebarItem>
-      <StyledSidebarItem to="/dashboard/history">
-        <FiClock />
-        History
       </StyledSidebarItem>
       <StyledSidebarItem to="/dashboard/settings">
         <FiSettings />

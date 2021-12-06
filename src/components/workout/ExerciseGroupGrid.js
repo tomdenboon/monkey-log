@@ -27,14 +27,14 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-2 ">
+    <div className="flex flex-col items-center justify-center gap-2 md:gap-4 ">
       <ExerciseModal
         showModal={showModal}
         setShowModal={setShowModal}
         add={addExerciseGroups}
         workoutId={workout_id}
       />
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:gap-4 gap-2">
         {exerciseGroups.map((exercise_group, index) => {
           console.log("render");
           return (

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FiArrowLeft, FiLoader } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import HeaderStyle from "../components/headers";
+import NormalContainer from "../components/styled/NormalContainer";
 
 function Header({ submit }) {
   return (
@@ -14,8 +15,8 @@ function Header({ submit }) {
         </Link>
         Create workout
       </div>
-      <button className=" font-normal text-xl" onClick={submit}>
-        Save
+      <button className="font-normal text-lg" onClick={submit}>
+        SAVE
       </button>
     </HeaderStyle>
   );
@@ -44,14 +45,16 @@ function TemplateCreate() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    setIsWaiting(true);
-    createWorkout();
+    if (workout.name !== "") {
+      setIsWaiting(true);
+      createWorkout();
+    }
   };
 
   return (
     <div className="relative flex flex-col w-full h-screen overflow-auto">
       <Header submit={handleSubmit} />
-      <div className="px-2 md:px-5 pb-5 pt-4 md:pt-0">
+      <NormalContainer>
         {isWaiting ? (
           <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
             <FiLoader className="animate-spin-slow" />
@@ -67,7 +70,7 @@ function TemplateCreate() {
             />
           </form>
         )}
-      </div>
+      </NormalContainer>
     </div>
   );
 }

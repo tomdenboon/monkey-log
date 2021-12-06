@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import { FiArrowLeft, FiLoader } from "react-icons/fi";
+import { useHistory } from "react-router";
+import { FiLoader, FiArrowLeft } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
@@ -21,54 +20,67 @@ function WorkoutFormInput({ workout_id, workout_name }) {
   };
 
   return (
-    <input
-      className="text-xl font-bold outline-none flex bg-gray-200"
-      type="name"
-      value={workout.name}
-      placeholder="Name"
-      onChange={(e) => setWorkout({ ...workout, name: e.target.value })}
-      onBlur={() => postWorkout()}
-    />
+    <div className="flex flex-col gap-2 w-full bg-white rounded-none md:rounded p-2">
+      <input
+        className="text-xl font-bold outline-none "
+        type="name"
+        value={workout.name}
+        placeholder="Name"
+        onChange={(e) => setWorkout({ ...workout, name: e.target.value })}
+        onBlur={() => postWorkout()}
+      />
+      timer
+    </div>
   );
 }
 
-function TemplateEdit() {
+function Active({ from }) {
   const [loading, setLoading] = useState(true);
   const [workout, setWorkout] = useState({
     id: null,
     name: "",
     exercise_groups: [],
   });
-
+  const history = useHistory();
   const axios = MonkeyAxios();
-  const { id } = useParams();
 
   useEffect(() => {
     setLoading(true);
     axios
-      .get("template/" + String(id))
+      .get("active")
       .then((res) => {
-        let template = res.data.data;
-        setWorkout(template.workout);
+        let active = res.data.data;
+        setWorkout(active.workout);
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
         console.log(err);
       });
-  }, [axios, id]);
+  }, [axios]);
+
+  const completeActive = () => {
+    axios.post("active/complete").then((res) => {
+      history.push("/dashboard/history");
+    });
+  };
 
   function Header() {
     return (
       <HeaderStyle>
-        <div className="flex items-center">
-          <Link
-            className=" hover:bg-gray-300 rounded-full p-1 text-xl"
-            to="/dashboard/template"
-          >
-            <FiArrowLeft />
-          </Link>
-          Edit workout
+        <div className="flex w-full items-center justify-between">
+          <div className="flex gap-2 items-center">
+            <button
+              className=" hover:bg-gray-300 rounded-full p-1 text-xl"
+              onClick={history.goBack}
+            >
+              <FiArrowLeft />
+            </button>
+            Active workout
+          </div>
+          <button className="rounded-full p-1 text-sm" onClick={completeActive}>
+            FINISH
+          </button>
         </div>
       </HeaderStyle>
     );
@@ -99,4 +111,4 @@ function TemplateEdit() {
   );
 }
 
-export default TemplateEdit;
+export default Active;

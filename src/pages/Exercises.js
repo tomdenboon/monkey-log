@@ -3,6 +3,7 @@ import { FiLoader, FiPlus } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
 import Dropdown from "../components/Dropdown";
+import NormalContainer from "../components/styled/NormalContainer";
 
 function Exercises({ setShowSidebar }) {
   const [loading, setLoading] = useState(true);
@@ -49,7 +50,7 @@ function Exercises({ setShowSidebar }) {
         IconRight={FiPlus}
         linkToRight="exercise/create"
       />
-      <div className="px-1 md:px-5 pb-5 pt-2">
+      <NormalContainer>
         <ul
           className={
             "flex w-full gap-px flex-col " + (loading ? "invisible" : "visible")
@@ -70,7 +71,7 @@ function Exercises({ setShowSidebar }) {
             </li>
           ))}
         </ul>
-      </div>
+      </NormalContainer>
     </div>
   );
 }

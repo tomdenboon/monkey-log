@@ -6,10 +6,10 @@ import Template from "../pages/Template";
 import History from "../pages/History";
 import Settings from "../pages/Settings";
 import Statistics from "../pages/Statistics";
-import Profile from "../pages/Profile";
 import CreateExercise from "../pages/CreateExercise";
 import TemplateCreate from "../pages/TemplateCreate";
 import TemplateEdit from "../pages/TemplateEdit";
+import Active from "../pages/Active";
 
 const routes = [
   {
@@ -32,8 +32,8 @@ const routes = [
     routes: [
       {
         exact: true,
-        path: "/dashboard/profile",
-        component: Profile,
+        path: "/dashboard/active",
+        component: Active,
       },
       {
         exact: true,

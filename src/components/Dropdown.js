@@ -23,13 +23,13 @@ function Dropdown({ options }) {
   }, [ref, setShow]);
 
   return (
-    <div ref={ref} className="relative">
+    <div ref={ref} className="relative" onClick={(e) => e.stopPropagation()}>
       <button
-        className="rounded-full p-1 flex-shrink-0 hover:bg-gray-100 focus:bg-gray-100 outline-none"
+        className="outline-none"
         type="button"
-        onClick={() => setShow(!show)}
+        onClick={(e) => setShow(!show)}
       >
-        <FiMoreVertical />
+        <FiMoreVertical className="w-full h-full flex-shrink-0" />
       </button>
       <ul
         className={
@@ -40,7 +40,7 @@ function Dropdown({ options }) {
         {options.map((option, index) => (
           <li key={index}>
             <button
-              onClick={() => {
+              onClick={(e) => {
                 option.func();
                 setShow(false);
               }}

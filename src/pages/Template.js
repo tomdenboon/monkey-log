@@ -4,6 +4,7 @@ import { FirstHeader } from "../components/headers";
 import { FiPlus, FiLoader } from "react-icons/fi";
 import { useHistory } from "react-router";
 import Dropdown from "../components/Dropdown";
+import CardContainer from "../components/styled/CardContainer";
 
 function TemplateCard({ template, deleteAt, at, add }) {
   const history = useHistory();
@@ -25,8 +26,17 @@ function TemplateCard({ template, deleteAt, at, add }) {
     });
   };
 
+  const startTemplate = () => {
+    axios.post("template/" + template.id + "/start").then((res) => {
+      history.push("/dashboard/active");
+    });
+  };
+
   return (
-    <div className="group flex w-full flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all">
+    <div
+      className="group flex w-full flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all"
+      onClick={startTemplate}
+    >
       <div className="flex pb-5 text-xl font-bold items-center justify-between">
         <p className="group-hover:text-blue-500 focus transition">
           {template.workout.name}
@@ -91,7 +101,7 @@ function Template(props) {
         IconRight={FiPlus}
         linkToRight="/dashboard/template/create"
       />
-      <div className="px-1 pb-2 pt-2 md:px-5 ">
+      <CardContainer>
         {loading ? (
           <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
             <FiLoader className="animate-spin-slow" />
@@ -109,7 +119,7 @@ function Template(props) {
             ))}
           </div>
         )}
-      </div>
+      </CardContainer>
     </div>
   );
 }
