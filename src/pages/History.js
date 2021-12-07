@@ -5,6 +5,7 @@ import { FiLoader } from "react-icons/fi";
 import { useHistory } from "react-router";
 import Dropdown from "../components/Dropdown";
 import CardContainer from "../components/styled/CardContainer";
+import datesToTimer from "../util/datesToTimer";
 
 function CompleteCard({ complete, deleteAt, at }) {
   const history = useHistory();
@@ -33,7 +34,12 @@ function CompleteCard({ complete, deleteAt, at }) {
           ]}
         />
       </div>
-      <div>{complete.completed_at}</div>
+      <div>
+        {datesToTimer(
+          new Date(complete.started_at),
+          new Date(complete.completed_at)
+        )}
+      </div>
       <ul>
         {complete.workout.exercise_groups.map((exercise_group, index) => (
           <li key={index} className="truncate">
@@ -68,7 +74,6 @@ function History(props) {
   const deleteAt = (index) => {
     let tempArr = [...completeList];
     tempArr.splice(index, 1);
-    console.log(tempArr);
     setCompleteList(tempArr);
   };
 

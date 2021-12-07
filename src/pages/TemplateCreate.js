@@ -15,7 +15,7 @@ function Header({ submit }) {
         </Link>
         Create workout
       </div>
-      <button className="font-normal text-lg" onClick={submit}>
+      <button className="font-mono text-base" onClick={submit}>
         SAVE
       </button>
     </HeaderStyle>

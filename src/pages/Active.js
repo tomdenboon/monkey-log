@@ -5,6 +5,7 @@ import MonkeyAxios from "../MonkeyAxios";
 import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
+import datesToTimer from "../util/datesToTimer";
 
 function TemplateHeader({ workout_id, workout_name, start_date }) {
   const [workout, setWorkout] = useState({
@@ -26,23 +27,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
       started.setTime(
         started.getTime() - started.getTimezoneOffset() * 60 * 1000
       );
-      var milliseconds = Date.now() - started.getTime();
-      var end_str = "";
-      milliseconds = Math.floor(milliseconds / 1000);
-      var secs = milliseconds % 60;
-      milliseconds = (milliseconds - secs) / 60;
-      var mins = milliseconds;
-
-      if (mins < 10) {
-        end_str = "0";
-      }
-      end_str += mins;
-      end_str += ":";
-      if (secs < 10) {
-        end_str += "0";
-      }
-      end_str += secs;
-
+      var end_str = datesToTimer(started, new Date());
       setTimer(end_str);
     }
     const intervalId = setInterval(() => {
@@ -52,7 +37,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
   }, [start_date]);
 
   return (
-    <div className="flex flex-col gap-2 items-center w-full bg-white rounded-none md:rounded p-2">
+    <div className="flex flex-col gap-2 items-center w-full bg-white rounded-none md:rounded-sm p-2">
       <input
         className="text-xl font-bold outline-none text-center"
         type="name"

@@ -7,7 +7,7 @@ import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 
-function WorkoutFormInput({ workout_id, workout_name }) {
+function WorkoutFormHeader({ workout_id, workout_name }) {
   const [workout, setWorkout] = useState({
     id: workout_id,
     name: workout_name,
@@ -21,14 +21,16 @@ function WorkoutFormInput({ workout_id, workout_name }) {
   };
 
   return (
-    <input
-      className="text-xl font-bold outline-none flex bg-gray-200"
-      type="name"
-      value={workout.name}
-      placeholder="Name"
-      onChange={(e) => setWorkout({ ...workout, name: e.target.value })}
-      onBlur={() => postWorkout()}
-    />
+    <div className="flex flex-col gap-2 items-center w-full bg-white rounded-none md:rounded-sm p-2">
+      <input
+        className="text-xl font-bold outline-none text-center"
+        type="name"
+        value={workout.name}
+        placeholder="Name"
+        onChange={(e) => setWorkout({ ...workout, name: e.target.value })}
+        onBlur={() => postWorkout()}
+      />
+    </div>
   );
 }
 
@@ -84,7 +86,7 @@ function TemplateEdit() {
       ) : (
         <NormalContainer>
           <div className="flex flex-col w-full gap-2 md:gap-4">
-            <WorkoutFormInput
+            <WorkoutFormHeader
               workout_id={workout.id}
               workout_name={workout.name}
             />

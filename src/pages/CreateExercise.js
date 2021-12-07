@@ -15,7 +15,7 @@ function ExerciseHeader({ submit }) {
         </Link>
         Create exercise
       </div>
-      <button className="p-1 font-mono font-normal text-base" onClick={submit}>
+      <button className="p-1 font-mono text-base" onClick={submit}>
         SAVE
       </button>
     </HeaderStyle>

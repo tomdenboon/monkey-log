@@ -80,7 +80,7 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
   };
 
   return (
-    <div className="flex w-full flex-col rounded-none md:rounded-md py-4 bg-white">
+    <div className="flex w-full flex-col rounded-none md:rounded-sm py-4 bg-white">
       <div className="flex items-center justify-between px-2">
         <p className="truncate text-blue-500">{exerciseGroup.name}</p>
 

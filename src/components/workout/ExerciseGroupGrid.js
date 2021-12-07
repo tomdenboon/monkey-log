@@ -35,22 +35,24 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
         add={addExerciseGroups}
         workoutId={workout_id}
       />
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:gap-4 gap-2">
-        {exerciseGroups.map((exercise_group, index) => {
-          console.log("render");
-          return (
-            <ExerciseGroupCard
-              className="w-full bg-gray-50"
-              key={index}
-              at={index}
-              deleteExerciseGroup={deleteExerciseGroup}
-              exercise_group={exercise_group}
-            />
-          );
-        })}
-      </div>
+      {exerciseGroups.length > 0 && (
+        <div className="w-full grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:gap-4 gap-2">
+          {exerciseGroups.map((exercise_group, index) => {
+            console.log("render");
+            return (
+              <ExerciseGroupCard
+                className="w-full bg-gray-50"
+                key={index}
+                at={index}
+                deleteExerciseGroup={deleteExerciseGroup}
+                exercise_group={exercise_group}
+              />
+            );
+          })}
+        </div>
+      )}
       <button
-        className="flex w-full items-center justify-between pl-2 py-2   self-center bg-white text-blue-500  md:rounded"
+        className="flex w-full items-center justify-between pl-2 py-2   self-center bg-white text-blue-500  md:rounded-sm"
         type="button"
         onClick={() => setShowModal(true)}
       >
