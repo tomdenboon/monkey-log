@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MonkeyAxios from "../../MonkeyAxios";
 import ExerciseGroupCard from "./ExerciseGroupCard";
 import ExerciseModal from "./ExerciseModal";
+import { FiPlus } from "react-icons/fi";
 
 function ExerciseGroupGrid({ workout_id, exercise_groups }) {
   const [showModal, setShowModal] = useState(false);
@@ -49,11 +50,12 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
         })}
       </div>
       <button
-        className=" self-center p-2 bg-blue-500 text-white hover:bg-blue-600 rounded"
+        className="flex w-full items-center justify-between pl-2 py-2   self-center bg-white text-blue-500  md:rounded"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Add exercise
+        <p className="p-1">Exercise</p>
+        <FiPlus className="h-8 w-8 p-1" />
       </button>
     </div>
   );

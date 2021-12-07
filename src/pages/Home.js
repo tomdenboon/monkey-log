@@ -75,7 +75,7 @@ function LoginCard(props) {
               "p-2 rounded-md border w-full outline-none " +
               (message
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-400")
+                : "border-gray-300 focus:border-blue-500")
             }
             type="text"
             value={email}
@@ -87,7 +87,7 @@ function LoginCard(props) {
               "p-2 rounded-md border outline-none w-full " +
               (message
                 ? "border-red-500 "
-                : "border-gray-300 focus:border-blue-400")
+                : "border-gray-300 focus:border-blue-500")
             }
             type="password"
             value={password}

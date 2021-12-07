@@ -80,9 +80,9 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
   };
 
   return (
-    <div className="flex w-full flex-col rounded-none md:rounded-md bg-white">
-      <div className="flex font-bold items-center justify-between pt-4 px-2">
-        <p className="truncate">{exerciseGroup.name}</p>
+    <div className="flex w-full flex-col rounded-none md:rounded-md py-4 bg-white">
+      <div className="flex items-center justify-between px-2">
+        <p className="truncate text-blue-500">{exerciseGroup.name}</p>
 
         <Dropdown options={[{ name: "Delete", func: deleteThis }]} />
       </div>
@@ -135,13 +135,16 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
             </button>
           </li>
         ))}
-        <li className="flex w-full mt-auto gap-1 justify-center items-center pt-1 pb-4 px-4">
+        <li className="flex w-full justify-center items-center py-1 ">
           <button
             type="button"
-            className="h-8 w-8 p-1 flex-shrink-0"
+            className="flex w-full justify-between text-blue-500 hover:bg-gray-100"
             onClick={submitNewExercise}
           >
-            <FiPlus className="h-full w-full text-blue-500" />
+            <div className="h-8 w-8 p-1 font-semibold">
+              {exerciseGroup.weighted_exercises.length + 1}
+            </div>
+            <FiPlus className="h-8 w-8 p-1" />
           </button>
         </li>
       </ul>
