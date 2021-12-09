@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      boxShadow: {
+        header: "0px 0px 1px 1.5px rgba(0,0,0,0.2)",
+      },
       keyframes: {
         smallpress: {
           "0%, 50%": { transform: "scale(0.95)" },

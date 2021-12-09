@@ -56,7 +56,7 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        <p className="p-1">Exercise</p>
+        <p className="p-1 font-semibold">Exercise</p>
         <FiPlus className="h-8 w-8 p-1" />
       </button>
     </div>

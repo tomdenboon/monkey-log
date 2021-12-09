@@ -78,7 +78,7 @@ function Sidebar(props) {
       ref={ref}
       className={
         (props.show ? "visible " : "invisible md:visible ") +
-        "flex md:relative absolute flex-col gap-1 p-1 z-30 " +
+        "flex md:relative absolute flex-col gap-1 p-1 z-40 " +
         "bg-gray-100 h-screen w-72 max-w-full overflow-auto flex-shrink-0"
       }
     >

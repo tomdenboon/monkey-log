@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { FiLoader, FiArrowLeft } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 import datesToTimer from "../util/datesToTimer";
+import ShadowyContainer from "../components/styled/ShadowyContainer";
 
 function TemplateHeader({ workout_id, workout_name, start_date }) {
   const [workout, setWorkout] = useState({
@@ -99,7 +100,10 @@ function Active({ from }) {
             </button>
             Active workout
           </div>
-          <button className="rounded-full p-1 text-sm" onClick={completeActive}>
+          <button
+            className="rounded-full p-1 text-sm font-semibold"
+            onClick={completeActive}
+          >
             FINISH
           </button>
         </div>
@@ -108,28 +112,21 @@ function Active({ from }) {
   }
 
   return (
-    <div className={"relative flex flex-col w-full "}>
-      <Header />
-      {loading ? (
-        <div className="flex w-full">
-          <FiLoader className="animate-spin-slow m-auto mt-20" />
+    <ShadowyContainer header={Header} loading={loading}>
+      <NormalContainer>
+        <div className="flex flex-col w-full gap-2 md:gap-4">
+          <TemplateHeader
+            workout_id={active.workout.id}
+            workout_name={active.workout.name}
+            start_date={active.started_at}
+          />
+          <ExerciseGroupGrid
+            workout_id={active.workout.id}
+            exercise_groups={active.workout.exercise_groups}
+          />
         </div>
-      ) : (
-        <NormalContainer>
-          <div className="flex flex-col w-full gap-2 md:gap-4">
-            <TemplateHeader
-              workout_id={active.workout.id}
-              workout_name={active.workout.name}
-              start_date={active.started_at}
-            />
-            <ExerciseGroupGrid
-              workout_id={active.workout.id}
-              exercise_groups={active.workout.exercise_groups}
-            />
-          </div>
-        </NormalContainer>
-      )}
-    </div>
+      </NormalContainer>
+    </ShadowyContainer>
   );
 }
 

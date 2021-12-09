@@ -79,55 +79,86 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
     deleteExerciseGroup(exerciseGroup.id, at);
   };
 
+  const toggleLifted = (index) => {
+    const new_weighted_exercises = exerciseGroup.weighted_exercises;
+    new_weighted_exercises[index].is_lifted =
+      !new_weighted_exercises[index].is_lifted;
+    setExerciseGroup({
+      ...exerciseGroup,
+      weighted_exercises: new_weighted_exercises,
+    });
+  };
+
   return (
     <div className="flex w-full flex-col rounded-none md:rounded-sm py-4 bg-white">
       <div className="flex items-center justify-between px-2">
-        <p className="truncate text-blue-500">{exerciseGroup.name}</p>
+        <p className="truncate text-blue-500 font-semibold">
+          {exerciseGroup.name}
+        </p>
 
         <Dropdown options={[{ name: "Delete", func: deleteThis }]} />
       </div>
       <ul className="h-full flex flex-col ">
-        <li className="flex w-full gap-1">
+        <li className="flex w-full gap-4">
           <div className="h-8 w-8 flex-shrink-0" />
-          <div className="flex items-end justify-center w-full outline-none text-sm text-center text-gray-500">
-            reps
+          <div className="flex items-end justify-center w-full outline-none text-sm text-center text-gray-500 font-mono">
+            REPS
           </div>
-          <div className="flex items-end justify-center w-full outline-none text-sm text-center text-gray-500">
-            kg
+          <div className="flex items-end justify-center w-full outline-none text-sm text-center text-gray-500 font-mono">
+            KG
           </div>
           <div className="h-8 w-8 flex-shrink-0" />
           <div className="h-8 w-8 flex-shrink-0" />
         </li>
         {exerciseGroup.weighted_exercises.map((weighted_exercise, index) => (
-          <li key={index} className="flex w-full gap-1 py-1">
+          <li
+            key={index}
+            className={
+              "flex w-full gap-4 h-8 " +
+              (weighted_exercise.is_lifted ? "bg-green-100" : "bg-white")
+            }
+          >
             <button
               type="button"
-              className="h-8 w-8 text-blue-500 outline-none flex-shrink-0 font-semibold focus:bg-gray-100 hover:bg-gray-100 border-gray-200"
+              className="h-8 w-8 text-blue-500 outline-none flex-shrink-0 font-semibold focus-visible:bg-blue-200 hover:bg-blue-200 "
             >
               {index + 1}
             </button>
             <input
-              className="w-full rounded outline-none border border-gray-200 text-center"
+              className={
+                "w-full outline-none text-center box-border border-b " +
+                (weighted_exercise.is_lifted
+                  ? "bg-green-100 border-green-100"
+                  : " border-gray-200")
+              }
               name="reps"
-              value={weighted_exercise.reps}
+              value=""
+              placeholder={weighted_exercise.reps}
               onChange={(e) => handleExerciseChange(e, index)}
               onBlur={(e) => changeExercise(e, weighted_exercise)}
             />
             <input
-              className="w-full rounded outline-none border border-gray-200 text-center"
+              className={
+                "w-full outline-none text-center box-border border-b " +
+                (weighted_exercise.is_lifted
+                  ? "bg-green-100 border-green-100"
+                  : " border-gray-200")
+              }
               name="weight"
-              value={weighted_exercise.weight}
+              value=""
+              placeholder={weighted_exercise.weight}
               onChange={(e) => handleExerciseChange(e, index)}
               onBlur={(e) => changeExercise(e, weighted_exercise)}
             />
             <button
-              className="h-8 w-8 p-1 flex-shrink-0 outline-none focus:bg-gray-100 hover:bg-gray-100 border-gray-200 text-green-500"
+              className="h-8 w-8 text-green-500 outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-green-200 hover:bg-green-200"
               type="button"
+              onClick={() => toggleLifted(index)}
             >
               <FiCheck className="h-full w-full" />
             </button>
             <button
-              className="h-8 w-8 p-1   flex-shrink-0 outline-none focus:bg-gray-100 hover:bg-gray-100 border-gray-200"
+              className="h-8 w-8 text-red-500 outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-red-200 hover:bg-red-200 "
               type="button"
               onClick={() => deleteExercise(weighted_exercise, index)}
             >
@@ -135,10 +166,10 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
             </button>
           </li>
         ))}
-        <li className="flex w-full justify-center items-center py-1 ">
+        <li className="flex w-full justify-center items-center hover:bg-gray-100">
           <button
             type="button"
-            className="flex w-full justify-between text-blue-500 hover:bg-gray-100"
+            className="flex w-full justify-between text-blue-500 "
             onClick={submitNewExercise}
           >
             <div className="h-8 w-8 p-1 font-semibold">

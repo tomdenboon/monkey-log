@@ -4,6 +4,7 @@ import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
 import Dropdown from "../components/Dropdown";
 import NormalContainer from "../components/styled/NormalContainer";
+import ShadowyContainer from "../components/styled/ShadowyContainer";
 
 function Exercises({ setShowSidebar }) {
   const [loading, setLoading] = useState(true);
@@ -37,25 +38,21 @@ function Exercises({ setShowSidebar }) {
 
   const toEditExercise = (index) => {};
 
-  return (
-    <div className="flex flex-col">
-      {loading && (
-        <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
-          <FiLoader className="animate-spin-slow" />
-        </div>
-      )}
+  const header = () => {
+    return (
       <FirstHeader
         setShowSidebar={setShowSidebar}
         title="Exercises"
         IconRight={FiPlus}
         linkToRight="exercise/create"
       />
+    );
+  };
+
+  return (
+    <ShadowyContainer header={header} loading={loading}>
       <NormalContainer>
-        <ul
-          className={
-            "flex w-full gap-px flex-col " + (loading ? "invisible" : "visible")
-          }
-        >
+        <ul className={"flex w-full gap-px flex-col "}>
           {exerciseList.map((exercise, index) => (
             <li
               key={index}
@@ -72,7 +69,7 @@ function Exercises({ setShowSidebar }) {
           ))}
         </ul>
       </NormalContainer>
-    </div>
+    </ShadowyContainer>
   );
 }
 

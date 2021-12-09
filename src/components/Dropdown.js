@@ -34,7 +34,7 @@ function Dropdown({ options }) {
       <ul
         className={
           (show ? "flex" : "hidden") +
-          " flex flex-col absolute rounded bg-gray-700 z-10 text-sm text-white right-0 w-32 overflow-hidden"
+          " flex flex-col absolute rounded bg-gray-700 z-20 text-sm text-white right-0 w-32 overflow-hidden"
         }
       >
         {options.map((option, index) => (

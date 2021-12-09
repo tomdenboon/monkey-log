@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
-import { FiLoader } from "react-icons/fi";
 import { useHistory } from "react-router";
 import Dropdown from "../components/Dropdown";
 import CardContainer from "../components/styled/CardContainer";
 import datesToTimer from "../util/datesToTimer";
+import ShadowyContainer from "../components/styled/ShadowyContainer";
 
 function CompleteCard({ complete, deleteAt, at }) {
   const history = useHistory();
@@ -24,7 +24,7 @@ function CompleteCard({ complete, deleteAt, at }) {
   return (
     <div className="group flex w-full gap-5 flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all">
       <div className="flex text-xl font-bold items-center justify-between">
-        <p className="group-hover:text-blue-500 focus transition">
+        <p className="group-hover:text-blue-500 focus transition truncate">
           {complete.workout.name}
         </p>
         <Dropdown
@@ -83,29 +83,26 @@ function History(props) {
     setCompleteList(tempArr);
   };
 
+  const Header = () => {
+    return <FirstHeader setShowSidebar={setShowSidebar} title="History" />;
+  };
+
   return (
-    <div className="flex flex-col w-full">
-      <FirstHeader setShowSidebar={setShowSidebar} title="History" />
+    <ShadowyContainer header={Header} loading={loading}>
       <CardContainer>
-        {loading ? (
-          <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
-            <FiLoader className="animate-spin-slow" />
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
-            {completeList.map((complete, index) => (
-              <CompleteCard
-                complete={complete}
-                key={index}
-                at={index}
-                add={add}
-                deleteAt={deleteAt}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
+          {completeList.map((complete, index) => (
+            <CompleteCard
+              complete={complete}
+              key={index}
+              at={index}
+              add={add}
+              deleteAt={deleteAt}
+            />
+          ))}
+        </div>
       </CardContainer>
-    </div>
+    </ShadowyContainer>
   );
 }
 

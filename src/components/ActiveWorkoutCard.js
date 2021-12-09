@@ -4,13 +4,15 @@ import { FiActivity } from "react-icons/fi";
 
 function ActiveWorkoutCard() {
   return (
-    <div className="py-8 w-full">
+    <div className="hidden py-8 w-full">
       <Link
-        className="flex items-center justify-center absolute left-1 bottom-1 md:left-7 md:bottom-7
-        bg-white w-1/3  z-20 rounded-full shadow-xl"
+        className="hidden absolute flex items-center left-1/2 -translate-x-1/2 bottom-2  w-1/2
+        bg-blue-600 rounded-full drop-shadow-2xl filter text-white justify-evenly px-5 py-2"
         to="/dashboard/active"
       >
-        <FiActivity className="text-blue-500 flex-shrink-0 text-xl m-3" />
+        <FiActivity className="text-white flex-shrink-0" />
+        <div>workout </div>
+        <div>timer</div>
       </Link>
     </div>
   );
