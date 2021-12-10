@@ -1,7 +1,7 @@
 import React from "react";
 
 function CardContainer({ children }) {
-  return <div className="p-2 md:p-4">{children}</div>;
+  return <div className="px-1 py-2 md:px-4 xl:px-8">{children}</div>;
 }
 
 export default CardContainer;

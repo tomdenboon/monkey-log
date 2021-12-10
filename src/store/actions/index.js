@@ -12,3 +12,10 @@ export function authLogout() {
     type: ActionTypes.AUTH_LOGOUT,
   };
 }
+
+export function setActiveDate(payload) {
+  return {
+    type: ActionTypes.SET_ACTIVE,
+    payload,
+  };
+}

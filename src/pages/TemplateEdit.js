@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { FiArrowLeft, FiLoader } from "react-icons/fi";
+import { FiArrowLeft } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
+import ShadowyContainer from "../components/styled/ShadowyContainer";
 
 function WorkoutFormHeader({ workout_id, workout_name }) {
   const [workout, setWorkout] = useState({
@@ -77,27 +78,20 @@ function TemplateEdit() {
   }
 
   return (
-    <div className={"relative flex flex-col w-full "}>
-      <Header />
-      {loading ? (
-        <div className="flex w-full">
-          <FiLoader className="animate-spin-slow m-auto mt-20" />
+    <ShadowyContainer header={Header} loading={loading}>
+      <NormalContainer>
+        <div className="flex flex-col w-full gap-2 md:gap-4">
+          <WorkoutFormHeader
+            workout_id={workout.id}
+            workout_name={workout.name}
+          />
+          <ExerciseGroupGrid
+            workout_id={workout.id}
+            exercise_groups={workout.exercise_groups}
+          />
         </div>
-      ) : (
-        <NormalContainer>
-          <div className="flex flex-col w-full gap-2 md:gap-4">
-            <WorkoutFormHeader
-              workout_id={workout.id}
-              workout_name={workout.name}
-            />
-            <ExerciseGroupGrid
-              workout_id={workout.id}
-              exercise_groups={workout.exercise_groups}
-            />
-          </div>
-        </NormalContainer>
-      )}
-    </div>
+      </NormalContainer>
+    </ShadowyContainer>
   );
 }
 

@@ -6,7 +6,7 @@ function HeaderStyle({ children }) {
   return (
     <div
       className="flex items-center justify-between bg-gray-200 text-blue-500 text-xl font-bold gap-2 
-      sticky top-0 z-30 px-2 h-12 md:px-4"
+      sticky top-0 z-30 px-2 h-12 md:px-4 xl:px-8"
     >
       {children}
     </div>

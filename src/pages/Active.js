@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { FiArrowLeft } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import * as action from "../store/actions";
 import MonkeyAxios from "../MonkeyAxios";
 import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
@@ -38,9 +40,9 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
   }, [start_date]);
 
   return (
-    <div className="flex flex-col gap-2 items-center w-full bg-white rounded-none md:rounded-sm p-2">
+    <div className="flex gap-2 items-center w-full justify-between bg-white rounded-none md:rounded-sm p-2">
       <input
-        className="text-xl font-bold outline-none text-center"
+        className="text-base font-bold outline-none"
         type="name"
         value={workout.name}
         placeholder="Name"
@@ -63,6 +65,7 @@ function Active({ from }) {
       exercise_groups: [],
     },
   });
+  const dispatch = useDispatch();
   const history = useHistory();
   const axios = MonkeyAxios();
 
@@ -72,6 +75,7 @@ function Active({ from }) {
       .get("active")
       .then((res) => {
         let active = res.data.data;
+        dispatch(action.setActiveDate(active.started_at));
         setActive(active);
         setLoading(false);
       })
@@ -79,10 +83,11 @@ function Active({ from }) {
         setLoading(false);
         console.log(err);
       });
-  }, [axios]);
+  }, [axios, dispatch]);
 
   const completeActive = () => {
     axios.post("active/complete").then((res) => {
+      dispatch(action.setActiveDate(null));
       history.push("/dashboard/history");
     });
   };

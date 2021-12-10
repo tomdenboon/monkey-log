@@ -92,7 +92,7 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
       <div
         className={
           (showModal ? "flex" : "hidden") +
-          " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-5 z-20 md:pl-72"
+          " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-5 z-30 md:pl-72"
         }
       >
         <div

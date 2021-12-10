@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
-import { FiPlus, FiLoader } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
 import { useHistory } from "react-router";
 import Dropdown from "../components/Dropdown";
 import CardContainer from "../components/styled/CardContainer";
+import ShadowyContainer from "../components/styled/ShadowyContainer";
 
 function TemplateCard({ template, deleteAt, at, add }) {
   const history = useHistory();
@@ -34,10 +35,10 @@ function TemplateCard({ template, deleteAt, at, add }) {
 
   return (
     <div
-      className="group flex w-full flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all"
+      className="group flex w-full flex-col rounded p-4 bg-white cursor-pointer hover:shadow-md transition-all"
       onClick={startTemplate}
     >
-      <div className="flex pb-5 text-xl font-bold items-center justify-between">
+      <div className="flex pb-2 text-lg font-semibold items-center justify-between">
         <p className="group-hover:text-blue-500 focus transition">
           {template.workout.name}
         </p>
@@ -93,34 +94,33 @@ function Template(props) {
     setTemplateList(tempArr);
   };
 
-  return (
-    <div className="flex flex-col w-full">
+  const Header = () => {
+    return (
       <FirstHeader
         setShowSidebar={setShowSidebar}
         title="Workout"
         IconRight={FiPlus}
         linkToRight="/dashboard/template/create"
       />
+    );
+  };
+
+  return (
+    <ShadowyContainer loading={loading} header={Header}>
       <CardContainer>
-        {loading ? (
-          <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
-            <FiLoader className="animate-spin-slow" />
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
-            {templateList.map((template, index) => (
-              <TemplateCard
-                template={template}
-                key={index}
-                at={index}
-                add={add}
-                deleteAt={deleteAt}
-              />
-            ))}
-          </div>
-        )}
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
+          {templateList.map((template, index) => (
+            <TemplateCard
+              template={template}
+              key={index}
+              at={index}
+              add={add}
+              deleteAt={deleteAt}
+            />
+          ))}
+        </div>
       </CardContainer>
-    </div>
+    </ShadowyContainer>
   );
 }
 

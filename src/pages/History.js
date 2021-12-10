@@ -62,7 +62,6 @@ function History(props) {
       .get("complete")
       .then((res) => {
         setCompleteList(res.data.data);
-        console.log(res.data.data);
         setLoading(false);
       })
       .catch((err) => {

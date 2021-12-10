@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        header: "0px 0px 1px 1.5px rgba(0,0,0,0.2)",
+        header: "0px 0px 1.5px 3px rgba(0,0,0,0.3)",
       },
       keyframes: {
         smallpress: {

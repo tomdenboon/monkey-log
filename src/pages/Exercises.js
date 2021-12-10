@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FiLoader, FiPlus } from "react-icons/fi";
+import { FiPlus } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
 import Dropdown from "../components/Dropdown";
@@ -56,7 +56,7 @@ function Exercises({ setShowSidebar }) {
           {exerciseList.map((exercise, index) => (
             <li
               key={index}
-              className="flex justify-between w-full p-4 items-center font-semibold rounded-sm bg-white"
+              className="flex justify-between w-full px-4 py-3 items-center font-semibold rounded-sm bg-white"
             >
               <p className="truncate">{exercise.name}</p>
               <Dropdown

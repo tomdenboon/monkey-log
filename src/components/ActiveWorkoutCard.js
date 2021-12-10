@@ -1,18 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiActivity } from "react-icons/fi";
+import { useLocation } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import datesToTimer from "../util/datesToTimer";
+import MonkeyAxios from "../MonkeyAxios";
+import * as action from "../store/actions";
 
 function ActiveWorkoutCard() {
+  const [timer, setTimer] = useState("");
+  const active = useSelector((state) => state.active);
+  const location = useLocation();
+  const axios = MonkeyAxios();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("active")
+      .then((res) => {
+        const a = res.data.data;
+        dispatch(action.setActiveDate(a.started_at));
+      })
+      .catch((err) => {});
+  }, [axios, dispatch]);
+
+  useEffect(() => {
+    function toTimer() {
+      const started = new Date(active);
+      started.setTime(
+        started.getTime() - started.getTimezoneOffset() * 60 * 1000
+      );
+      var end_str = datesToTimer(started, new Date());
+      setTimer(end_str);
+    }
+    const intervalId = setInterval(() => {
+      toTimer();
+    }, 30); // in milliseconds
+    return () => clearInterval(intervalId);
+  }, [active]);
+
   return (
-    <div className="hidden py-8 w-full">
+    <div className="py-8 w-full">
       <Link
-        className="hidden absolute flex items-center left-1/2 -translate-x-1/2 bottom-2  w-1/2
-        bg-blue-600 rounded-full drop-shadow-2xl filter text-white justify-evenly px-5 py-2"
+        className={
+          "absolute flex items-center left-1/2 -translate-x-1/2 bottom-2  w-1/2 " +
+          "text-white rounded-full drop-shadow-2xl filter bg-blue-500 justify-center gap-2 px-5 py-2 " +
+          ((location.pathname === "/dashboard/active" || active === null) &&
+            "invisible")
+        }
         to="/dashboard/active"
       >
-        <FiActivity className="text-white flex-shrink-0" />
-        <div>workout </div>
-        <div>timer</div>
+        <FiActivity className=" flex-shrink-0" />
+        {timer}
       </Link>
     </div>
   );
