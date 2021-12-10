@@ -3,6 +3,8 @@ import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
 import { FiPlus } from "react-icons/fi";
 import { useHistory } from "react-router";
+import { useSelector } from "react-redux";
+import WarningModal from "../components/WarningModal";
 import Dropdown from "../components/Dropdown";
 import CardContainer from "../components/styled/CardContainer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
@@ -27,17 +29,8 @@ function TemplateCard({ template, deleteAt, at, add }) {
     });
   };
 
-  const startTemplate = () => {
-    axios.post("template/" + template.id + "/start").then((res) => {
-      history.push("/dashboard/active");
-    });
-  };
-
   return (
-    <div
-      className="group flex w-full flex-col rounded p-4 bg-white cursor-pointer hover:shadow-md transition-all"
-      onClick={startTemplate}
-    >
+    <div className="group flex w-full flex-col rounded p-4 bg-white cursor-pointer hover:shadow-md transition-all">
       <div className="flex pb-2 text-lg font-semibold items-center justify-between">
         <p className="group-hover:text-blue-500 focus transition">
           {template.workout.name}
@@ -64,7 +57,10 @@ function TemplateCard({ template, deleteAt, at, add }) {
 function Template(props) {
   const [loading, setLoading] = useState(true);
   const [templateList, setTemplateList] = useState([]);
+  const [showModal, setShowModal] = useState(false);
   const { setShowSidebar } = props;
+  const history = useHistory();
+  const active = useSelector((state) => state.active);
   const axios = MonkeyAxios();
 
   useEffect(() => {
@@ -105,20 +101,38 @@ function Template(props) {
     );
   };
 
+  const startTemplate = (index) => {
+    if (active != null) {
+      setShowModal(true);
+    } else {
+      axios
+        .post("template/" + templateList[index].id + "/start")
+        .then((res) => {
+          history.push("/dashboard/active");
+        });
+    }
+  };
+
   return (
     <ShadowyContainer loading={loading} header={Header}>
+      <WarningModal showModal={showModal} setShowModal={setShowModal} />
       <CardContainer>
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
+        <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
           {templateList.map((template, index) => (
-            <TemplateCard
-              template={template}
+            <li
+              className="flex"
               key={index}
-              at={index}
-              add={add}
-              deleteAt={deleteAt}
-            />
+              onClick={() => startTemplate(index)}
+            >
+              <TemplateCard
+                template={template}
+                at={index}
+                add={add}
+                deleteAt={deleteAt}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </CardContainer>
     </ShadowyContainer>
   );

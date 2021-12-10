@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FiActivity } from "react-icons/fi";
 import { useLocation } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
 import datesToTimer from "../util/datesToTimer";
 import MonkeyAxios from "../MonkeyAxios";
+import { useSelector, useDispatch } from "react-redux";
 import * as action from "../store/actions";
 
 function ActiveWorkoutCard() {
