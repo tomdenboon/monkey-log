@@ -88,6 +88,7 @@ function TemplateEdit() {
           <ExerciseGroupGrid
             workout_id={workout.id}
             exercise_groups={workout.exercise_groups}
+            isTemplate={true}
           />
         </div>
       </NormalContainer>

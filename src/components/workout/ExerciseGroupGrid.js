@@ -4,7 +4,7 @@ import ExerciseGroupCard from "./ExerciseGroupCard";
 import ExerciseModal from "./ExerciseModal";
 import { FiPlus } from "react-icons/fi";
 
-function ExerciseGroupGrid({ workout_id, exercise_groups }) {
+function ExerciseGroupGrid({ workout_id, exercise_groups, isTemplate }) {
   const [showModal, setShowModal] = useState(false);
   const [exerciseGroups, setExerciseGroups] = useState(exercise_groups);
   const axios = MonkeyAxios();
@@ -45,6 +45,7 @@ function ExerciseGroupGrid({ workout_id, exercise_groups }) {
                 at={index}
                 deleteExerciseGroup={deleteExerciseGroup}
                 exercise_group={exercise_group}
+                isTemplate={isTemplate}
               />
             );
           })}

@@ -3,7 +3,7 @@ import MonkeyAxios from "../../MonkeyAxios";
 import Dropdown from "../Dropdown";
 import { FiX, FiPlus, FiCheck } from "react-icons/fi";
 
-function WeightedExerciseGroupRow({ exercise, deleteItem, index }) {
+function WeightedExerciseGroupRow({ exercise, deleteItem, index, isTemplate }) {
   const [weightedExercise, setWeightedExercise] = useState(exercise);
   const [newWeightedExercise, setNewWeightedExercise] = useState({
     reps: "",
@@ -119,8 +119,14 @@ function WeightedExerciseGroupRow({ exercise, deleteItem, index }) {
         onBlur={(e) => updateWeight(e)}
       />
       <button
-        className="h-8 w-8 text-green-500 outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-green-200 hover:bg-green-200"
+        className={
+          "h-8 w-8  outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-green-200 " +
+          (isTemplate
+            ? "text-gray-300 pointer-events-none"
+            : "text-green-500 hover:bg-green-200")
+        }
         type="button"
+        disabled={isTemplate}
         onClick={() => toggleLifted()}
       >
         <FiCheck className="h-full w-full" />
@@ -136,7 +142,12 @@ function WeightedExerciseGroupRow({ exercise, deleteItem, index }) {
   );
 }
 
-function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
+function ExerciseGroupCard({
+  exercise_group,
+  deleteExerciseGroup,
+  at,
+  isTemplate,
+}) {
   const [exerciseGroup, setExerciseGroup] = useState(exercise_group);
   const axios = MonkeyAxios();
 
@@ -206,6 +217,7 @@ function ExerciseGroupCard({ exercise_group, deleteExerciseGroup, at }) {
             exercise={weighted_exercise}
             deleteItem={deleteExerciseFromGroup}
             index={index}
+            isTemplate={isTemplate}
           />
         ))}
         <li className="flex w-full justify-center items-center hover:bg-gray-100">

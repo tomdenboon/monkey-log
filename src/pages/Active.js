@@ -128,6 +128,7 @@ function Active({ from }) {
           <ExerciseGroupGrid
             workout_id={active.workout.id}
             exercise_groups={active.workout.exercise_groups}
+            isTemplate={false}
           />
         </div>
       </NormalContainer>
