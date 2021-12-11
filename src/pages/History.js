@@ -22,8 +22,7 @@ function CompleteCard({ complete, deleteAt, at }) {
   };
 
   const date = () => {
-    const d = dateStringToDate(complete.started_at);
-    return d.toLocaleDateString();
+    return dateStringToDate(complete.started_at).toLocaleDateString();
   };
 
   return (
@@ -48,8 +47,8 @@ function CompleteCard({ complete, deleteAt, at }) {
       <div className="flex">
         Duration:{" "}
         {datesToTimer(
-          new Date(complete.started_at),
-          new Date(complete.completed_at)
+          dateStringToDate(complete.started_at),
+          dateStringToDate(complete.completed_at)
         )}
       </div>
       <ul>
