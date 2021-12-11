@@ -22,7 +22,8 @@ function CompleteCard({ complete, deleteAt, at }) {
   };
 
   const date = () => {
-    return dateStringToDate(complete.started_at).toLocaleDateString();
+    const d = dateStringToDate(complete.started_at);
+    return d.toLocaleDateString();
   };
 
   return (

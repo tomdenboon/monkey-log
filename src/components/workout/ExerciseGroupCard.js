@@ -88,7 +88,7 @@ function WeightedExerciseGroupRow({
     <li
       key={index}
       className={
-        "flex w-full gap-4 h-8 " +
+        "flex w-full gap-4 p-2 items-center " +
         (weightedExercise.is_lifted ? "bg-green-100" : "bg-white")
       }
     >
@@ -200,7 +200,7 @@ function ExerciseGroupCard({
 
   return (
     <div className="flex w-full flex-col rounded-none md:rounded-sm py-4 bg-white">
-      <div className="flex items-center justify-between px-2">
+      <div className="flex items-center justify-between px-3">
         <p className="truncate text-blue-500 font-semibold">
           {exerciseGroup.name}
         </p>
@@ -208,12 +208,14 @@ function ExerciseGroupCard({
         <Dropdown options={[{ name: "Delete", func: deleteThis }]} />
       </div>
       <ul className="h-full flex flex-col ">
-        <li className="flex w-full gap-4">
-          <div className="h-8 w-8 flex-shrink-0" />
-          <div className="flex items-end justify-center w-full outline-none text-xs text-center text-gray-500 font-mono">
+        <li className="flex w-full px-2 gap-4 text-xs text-center font-mono text-gray-500 ">
+          <div className="flex justify-center h-8 w-8 flex-shrink-0 items-end">
+            SET
+          </div>
+          <div className="flex items-end justify-center w-full outline-none">
             REPS
           </div>
-          <div className="flex items-end justify-center w-full outline-none text-xs text-center text-gray-500 font-mono">
+          <div className="flex items-end justify-center w-full outline-none">
             KG
           </div>
           <div className="h-8 w-8 flex-shrink-0" />
@@ -229,7 +231,7 @@ function ExerciseGroupCard({
             isComplete={isComplete}
           />
         ))}
-        <li className="flex w-full justify-center items-center hover:bg-gray-100">
+        <li className="flex p-2 w-full justify-center items-center hover:bg-gray-100">
           <button
             type="button"
             className="flex w-full justify-between text-blue-500 "
