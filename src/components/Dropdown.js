@@ -25,7 +25,7 @@ function Dropdown({ options }) {
   return (
     <div ref={ref} className="relative" onClick={(e) => e.stopPropagation()}>
       <button type="button" onClick={(e) => setShow(!show)}>
-        <FiMoreVertical className="w-full h-full flex-shrink-0" />
+        <FiMoreVertical />
       </button>
       <ul
         className={
