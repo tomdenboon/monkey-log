@@ -60,7 +60,7 @@ function TemplateCreate() {
             <FiLoader className="animate-spin-slow" />
           </div>
         ) : (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autoComplete="off">
             <input
               className="p-2 rounded-md border outline-none w-full "
               type="name"

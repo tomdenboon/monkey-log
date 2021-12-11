@@ -90,6 +90,7 @@ function RegisterCard(props) {
                 : "border-gray-300 focus:border-blue-500")
             }
             type="text"
+            name="username"
             value={name}
             placeholder="Username"
             onChange={(e) => setName(e.target.value)}
@@ -102,6 +103,7 @@ function RegisterCard(props) {
                 : "border-gray-300 focus:border-blue-500")
             }
             type="text"
+            name="email"
             value={email}
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
@@ -114,6 +116,7 @@ function RegisterCard(props) {
                 : "border-gray-300 focus:border-blue-500")
             }
             type="password"
+            name="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
@@ -127,6 +130,7 @@ function RegisterCard(props) {
             }
             type="password"
             value={passwordConfirm}
+            name="password_verify"
             placeholder="Verify password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
           />

@@ -107,6 +107,7 @@ function WeightedExerciseGroupRow({
         }
         name="reps"
         value={newWeightedExercise.reps}
+        autoComplete="off"
         placeholder={weightedExercise.reps}
         onChange={(e) => handleExerciseChange(e)}
         onBlur={(e) => updateReps(e)}
@@ -120,6 +121,8 @@ function WeightedExerciseGroupRow({
         }
         name="weight"
         value={newWeightedExercise.weight}
+        autoComplete="off"
+        placeholder={weightedExercise.reps}
         placeholder={weightedExercise.weight}
         onChange={(e) => handleExerciseChange(e)}
         onBlur={(e) => updateWeight(e)}
