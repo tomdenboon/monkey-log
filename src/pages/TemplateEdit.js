@@ -8,6 +8,7 @@ import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
 
+console.log("Hoi Zino");
 function WorkoutFormHeader({ workout_id, workout_name }) {
   const [workout, setWorkout] = useState({
     id: workout_id,
