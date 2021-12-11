@@ -6,7 +6,7 @@ import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
-import datesToTimer from "../util/datesToTimer";
+import datesToTimer, { dateStringToDate } from "../util/datesToTimer";
 
 function HistoryFormHeader({
   workout_id,
@@ -36,7 +36,10 @@ function HistoryFormHeader({
         onChange={(e) => setWorkout({ ...workout, name: e.target.value })}
         onBlur={() => postWorkout()}
       />
-      {datesToTimer(new Date(started_at), new Date(completed_at))}
+      {datesToTimer(
+        dateStringToDate(started_at),
+        dateStringToDate(completed_at)
+      )}
     </div>
   );
 }

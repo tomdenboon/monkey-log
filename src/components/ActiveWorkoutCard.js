@@ -26,16 +26,19 @@ function ActiveWorkoutCard() {
 
   useEffect(() => {
     function toTimer() {
-      const started = new Date(active);
+      const started = new Date(active.replace(/-/g, "/"));
       started.setTime(
         started.getTime() - started.getTimezoneOffset() * 60 * 1000
       );
       var end_str = datesToTimer(started, new Date());
       setTimer(end_str);
     }
-    const intervalId = setInterval(() => {
-      toTimer();
-    }, 30); // in milliseconds
+    var intervalId = null;
+    if (active) {
+      intervalId = setInterval(() => {
+        toTimer();
+      }, 30); // in milliseconds
+    }
     return () => clearInterval(intervalId);
   }, [active]);
 

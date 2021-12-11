@@ -4,7 +4,7 @@ import { FirstHeader } from "../components/headers";
 import { useHistory } from "react-router";
 import Dropdown from "../components/Dropdown";
 import CardContainer from "../components/styled/CardContainer";
-import datesToTimer from "../util/datesToTimer";
+import datesToTimer, { dateStringToDate } from "../util/datesToTimer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
 
 function CompleteCard({ complete, deleteAt, at }) {
@@ -22,8 +22,7 @@ function CompleteCard({ complete, deleteAt, at }) {
   };
 
   const date = () => {
-    const x = new Date(complete.started_at);
-    return x.toLocaleDateString();
+    return dateStringToDate(complete.started_at).toLocaleDateString();
   };
 
   return (

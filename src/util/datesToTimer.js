@@ -1,3 +1,7 @@
+export function dateStringToDate(date_string) {
+  return new Date(date_string.replace(/-/g, "/"));
+}
+
 function datesToTimer(start_date, end_date) {
   var milliseconds = end_date.getTime() - start_date.getTime();
   var end_str = "";

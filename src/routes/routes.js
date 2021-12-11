@@ -86,7 +86,15 @@ const routes = [
         path: "/dashboard/settings",
         component: Settings,
       },
+      {
+        path: "/dashboard/*",
+        component: Template,
+      },
     ],
+  },
+  {
+    path: "*",
+    component: Home,
   },
 ];
 

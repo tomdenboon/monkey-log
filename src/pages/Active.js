@@ -7,7 +7,7 @@ import MonkeyAxios from "../MonkeyAxios";
 import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
-import datesToTimer from "../util/datesToTimer";
+import datesToTimer, { dateStringToDate } from "../util/datesToTimer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
 
 function TemplateHeader({ workout_id, workout_name, start_date }) {
@@ -26,7 +26,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
 
   useEffect(() => {
     function toTimer() {
-      const started = new Date(start_date);
+      const started = dateStringToDate(start_date);
       started.setTime(
         started.getTime() - started.getTimezoneOffset() * 60 * 1000
       );
