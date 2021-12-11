@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
 import { FiPlus } from "react-icons/fi";
-import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
-import WarningModal from "../components/WarningModal";
+import { useHistory } from "react-router";
+import BeginWorkoutModal from "../components/BeginWorkoutModal";
 import Dropdown from "../components/Dropdown";
 import CardContainer from "../components/styled/CardContainer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
@@ -30,8 +30,8 @@ function TemplateCard({ template, deleteAt, at, add }) {
   };
 
   return (
-    <div className="group flex w-full flex-col rounded p-4 bg-white cursor-pointer hover:shadow-md transition-all">
-      <div className="flex pb-2 text-lg font-semibold items-center justify-between">
+    <div className="group flex w-full flex-col items-start text-left rounded p-4 bg-white cursor-pointer hover:shadow-md transition-all">
+      <div className="flex w-full pb-2 text-lg font-semibold items-center justify-between">
         <p className="group-hover:text-blue-500 focus transition">
           {template.workout.name}
         </p>
@@ -58,8 +58,13 @@ function Template(props) {
   const [loading, setLoading] = useState(true);
   const [templateList, setTemplateList] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState({
+    id: "",
+    workout: {
+      exercise_groups: [],
+    },
+  });
   const { setShowSidebar } = props;
-  const history = useHistory();
   const active = useSelector((state) => state.active);
   const axios = MonkeyAxios();
 
@@ -102,24 +107,25 @@ function Template(props) {
   };
 
   const startTemplate = (index) => {
+    setSelectedTemplate(templateList[index]);
     if (active != null) {
       setShowModal(true);
     } else {
-      axios
-        .post("template/" + templateList[index].id + "/start")
-        .then((res) => {
-          history.push("/dashboard/active");
-        });
+      setShowModal(true);
     }
   };
 
   return (
     <ShadowyContainer loading={loading} header={Header}>
-      <WarningModal showModal={showModal} setShowModal={setShowModal} />
+      <BeginWorkoutModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        template={selectedTemplate}
+      />
       <CardContainer>
-        <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
           {templateList.map((template, index) => (
-            <li
+            <button
               className="flex"
               key={index}
               onClick={() => startTemplate(index)}
@@ -130,9 +136,9 @@ function Template(props) {
                 add={add}
                 deleteAt={deleteAt}
               />
-            </li>
+            </button>
           ))}
-        </ul>
+        </div>
       </CardContainer>
     </ShadowyContainer>
   );

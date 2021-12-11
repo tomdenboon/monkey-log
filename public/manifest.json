@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Monkey Log",
+  "name": "Monkey log, for logging your progress",
   "icons": [
     {
       "src": "favicon.ico",

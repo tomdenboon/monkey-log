@@ -12,7 +12,7 @@ function CompleteCard({ complete, deleteAt, at }) {
   const axios = MonkeyAxios();
 
   const toEditComplete = () => {
-    history.push("/dashboard/complete/" + complete.id + "/edit");
+    history.push("/dashboard/history/" + complete.id + "/edit");
   };
 
   const deleteComplete = () => {
@@ -21,12 +21,23 @@ function CompleteCard({ complete, deleteAt, at }) {
     });
   };
 
+  const date = () => {
+    const x = new Date(complete.started_at);
+    return x.toLocaleDateString();
+  };
+
   return (
-    <div className="group flex w-full gap-5 flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all">
-      <div className="flex text-xl font-bold items-center justify-between">
-        <p className="group-hover:text-blue-500 focus transition truncate">
-          {complete.workout.name}
-        </p>
+    <div
+      className="group flex w-full gap-5 flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all"
+      onClick={toEditComplete}
+    >
+      <div className="flex text-lg font-bold justify-between">
+        <div>
+          <p className="group-hover:text-blue-500 focus transition truncate">
+            {complete.workout.name}
+          </p>
+          <div className="text-sm font-medium text-gray-500">{date()}</div>
+        </div>
         <Dropdown
           options={[
             { name: "Edit", func: toEditComplete },
@@ -34,7 +45,8 @@ function CompleteCard({ complete, deleteAt, at }) {
           ]}
         />
       </div>
-      <div>
+      <div className="flex">
+        Duration:{" "}
         {datesToTimer(
           new Date(complete.started_at),
           new Date(complete.completed_at)

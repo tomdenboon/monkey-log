@@ -108,7 +108,7 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
               <FiX />
             </button>
           </div>
-          <div className="flex flex-col overflow-auto overscroll-contain bg-gray-100">
+          <div className="flex flex-col overflow-auto overscroll-contain">
             <ul className="flex flex-col h-full ">
               {exerciseList.map((exercise, index) => (
                 <li key={index}>

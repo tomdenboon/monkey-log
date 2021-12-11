@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Template from "../pages/Template";
 import History from "../pages/History";
+import HistoryEdit from "../pages/HistoryEdit";
 import Settings from "../pages/Settings";
 import Statistics from "../pages/Statistics";
 import CreateExercise from "../pages/CreateExercise";
@@ -74,6 +75,11 @@ const routes = [
         exact: true,
         path: "/dashboard/history",
         component: History,
+      },
+      {
+        exact: true,
+        path: "/dashboard/history/:id/edit",
+        component: HistoryEdit,
       },
       {
         exact: true,

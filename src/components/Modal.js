@@ -5,13 +5,18 @@ import FocusTrap from "focus-trap-react";
 function Modal({ showModal, setShowModal, children }) {
   const ref = useRef();
   useEffect(() => {
-    function handleClickOutside(event) {
+    const handleClickOutside = (event) => {
       if (ref.current && !ref.current.contains(event.target)) {
         setShowModal(false);
       }
-    }
+    };
+    const handleEsc = (event) => {
+      if (event.keyCode === 27) setShowModal(false);
+    };
+    window.addEventListener("keydown", handleEsc);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
+      window.removeEventListener("keydown", handleEsc);
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [ref, setShowModal]);
@@ -24,10 +29,7 @@ function Modal({ showModal, setShowModal, children }) {
           " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-20 z-30 md:pl-72"
         }
       >
-        <div
-          className="relative flex flex-col bg-white m-auto rounded-lg"
-          ref={ref}
-        >
+        <div className="relative flex bg-white m-auto rounded-lg" ref={ref}>
           {children}
         </div>
       </div>

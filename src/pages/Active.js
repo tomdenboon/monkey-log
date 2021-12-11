@@ -119,7 +119,7 @@ function Active({ from }) {
   return (
     <ShadowyContainer header={Header} loading={loading}>
       <NormalContainer>
-        <div className="flex flex-col w-full gap-2 md:gap-4">
+        <div className="flex flex-col w-full gap-2">
           <TemplateHeader
             workout_id={active.workout.id}
             workout_name={active.workout.name}
@@ -128,7 +128,7 @@ function Active({ from }) {
           <ExerciseGroupGrid
             workout_id={active.workout.id}
             exercise_groups={active.workout.exercise_groups}
-            isTemplate={false}
+            isActive={true}
           />
         </div>
       </NormalContainer>

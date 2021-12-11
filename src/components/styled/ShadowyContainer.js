@@ -1,3 +1,4 @@
+import React from "react";
 import { FiLoader } from "react-icons/fi";
 
 function ShadowyContainer({ header: Header, children, loading = false }) {

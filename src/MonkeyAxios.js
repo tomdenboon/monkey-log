@@ -8,7 +8,7 @@ function MonkeyAxios() {
   const token = useSelector((state) => state.auth.accesToken);
   useEffect(() => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-    axios.defaults.baseURL = "http://localhost:8000/api/v1";
+    axios.defaults.baseURL = process.env.REACT_APP_API_URL;
     axios.interceptors.response.use(
       (response) => response,
       (error) => {

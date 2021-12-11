@@ -4,17 +4,20 @@ function datesToTimer(start_date, end_date) {
   milliseconds = Math.floor(milliseconds / 1000);
   var secs = milliseconds % 60;
   milliseconds = (milliseconds - secs) / 60;
-  var mins = milliseconds;
+  var mins = milliseconds % 60;
+  milliseconds = (milliseconds - mins) / 60;
+  var hrs = milliseconds;
 
-  if (mins < 10) {
-    end_str = "0";
+  if (hrs > 0) {
+    end_str += hrs;
+    end_str += "h ";
   }
-  end_str += mins;
-  end_str += ":";
-  if (secs < 10) {
-    end_str += "0";
+  if (mins > 0 || hrs > 0) {
+    end_str += mins;
+    end_str += "m ";
   }
   end_str += secs;
+  end_str += "s";
   return end_str;
 }
 

@@ -24,17 +24,13 @@ function Dropdown({ options }) {
 
   return (
     <div ref={ref} className="relative" onClick={(e) => e.stopPropagation()}>
-      <button
-        className="outline-none"
-        type="button"
-        onClick={(e) => setShow(!show)}
-      >
+      <button type="button" onClick={(e) => setShow(!show)}>
         <FiMoreVertical className="w-full h-full flex-shrink-0" />
       </button>
       <ul
         className={
           (show ? "flex" : "hidden") +
-          " flex flex-col absolute rounded bg-gray-700 z-20 text-sm text-white right-0 w-32 overflow-hidden"
+          " flex flex-col absolute rounded bg-gray-800 z-20 text-sm text-white right-0 w-32 overflow-hidden"
         }
       >
         {options.map((option, index) => (
@@ -45,7 +41,7 @@ function Dropdown({ options }) {
                 setShow(false);
               }}
               type="button"
-              className="w-full hover:bg-gray-800 text-left p-2 cursor-pointer outline-none focus-visible:bg-gray-800"
+              className="w-full hover:bg-gray-900 text-left p-2 cursor-pointer outline-none focus-visible:bg-gray-900"
             >
               {option.name}
             </button>
