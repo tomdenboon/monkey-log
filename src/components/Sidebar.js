@@ -59,7 +59,7 @@ function Sidebar(props) {
   return (
     <div
       ref={ref}
-      className="flex absolute md:flex-col gap-1 p-1 z-40 bg-gray-100 bottom-0  
+      className="flex fixed md:flex-col gap-1 p-1 z-40 bg-gray-100 bottom-0  
         h-14 md:h-screen w-full md:w-72 max-w-full overflow-auto flex-shrink-0 justify-evenly md:justify-start"
     >
       <div className="hidden md:flex justify-between items-center p-2">

@@ -46,7 +46,7 @@ function ActiveWorkoutCard() {
     <div className="py-7 w-full">
       <Link
         className={
-          "absolute flex items-center bottom-16 md:bottom-2 left-1/2 -translate-x-1/2  w-1/2 " +
+          "fixed flex items-center bottom-16 md:bottom-2 w-1/2 left-1/2 -translate-x-1/2 md:ml-36 " +
           "text-white rounded-full drop-shadow-md filter bg-blue-500 justify-center gap-2 py-2 " +
           ((location.pathname === "/dashboard/active" || active === null) &&
             "invisible")
