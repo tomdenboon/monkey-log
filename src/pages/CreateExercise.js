@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { FiArrowLeft, FiLoader } from "react-icons/fi";
+import { FiArrowLeft, FiChevronDown, FiLoader } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
@@ -24,14 +24,35 @@ function ExerciseHeader({ submit }) {
 
 function CreateExercise(props) {
   const [isWaiting, setIsWaiting] = useState(false);
+  const exerciseTypes = [
+    {
+      id: 1,
+      name: "reps | weight",
+    },
+    {
+      id: 2,
+      name: "time | weight",
+    },
+    {
+      id: 3,
+      name: "reps",
+    },
+    {
+      id: 4,
+      name: "time",
+    },
+  ];
   const history = useHistory();
   const [name, setName] = useState("");
   const axios = MonkeyAxios();
 
   const createExercise = () => {
+    var select = document.getElementById("exercise_type");
+    var exercise_type_id = select.options[select.selectedIndex].value;
     axios
       .post("exercise", {
         name: name,
+        exercise_type_id: exercise_type_id,
       })
       .then((res) => {
         setIsWaiting(false);
@@ -57,14 +78,33 @@ function CreateExercise(props) {
             <FiLoader className="animate-spin-slow" />
           </div>
         ) : (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             <input
-              className="p-2 rounded-md border outline-none w-full "
+              className="p-2 rounded-lg w-full "
               type="name"
               value={name}
               placeholder="Name"
               onChange={(e) => setName(e.target.value)}
             />
+            <div className="relative inline-block w-full text-gray-700">
+              <select
+                className="w-full p-2 text-base bg-white  rounded-lg appearance-none"
+                id="exercise_type"
+              >
+                {exerciseTypes.map((exerciseType) => (
+                  <option
+                    key={exerciseType.id}
+                    value={exerciseType.id}
+                    className="bg-white"
+                  >
+                    {exerciseType.name}
+                  </option>
+                ))}
+              </select>
+              <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                <FiChevronDown />
+              </div>
+            </div>
           </form>
         )}
       </NormalContainer>

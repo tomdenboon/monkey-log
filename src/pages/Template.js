@@ -125,7 +125,7 @@ function Template(props) {
       <CardContainer>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
           {templateList.map((template, index) => (
-            <button
+            <div
               className="flex"
               key={index}
               onClick={() => startTemplate(index)}
@@ -136,7 +136,7 @@ function Template(props) {
                 add={add}
                 deleteAt={deleteAt}
               />
-            </button>
+            </div>
           ))}
         </div>
       </CardContainer>

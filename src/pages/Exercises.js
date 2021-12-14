@@ -56,7 +56,7 @@ function Exercises({ setShowSidebar }) {
           {exerciseList.map((exercise, index) => (
             <li
               key={index}
-              className="flex justify-between w-full px-4 py-3 items-center font-semibold rounded-sm bg-white"
+              className="flex justify-between w-full px-4 py-3 items-center rounded-sm bg-white"
             >
               <p className="truncate">{exercise.name}</p>
               <Dropdown

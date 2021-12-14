@@ -9,7 +9,7 @@ module.exports = {
       },
       keyframes: {
         smallpress: {
-          "0%, 50%": { transform: "scale(0.95)" },
+          "0%, 50%": { transform: "scale(0.90)" },
           "50%, 100%": { transform: "scale(1)" },
         },
       },

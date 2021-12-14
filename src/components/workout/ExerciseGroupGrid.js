@@ -7,13 +7,7 @@ import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import * as action from "../../store/actions";
 
-function ExerciseGroupGrid({
-  workout_id,
-  exercise_groups,
-  isTemplate = false,
-  isActive = false,
-  isComplete = false,
-}) {
+function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
   const [showModal, setShowModal] = useState(false);
   const [exerciseGroups, setExerciseGroups] = useState(exercise_groups);
   const axios = MonkeyAxios();
@@ -63,8 +57,7 @@ function ExerciseGroupGrid({
                 at={index}
                 deleteExerciseGroup={deleteExerciseGroup}
                 exercise_group={exercise_group}
-                isTemplate={isTemplate}
-                isComplete={isComplete}
+                isActive={isActive}
               />
             );
           })}

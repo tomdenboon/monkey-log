@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiMenu } from "react-icons/fi";
 
 function HeaderStyle({ children }) {
   return (
@@ -13,18 +12,10 @@ function HeaderStyle({ children }) {
   );
 }
 
-function FirstHeader({ setShowSidebar, title, IconRight, linkToRight }) {
+function FirstHeader({ title, IconRight, linkToRight }) {
   return (
     <HeaderStyle>
-      <div className="flex items-center">
-        <button
-          className="md:hidden text-xl rounded-full mr-2"
-          onClick={setShowSidebar}
-        >
-          <FiMenu />
-        </button>
-        {title}
-      </div>
+      <div className="flex items-center">{title}</div>
       {linkToRight && (
         <Link to={linkToRight} className="rounded-full text-xl">
           <IconRight />
