@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+div,
 button,
 textarea,
 input,

@@ -8,7 +8,7 @@ function Dashboard(props) {
   return (
     <div className="flex h-screen w-screen">
       <Sidebar />
-      <div className="relative pb-14 md:pb-0 md:ml-72 w-full flex md:pointer-events-auto ">
+      <div className="relative md:ml-72 w-full flex md:pointer-events-auto ">
         <div className="flex flex-col w-full overflow-auto">
           <Switch>
             {props.routes.map((route) => {
