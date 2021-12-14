@@ -81,9 +81,11 @@ function Active({ from }) {
       })
       .catch((err) => {
         setLoading(false);
+        dispatch(action.setActiveDate(null));
         console.log(err);
+        history.goBack();
       });
-  }, [axios, dispatch]);
+  }, [axios, history, dispatch]);
 
   const completeActive = () => {
     axios.post("active/complete").then((res) => {

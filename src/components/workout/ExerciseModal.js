@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
-import { FiX, FiCheck, FiLoader } from "react-icons/fi";
+import { FiPlus, FiCheck, FiLoader, FiSearch } from "react-icons/fi";
 import FocusTrap from "focus-trap-react";
 import MonkeyAxios from "../../MonkeyAxios";
 
 function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
   const [exerciseList, setExerciseList] = useState([]);
+  const [filteredIndexList, setFilteredIndexList] = useState([]);
+  const [search, setSearch] = useState("");
   const [isSubmit, setIsSubmit] = useState(false);
   const ref = useRef();
   const axios = MonkeyAxios();
@@ -19,6 +21,7 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
           temp.push({ ...exercise, selected: false });
         }
         setExerciseList(temp);
+        setFilteredIndexList(temp.map((e, index) => index));
       })
       .catch((err) => {
         console.log(err);
@@ -83,8 +86,20 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
       });
   };
 
-  const closeModal = () => {
-    setShowModal(false);
+  const changeSearch = (e) => {
+    setSearch(e.target.value);
+
+    const newFiltered = [];
+    for (let i = 0; i < exerciseList.length; i++) {
+      if (
+        exerciseList[i].name
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase())
+      ) {
+        newFiltered.push(i);
+      }
+    }
+    setFilteredIndexList(newFiltered);
   };
 
   return (
@@ -92,40 +107,51 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
       <div
         className={
           (showModal ? "flex" : "hidden") +
-          " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-5 z-30 md:pl-72"
+          " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-20 z-30 md:pl-72"
         }
       >
         <div
           className="relative flex flex-col w-4/5 bg-white h-2/3 m-auto rounded-lg"
           ref={ref}
         >
-          <div className="h-14 items-center px-4 border-b text-lg font-bold flex justify-between">
-            Select exercises
-            <button
-              onClick={closeModal}
-              className="p-1 rounded-full focus-visible:bg-gray-100 hover:bg-gray-100 outline-none"
-            >
-              <FiX />
-            </button>
+          <div className="p-4 flex gap-2 flex-col border-b ">
+            <div className="items-center text-lg font-bold flex justify-between">
+              Exercises
+              <FiPlus className="w-6 h-6" />
+            </div>
+            <div class="relative w-full">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                <FiSearch class="w-5 h-5" />
+              </span>
+              <input
+                type="search"
+                name="q"
+                class="flex py-1 w-full text-base bg-gray-200 rounded-md pl-8"
+                placeholder="Search..."
+                autocomplete="off"
+                onChange={(e) => changeSearch(e)}
+                value={search}
+              />
+            </div>
           </div>
           <div className="flex flex-col overflow-auto overscroll-contain">
             <ul className="flex flex-col h-full ">
-              {exerciseList.map((exercise, index) => (
-                <li key={index}>
+              {filteredIndexList.map((i) => (
+                <li key={i}>
                   <button
                     type="button"
                     className={
-                      (exercise.selected
+                      (exerciseList[i].selected
                         ? "bg-blue-500  text-white"
                         : "bg-white hover:bg-blue-100 focus-visible:bg-blue-100") +
                       " p-2 px-4 cursor-pointer flex justify-between items-center w-full outline-none "
                     }
-                    onClick={() => toggleSelected(index)}
+                    onClick={() => toggleSelected(i)}
                   >
-                    <p className="truncate">{exercise.name}</p>
+                    <p className="truncate">{exerciseList[i].name}</p>
                     <FiCheck
                       className={
-                        (exercise.selected ? "visible" : "invisible") +
+                        (exerciseList[i].selected ? "visible" : "invisible") +
                         " flex-shrink-0"
                       }
                     />
@@ -134,7 +160,7 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
               ))}
             </ul>
           </div>
-          <div className="flex items-center w-full mt-auto border-t px-4 h-14 text-blue-500">
+          <div className="flex font-mono items-center w-full mt-auto border-t px-4 py-4 text-blue-500">
             {isSubmit ? (
               <FiLoader className="animate-spin-slow" />
             ) : (
@@ -143,7 +169,7 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
                 type="button"
                 onClick={() => addExercises(exerciseList)}
               >
-                Add
+                SAVE
               </button>
             )}
           </div>

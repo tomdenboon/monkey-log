@@ -80,7 +80,7 @@ function TemplateEdit() {
   return (
     <ShadowyContainer header={Header} loading={loading}>
       <NormalContainer>
-        <div className="flex flex-col w-full gap-2 md:gap-4">
+        <div className="flex flex-col w-full gap-2">
           <WorkoutFormHeader
             workout_id={workout.id}
             workout_name={workout.name}
