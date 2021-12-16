@@ -5,11 +5,12 @@ import { FirstHeader } from "../components/headers";
 import Dropdown from "../components/Dropdown";
 import NormalContainer from "../components/styled/NormalContainer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
+import { useHistory } from "react-router";
 
 function Exercises({ setShowSidebar }) {
   const [loading, setLoading] = useState(true);
   const [exerciseList, setExerciseList] = useState([]);
-
+  const history = useHistory();
   const axios = MonkeyAxios();
 
   useEffect(() => {
@@ -36,7 +37,9 @@ function Exercises({ setShowSidebar }) {
       .catch((err) => {});
   };
 
-  const toEditExercise = (index) => {};
+  const toEditExercise = (index) => {
+    history.push("/dashboard/exercise/" + exerciseList[index].id + "/edit");
+  };
 
   const header = () => {
     return (

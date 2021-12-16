@@ -43,10 +43,10 @@ function ActiveWorkoutCard() {
   }, [active]);
 
   return (
-    <div className="py-7 w-full">
+    <div className="py-8 w-full">
       <Link
         className={
-          "fixed flex items-center bottom-14  md:bottom-2 w-1/2 left-1/2 -translate-x-1/2 md:ml-36 " +
+          "fixed flex items-center bottom-16  md:bottom-2 w-1/2 left-1/2 -translate-x-1/2 md:ml-36 " +
           "text-white rounded-t md:rounded drop-shadow-md filter bg-blue-500 justify-center gap-2 py-2 " +
           ((location.pathname === "/dashboard/active" || active === null) &&
             "invisible")

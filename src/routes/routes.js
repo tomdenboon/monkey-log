@@ -1,5 +1,6 @@
 import Dashboard from "../pages/Dashboard";
 import Exercises from "../pages/Exercises";
+import ExerciseEdit from "../pages/ExerciseEdit";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Template from "../pages/Template";
@@ -49,7 +50,7 @@ const routes = [
       {
         exact: true,
         path: "/dashboard/exercise/:id/edit",
-        component: CreateExercise,
+        component: ExerciseEdit,
       },
       {
         exact: true,

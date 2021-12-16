@@ -71,11 +71,12 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
       {Object.keys(exerciseRow.exercisable).map((key, index) => (
         <input
           className={
-            "w-full outline-none text-center box-border border-b pt-px " +
+            "w-full h-full outline-none text-center box-border border rounded-lg pt-px " +
             (exerciseRow.is_lifted
               ? "bg-green-100 border-green-100"
               : " border-gray-200")
           }
+          inputMode="numeric"
           key={index}
           name={key}
           autoComplete="off"

@@ -117,18 +117,18 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
           <div className="p-4 flex gap-2 flex-col border-b ">
             <div className="items-center text-lg font-bold flex justify-between">
               Exercises
-              <FiPlus className="w-6 h-6" />
+              <FiPlus className="w-6 h-6 text-blue-500" />
             </div>
-            <div class="relative w-full">
-              <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                <FiSearch class="w-5 h-5" />
+            <div className="relative w-full">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                <FiSearch className="w-5 h-5" />
               </span>
               <input
                 type="search"
                 name="q"
-                class="flex py-1 w-full text-base bg-gray-200 rounded-md pl-8"
+                className="flex py-1 w-full text-base bg-gray-200 rounded-md pl-8"
                 placeholder="Search..."
-                autocomplete="off"
+                autoComplete="off"
                 onChange={(e) => changeSearch(e)}
                 value={search}
               />
