@@ -90,7 +90,7 @@ function ExerciseEdit() {
                 id="exercise_type"
                 disabled={true}
               >
-                <option>{exercise.exercise_type}</option>
+                <option>{exercise.exercise_type_name}</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
                 <FiChevronDown />

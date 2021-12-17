@@ -69,7 +69,7 @@ function Sidebar(props) {
             {user.name}
           </div>
         </div>
-        <button className="hover:text-red-500" onClick={logout}>
+        <button className="hover:text-blue-500" onClick={logout}>
           <FiLogOut />
         </button>
       </div>

@@ -58,22 +58,22 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
     <li
       key={index}
       className={
-        "flex w-full gap-4 p-2 items-center " +
-        (exerciseRow.is_lifted ? "bg-green-100" : "bg-white")
+        "flex w-full gap-2 p-2 items-center bg-split-white-green gradient bg-200% transition-all duration-300 " +
+        (exerciseRow.is_lifted ? "bg-right" : "bg-left")
       }
     >
       <button
         type="button"
-        className="h-8 w-8 text-blue-500 outline-none flex-shrink-0 font-semibold focus-visible:bg-blue-200 hover:bg-blue-200 "
+        className="h-8 w-8 text-blue-500 rounded-lg outline-none flex-shrink-0 font-semibold focus-visible:bg-blue-200 hover:bg-blue-200 "
       >
         {index + 1}
       </button>
       {Object.keys(exerciseRow.exercisable).map((key, index) => (
         <input
           className={
-            "w-full h-full outline-none text-center box-border border rounded-lg pt-px " +
+            "w-full h-full outline-none text-center box-border border rounded-lg pt-px bg-transparent transition-all duration-300  " +
             (exerciseRow.is_lifted
-              ? "bg-green-100 border-green-100"
+              ? " border-transparent "
               : " border-gray-200")
           }
           inputMode="numeric"
@@ -88,10 +88,12 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
       ))}
       <button
         className={
-          "h-8 w-8  outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-green-200 " +
+          "h-8 w-8  outline-none flex-shrink-0 font-semibold p-1 rounded-lg focus-visible:bg-green-200 " +
           (!isActive
             ? "text-gray-300 pointer-events-none"
-            : "text-green-500 hover:bg-green-200")
+            : exerciseRow.is_lifted
+            ? "text-green-500 hover:bg-green-200"
+            : "text-gray-500 hover:bg-green-200")
         }
         type="button"
         disabled={!isActive}
@@ -100,11 +102,11 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
         <FiCheck className="h-full w-full" />
       </button>
       <button
-        className="h-8 w-8 text-red-500 outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-red-200 hover:bg-red-200 "
+        className="h-8 w-8 text-red-500 rounded-lg outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-red-200 hover:bg-red-200 "
         type="button"
         onClick={() => deleteItem(index, exerciseRow)}
       >
-        <FiX className="h-full w-full text-red-500" />
+        <FiX className="h-full w-full " />
       </button>
     </li>
   );

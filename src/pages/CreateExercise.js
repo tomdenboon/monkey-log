@@ -80,7 +80,7 @@ function CreateExercise(props) {
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             <input
-              className="p-2 rounded-lg w-full "
+              className="p-2 rounded w-full "
               type="name"
               value={name}
               placeholder="Name"
@@ -88,7 +88,7 @@ function CreateExercise(props) {
             />
             <div className="relative inline-block w-full text-gray-700">
               <select
-                className="w-full p-2 text-base bg-white  rounded-lg appearance-none"
+                className="w-full p-2 text-base bg-white  rounded appearance-none"
                 id="exercise_type"
               >
                 {exerciseTypes.map((exerciseType) => (

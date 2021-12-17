@@ -4,6 +4,13 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundSize: {
+        "200%": "200%",
+      },
+      backgroundImage: {
+        "split-white-green":
+          "linear-gradient(to left, #DCFCE7 50% , white 50%);",
+      },
       boxShadow: {
         header: "0px 0px 1.5px 3px rgba(0,0,0,0.3)",
       },

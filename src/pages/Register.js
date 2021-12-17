@@ -86,7 +86,7 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               ("name" in errors
-                ? "border-red-500 "
+                ? "border-blue-500 "
                 : "border-gray-300 focus:border-blue-500")
             }
             type="text"
@@ -99,7 +99,7 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border outline-none w-full " +
               ("email" in errors
-                ? "border-red-500 "
+                ? "border-blue-500 "
                 : "border-gray-300 focus:border-blue-500")
             }
             type="text"
@@ -112,7 +112,7 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               ("password" in errors
-                ? "border-red-500 "
+                ? "border-blue-500 "
                 : "border-gray-300 focus:border-blue-500")
             }
             type="password"
@@ -125,7 +125,7 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               ("password" in errors
-                ? "border-red-500 "
+                ? "border-blue-500 "
                 : "border-gray-300 focus:border-blue-500")
             }
             type="password"

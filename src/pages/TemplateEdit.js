@@ -22,9 +22,9 @@ function WorkoutFormHeader({ workout_id, workout_name }) {
   };
 
   return (
-    <div className="flex flex-col gap-2 items-center w-full bg-white rounded-none md:rounded-sm p-2">
+    <div className="flex w-full bg-white rounded-none md:rounded-sm p-2">
       <input
-        className="text-base font-bold outline-none text-center"
+        className="text-base font-bold outline-none"
         type="name"
         value={workout.name}
         placeholder="Name"

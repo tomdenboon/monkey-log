@@ -117,7 +117,7 @@ function ExerciseModal({ showModal, setShowModal, workoutId, add }) {
           <div className="p-4 flex gap-2 flex-col border-b ">
             <div className="items-center text-lg font-bold flex justify-between">
               Exercises
-              <FiPlus className="w-6 h-6 text-blue-500" />
+              <FiPlus className="w-6 h-6 " />
             </div>
             <div className="relative w-full">
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">

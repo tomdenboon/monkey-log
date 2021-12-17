@@ -62,15 +62,15 @@ function ExerciseGroupCard({
         <Dropdown options={[{ name: "Delete", func: deleteThis }]} />
       </div>
       <ul className="h-full flex flex-col ">
-        <li className="flex w-full px-2 gap-4 text-xs text-center font-mono text-gray-500 ">
-          <div className="flex justify-center h-8 w-8 flex-shrink-0 items-end">
+        <li className="flex w-full px-2 pt-2 gap-2 text-xs text-center font-mono text-gray-500 ">
+          <div className="flex justify-center h-8 w-8 flex-shrink-0 items-center">
             SET
           </div>
           {Object.keys(exerciseGroup.exercise_rows[0].exercisable).map(
             (key, index) => (
               <div
                 key={index}
-                className="flex items-end justify-center w-full outline-none"
+                className="flex items-center justify-center w-full outline-none"
               >
                 {key.toLocaleUpperCase()}
               </div>

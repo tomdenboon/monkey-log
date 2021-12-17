@@ -66,7 +66,7 @@ function LoginCard(props) {
           onSubmit={handleSubmit}
         >
           {message ? (
-            <div className="text-xs text-red-500 text-center">{message}</div>
+            <div className="text-xs text-blue-500 text-center">{message}</div>
           ) : (
             <div className="text-xs invisible">no error</div>
           )}
@@ -74,7 +74,7 @@ function LoginCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               (message
-                ? "border-red-500 "
+                ? "border-blue-500 "
                 : "border-gray-300 focus:border-blue-500")
             }
             type="text"
@@ -86,7 +86,7 @@ function LoginCard(props) {
             className={
               "p-2 rounded-md border outline-none w-full " +
               (message
-                ? "border-red-500 "
+                ? "border-blue-500 "
                 : "border-gray-300 focus:border-blue-500")
             }
             type="password"
