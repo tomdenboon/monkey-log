@@ -8,7 +8,7 @@ function BeginWorkoutModal({ showModal, setShowModal, template }) {
   const axios = MonkeyAxios();
 
   const goToActive = () => {
-    if (template.id) {
+    if (template.id !== "") {
       axios.post("template/" + template.id + "/start").then((res) => {
         history.push("/dashboard/workout/active");
       });

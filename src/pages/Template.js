@@ -73,7 +73,6 @@ function Template(props) {
       .get("template")
       .then((res) => {
         setTemplateList(res.data.data);
-        console.log(res.data.data);
         setLoading(false);
       })
       .catch((err) => {
