@@ -1,11 +1,15 @@
 import React from "react";
 import { FirstHeader } from "../components/headers";
+import ShadowyContainer from "../components/styled/ShadowyContainer";
+import NormalContainer from "../components/styled/NormalContainer";
 
-function Statistics({ setShowSidebar }) {
+function Statistics() {
+  const Header = () => <FirstHeader title="Statistics" />;
+
   return (
-    <div className="flex flex-col w-full h-screen overflow-auto">
-      <FirstHeader setShowSidebar={setShowSidebar} title="Statistics" />
-    </div>
+    <ShadowyContainer header={Header}>
+      <NormalContainer></NormalContainer>
+    </ShadowyContainer>
   );
 }
 

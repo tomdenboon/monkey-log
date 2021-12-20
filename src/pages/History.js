@@ -3,9 +3,9 @@ import MonkeyAxios from "../MonkeyAxios";
 import { FirstHeader } from "../components/headers";
 import { useHistory } from "react-router";
 import Dropdown from "../components/Dropdown";
-import CardContainer from "../components/styled/CardContainer";
 import datesToTimer, { dateStringToDate } from "../util/datesToTimer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
+import NormalContainer from "../components/styled/NormalContainer";
 
 function CompleteCard({ complete, deleteAt, at }) {
   const history = useHistory();
@@ -99,7 +99,7 @@ function History(props) {
 
   return (
     <ShadowyContainer header={Header} loading={loading}>
-      <CardContainer>
+      <NormalContainer>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
           {completeList.map((complete, index) => (
             <CompleteCard
@@ -111,7 +111,7 @@ function History(props) {
             />
           ))}
         </div>
-      </CardContainer>
+      </NormalContainer>
     </ShadowyContainer>
   );
 }

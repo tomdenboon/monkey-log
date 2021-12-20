@@ -96,13 +96,16 @@ function TemplateEdit() {
   return (
     <ShadowyContainer header={Header} loading={loading}>
       <NormalContainer>
-        <div className="flex flex-col w-full gap-2">
-          <HistoryFormHeader
-            workout_id={complete.workout.id}
-            workout_name={complete.workout.name}
-            started_at={complete.started_at}
-            completed_at={complete.completed_at}
-          />
+        <div className="flex flex-col w-full gap-8">
+          <div>
+            <h2 className="text-gray-400 font-bold text-xs pb-2">workout</h2>
+            <HistoryFormHeader
+              workout_id={complete.workout.id}
+              workout_name={complete.workout.name}
+              started_at={complete.started_at}
+              completed_at={complete.completed_at}
+            />
+          </div>
           <ExerciseGroupGrid
             workout_id={complete.workout.id}
             exercise_groups={complete.workout.exercise_groups}

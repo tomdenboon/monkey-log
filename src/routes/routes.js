@@ -34,7 +34,7 @@ const routes = [
     routes: [
       {
         exact: true,
-        path: "/dashboard/active",
+        path: "/dashboard/workout/active",
         component: Active,
       },
       {
@@ -54,17 +54,17 @@ const routes = [
       },
       {
         exact: true,
-        path: "/dashboard/template",
+        path: "/dashboard/workout",
         component: Template,
       },
       {
         exact: true,
-        path: "/dashboard/template/create",
+        path: "/dashboard/workout/create",
         component: TemplateCreate,
       },
       {
         exact: true,
-        path: "/dashboard/template/:id/edit",
+        path: "/dashboard/workout/:id/edit",
         component: TemplateEdit,
       },
       {

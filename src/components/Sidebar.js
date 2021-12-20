@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
-  FiAward,
+  FiPackage,
   FiLogOut,
   FiBarChart,
   FiSettings,
@@ -30,7 +30,7 @@ function StyledSidebarItem({ to, Icon, text }) {
       onAnimationEnd={() => setEffect(false)}
     >
       <Icon />
-      <div className="md:text-base text-xs">{text}</div>
+      <div className="md:text-base text-xs hidden md:flex">{text}</div>
     </NavLink>
   );
 }
@@ -59,7 +59,7 @@ function Sidebar(props) {
   return (
     <div
       ref={ref}
-      className="flex fixed md:flex-col gap-1 p-1 z-40 bg-gray-100 bottom-0  
+      className="flex fixed md:flex-col gap-1 p-1 z-30 md:z-40 bg-gray-100 bottom-0 shadow-footer md:shadow-none
         h-16 md:h-screen w-full md:w-72 max-w-full overflow-auto flex-shrink-0 justify-evenly md:justify-start"
     >
       <div className="hidden md:flex justify-between items-center p-2">
@@ -74,8 +74,8 @@ function Sidebar(props) {
         </button>
       </div>
       <StyledSidebarItem
-        to="/dashboard/template"
-        Icon={FiAward}
+        to="/dashboard/workout"
+        Icon={FiPackage}
         text="workout"
       />
       <StyledSidebarItem

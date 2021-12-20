@@ -9,10 +9,11 @@ module.exports = {
       },
       backgroundImage: {
         "split-white-green":
-          "linear-gradient(to left, #DCFCE7 50% , white 50%);",
+          "linear-gradient(to left, white 50%, #DCFCE7 50% );",
       },
       boxShadow: {
-        header: "0px 0px 1.5px 3px rgba(0,0,0,0.3)",
+        header: "0px 0px 2px 2px rgba(0,0,0,0.2)",
+        footer: "0px 0px 2px 2px rgba(0,0,0,0.2)",
       },
       keyframes: {
         smallpress: {

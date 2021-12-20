@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function HeaderStyle({ children }) {
   return (
     <div
-      className="flex items-center justify-between bg-gray-200 text-blue-500 text-xl font-bold gap-2 
+      className="flex items-center justify-between text-gray-700 bg-gray-200 text-xl font-bold gap-2 
       sticky top-0 z-30 px-2 h-12 md:px-4 xl:px-8"
     >
       {children}
@@ -17,8 +17,11 @@ function FirstHeader({ title, IconRight, linkToRight }) {
     <HeaderStyle>
       <div className="flex items-center">{title}</div>
       {linkToRight && (
-        <Link to={linkToRight} className="rounded-full text-xl">
-          <IconRight />
+        <Link
+          to={linkToRight}
+          className="flex rounded-full text-xl pl-2 h-8 w-8  text-blue-500"
+        >
+          <IconRight className="w-full h-full" />
         </Link>
       )}
     </HeaderStyle>

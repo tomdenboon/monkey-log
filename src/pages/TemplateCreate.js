@@ -10,7 +10,7 @@ function Header({ submit }) {
   return (
     <HeaderStyle>
       <div className="flex items-center">
-        <Link to="/dashboard/template">
+        <Link to="/dashboard/workout">
           <FiArrowLeft />
         </Link>
         Create workout
@@ -35,7 +35,7 @@ function TemplateCreate() {
       .post("template", workout)
       .then((res) => {
         setIsWaiting(false);
-        history.push("/dashboard/template/" + res.data.data.id + "/edit");
+        history.push("/dashboard/workout/" + res.data.data.id + "/edit");
       })
       .catch((err) => {
         console.log("catch");

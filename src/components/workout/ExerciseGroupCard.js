@@ -21,9 +21,7 @@ function ExerciseGroupCard({
   const submitNewExercise = (evt) => {
     evt.preventDefault();
     axios
-      .post("exercise_group/" + exerciseGroup.id + "/exercise_row", {
-        exercisable: [],
-      })
+      .post("exercise_group/" + exerciseGroup.id + "/copy_last_row")
       .then((res) => {
         console.log(res.data.data);
         exerciseGroup.exercise_rows.push(res.data.data);
@@ -53,11 +51,9 @@ function ExerciseGroupCard({
   };
 
   return (
-    <div className="flex w-full flex-col rounded-none md:rounded-sm py-4 bg-white">
-      <div className="flex items-center justify-between px-3">
-        <p className="truncate text-blue-500 font-semibold">
-          {exerciseGroup.name}
-        </p>
+    <div className="flex w-full flex-col rounded py-4 bg-white">
+      <div className="flex items-center justify-between pl-3 pr-2 text-blue-500">
+        <p className="truncate font-semibold">{exerciseGroup.name}</p>
 
         <Dropdown options={[{ name: "Delete", func: deleteThis }]} />
       </div>
@@ -91,10 +87,10 @@ function ExerciseGroupCard({
         <li className="flex p-2 w-full justify-center items-center hover:bg-gray-100">
           <button
             type="button"
-            className="flex w-full justify-between text-blue-500 "
+            className="flex w-full justify-between text-blue-500  "
             onClick={submitNewExercise}
           >
-            <div className="h-8 w-8 p-1 font-semibold">
+            <div className="h-8 w-8 p-1 font-semibold ">
               {exerciseGroup.exercise_rows.length + 1}
             </div>
             <FiPlus className="h-8 w-8 p-1" />

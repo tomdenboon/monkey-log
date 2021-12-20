@@ -80,17 +80,18 @@ function TemplateEdit() {
   return (
     <ShadowyContainer header={Header} loading={loading}>
       <NormalContainer>
-        <div className="flex flex-col w-full gap-2">
+        <div>
+          <h2 className="text-gray-400 font-bold text-xs pb-2">workout</h2>
           <WorkoutFormHeader
             workout_id={workout.id}
             workout_name={workout.name}
           />
-          <ExerciseGroupGrid
-            workout_id={workout.id}
-            exercise_groups={workout.exercise_groups}
-            isTemplate={true}
-          />
         </div>
+        <ExerciseGroupGrid
+          workout_id={workout.id}
+          exercise_groups={workout.exercise_groups}
+          isTemplate={true}
+        />
       </NormalContainer>
     </ShadowyContainer>
   );

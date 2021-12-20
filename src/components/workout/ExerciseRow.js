@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import MonkeyAxios from "../../MonkeyAxios";
-import { FiX, FiCheck } from "react-icons/fi";
+import { FiCheck } from "react-icons/fi";
+import Dropdown from "../Dropdown";
 
 const makeNewExercisable = (exerciseRow) => {
   const exercisable = {};
@@ -59,7 +60,7 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
       key={index}
       className={
         "flex w-full gap-2 p-2 items-center bg-split-white-green gradient bg-200% transition-all duration-300 " +
-        (exerciseRow.is_lifted ? "bg-right" : "bg-left")
+        (exerciseRow.is_lifted ? "bg-left" : "bg-right")
       }
     >
       <button
@@ -88,12 +89,12 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
       ))}
       <button
         className={
-          "h-8 w-8  outline-none flex-shrink-0 font-semibold p-1 rounded-lg focus-visible:bg-green-200 " +
+          "h-8 w-8  flex-shrink-0 font-semibold p-1 rounded-lg " +
           (!isActive
             ? "text-gray-300 pointer-events-none"
             : exerciseRow.is_lifted
-            ? "text-green-500 hover:bg-green-200"
-            : "text-gray-500 hover:bg-green-200")
+            ? "text-white  hover:bg-green-600 bg-green-500"
+            : "text-green-500 hover:bg-green-200 ")
         }
         type="button"
         disabled={!isActive}
@@ -101,13 +102,11 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
       >
         <FiCheck className="h-full w-full" />
       </button>
-      <button
-        className="h-8 w-8 text-red-500 rounded-lg outline-none flex-shrink-0 font-semibold  p-1 focus-visible:bg-red-200 hover:bg-red-200 "
-        type="button"
-        onClick={() => deleteItem(index, exerciseRow)}
-      >
-        <FiX className="h-full w-full " />
-      </button>
+      <Dropdown
+        options={[
+          { name: "Delete", func: () => deleteItem(index, exerciseRow) },
+        ]}
+      />
     </li>
   );
 }

@@ -63,7 +63,7 @@ function ExerciseEdit() {
   };
 
   return (
-    <div className="relative flex flex-col w-full h-screen overflow-auto">
+    <div className="relative flex flex-col w-full overflow-auto">
       <ExerciseHeader submit={handleSubmit} />
       <NormalContainer>
         {isWaiting || isLoading ? (

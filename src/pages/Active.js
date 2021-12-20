@@ -9,6 +9,7 @@ import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 import datesToTimer, { dateStringToDate } from "../util/datesToTimer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
+import FinishModal from "../components/FinishModal";
 
 function TemplateHeader({ workout_id, workout_name, start_date }) {
   const [workout, setWorkout] = useState({
@@ -40,7 +41,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
   }, [start_date]);
 
   return (
-    <div className="flex gap-2 items-center w-full justify-between bg-white rounded-none md:rounded-sm p-2">
+    <div className="flex gap-2 items-center w-full justify-between bg-white rounded py-2 px-3">
       <input
         className="text-base font-bold outline-none"
         type="name"
@@ -55,6 +56,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
 }
 
 function Active({ from }) {
+  const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState({
     id: null,
@@ -87,29 +89,19 @@ function Active({ from }) {
       });
   }, [axios, history, dispatch]);
 
-  const completeActive = () => {
-    axios.post("active/complete").then((res) => {
-      dispatch(action.setActiveDate(null));
-      history.push("/dashboard/history");
-    });
-  };
-
   function Header() {
     return (
       <HeaderStyle>
         <div className="flex w-full items-center justify-between">
-          <div className="flex gap-2 items-center">
-            <button
-              className=" hover:bg-gray-300 rounded-full p-1 text-xl"
-              onClick={history.goBack}
-            >
+          <div className="flex gap-2 items-center ">
+            <button className="text-lg" onClick={history.goBack}>
               <FiArrowLeft />
             </button>
             Active workout
           </div>
           <button
-            className="rounded-full p-1 text-sm font-semibold"
-            onClick={completeActive}
+            className="rounded-full pl-1 text-sm font-semibold text-blue-500"
+            onClick={() => setShowModal(true)}
           >
             FINISH
           </button>
@@ -120,13 +112,17 @@ function Active({ from }) {
 
   return (
     <ShadowyContainer header={Header} loading={loading}>
+      <FinishModal showModal={showModal} setShowModal={setShowModal} />
       <NormalContainer>
-        <div className="flex flex-col w-full gap-2">
-          <TemplateHeader
-            workout_id={active.workout.id}
-            workout_name={active.workout.name}
-            start_date={active.started_at}
-          />
+        <div className="flex flex-col w-full gap-8">
+          <div>
+            <h2 className="text-gray-400 font-bold text-xs pb-2">workout</h2>
+            <TemplateHeader
+              workout_id={active.workout.id}
+              workout_name={active.workout.name}
+              start_date={active.started_at}
+            />
+          </div>
           <ExerciseGroupGrid
             workout_id={active.workout.id}
             exercise_groups={active.workout.exercise_groups}

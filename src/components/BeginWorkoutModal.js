@@ -8,9 +8,15 @@ function BeginWorkoutModal({ showModal, setShowModal, template }) {
   const axios = MonkeyAxios();
 
   const goToActive = () => {
-    axios.post("template/" + template.id + "/start").then((res) => {
-      history.push("/dashboard/active");
-    });
+    if (template.id) {
+      axios.post("template/" + template.id + "/start").then((res) => {
+        history.push("/dashboard/workout/active");
+      });
+    } else {
+      axios.post("active/start_empty").then((res) => {
+        history.push("/dashboard/workout/active");
+      });
+    }
   };
 
   return (
