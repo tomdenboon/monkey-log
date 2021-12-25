@@ -8,6 +8,7 @@ import BeginWorkoutModal from "../components/BeginWorkoutModal";
 import Dropdown from "../components/Dropdown";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
 import NormalContainer from "../components/styled/NormalContainer";
+import Section from "../components/styled/Section";
 
 function TemplateCard({ template, deleteAt, at, add }) {
   const history = useHistory();
@@ -125,18 +126,16 @@ function Template(props) {
         template={selectedTemplate}
       />
       <NormalContainer>
-        <div>
-          <h2 className="text-gray-400 font-bold text-xs pb-2">quick start</h2>
+        <Section title={"Quick Start"}>
           <button
-            className="flex w-full items-center justify-between px-2 py-1 text-blue-500  self-center bg-white rounded"
+            className="flex w-full items-center justify-between px-2 py-2 text-blue-500  self-center bg-white rounded"
             type="button"
             onClick={() => startTemplate(-1)}
           >
-            <p className="p-1 font-semibold">Start empty workout</p>
+            <p className="p-1">START EMPTY WORKOUT</p>
           </button>
-        </div>
-        <div>
-          <h2 className="text-gray-400 font-bold text-xs pb-2">my workouts</h2>
+        </Section>
+        <Section title="My Templates">
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2 ">
             {templateList.map((template, index) => (
               <div
@@ -153,7 +152,7 @@ function Template(props) {
               </div>
             ))}
           </div>
-        </div>
+        </Section>
       </NormalContainer>
     </ShadowyContainer>
   );

@@ -96,7 +96,7 @@ function TemplateEdit() {
   return (
     <ShadowyContainer header={Header} loading={loading}>
       <NormalContainer>
-        <div className="flex flex-col w-full gap-8">
+        <div className="flex flex-col w-full gap-5">
           <div>
             <h2 className="text-gray-400 font-bold text-xs pb-2">workout</h2>
             <HistoryFormHeader

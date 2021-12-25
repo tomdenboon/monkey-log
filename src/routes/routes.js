@@ -4,14 +4,17 @@ import ExerciseEdit from "../pages/ExerciseEdit";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Template from "../pages/Template";
-import History from "../pages/History";
-import HistoryEdit from "../pages/HistoryEdit";
-import Settings from "../pages/Settings";
-import Statistics from "../pages/Statistics";
-import CreateExercise from "../pages/CreateExercise";
 import TemplateCreate from "../pages/TemplateCreate";
 import TemplateEdit from "../pages/TemplateEdit";
+import TemplateAddExercise from "../pages/TemplateAddExercise";
+import History from "../pages/History";
+import HistoryEdit from "../pages/HistoryEdit";
+import HistoryAddExercise from "../pages/HistoryAddExercise";
+import Settings from "../pages/Settings";
+import Statistics from "../pages/Statistics";
+import ExerciseCreate from "../pages/ExerciseCreate";
 import Active from "../pages/Active";
+import ActiveAddExercise from "../pages/ActiveAddExercise";
 
 const routes = [
   {
@@ -34,8 +37,13 @@ const routes = [
     routes: [
       {
         exact: true,
-        path: "/dashboard/workout/active",
+        path: "/dashboard/workout/active/edit",
         component: Active,
+      },
+      {
+        exact: true,
+        path: "/dashboard/workout/active/add-exercise",
+        component: ActiveAddExercise,
       },
       {
         exact: true,
@@ -45,7 +53,7 @@ const routes = [
       {
         exact: true,
         path: "/dashboard/exercise/create",
-        component: CreateExercise,
+        component: ExerciseCreate,
       },
       {
         exact: true,
@@ -69,6 +77,11 @@ const routes = [
       },
       {
         exact: true,
+        path: "/dashboard/workout/:id/add-exercise",
+        component: TemplateAddExercise,
+      },
+      {
+        exact: true,
         path: "/dashboard/statistics",
         component: Statistics,
       },
@@ -81,6 +94,11 @@ const routes = [
         exact: true,
         path: "/dashboard/history/:id/edit",
         component: HistoryEdit,
+      },
+      {
+        exact: true,
+        path: "/dashboard/history/:id/add-exercise",
+        component: HistoryAddExercise,
       },
       {
         exact: true,

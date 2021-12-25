@@ -46,7 +46,8 @@ function ActiveWorkoutCard() {
     <div
       className={
         "w-full " +
-        (location.pathname === "/dashboard/active" || active === null
+        (location.pathname.startsWith("/dashboard/workout/active") ||
+        active === null
           ? "py-1"
           : "py-7")
       }
@@ -55,11 +56,11 @@ function ActiveWorkoutCard() {
         className={
           "fixed flex items-center bottom-16 z-30 md:bottom-2 w-1/2 left-1/2 -translate-x-1/2 md:ml-36 " +
           "text-white rounded-t md:rounded bg-blue-500 justify-center gap-2 py-2 " +
-          ((location.pathname === "/dashboard/workout/active" ||
+          ((location.pathname.startsWith("/dashboard/workout/active") ||
             active === null) &&
             "invisible")
         }
-        to="/dashboard/workout/active"
+        to="/dashboard/workout/active/edit"
       >
         <FiActivity className=" flex-shrink-0" />
         {timer}

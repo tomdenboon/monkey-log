@@ -1,28 +1,11 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { FiArrowLeft, FiChevronDown, FiLoader } from "react-icons/fi";
 import MonkeyAxios from "../MonkeyAxios";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 
-function ExerciseHeader({ submit }) {
-  return (
-    <HeaderStyle>
-      <div className="flex items-center">
-        <Link className="" to="/dashboard/exercise">
-          <FiArrowLeft />
-        </Link>
-        Create exercise
-      </div>
-      <button className="p-1 font-mono text-base" onClick={submit}>
-        SAVE
-      </button>
-    </HeaderStyle>
-  );
-}
-
-function CreateExercise(props) {
+function ExerciseCreate() {
   const [isWaiting, setIsWaiting] = useState(false);
   const exerciseTypes = [
     {
@@ -56,7 +39,7 @@ function CreateExercise(props) {
       })
       .then((res) => {
         setIsWaiting(false);
-        history.push("/dashboard/exercise");
+        history.goBack();
       })
       .catch((err) => {
         setIsWaiting(false);
@@ -69,8 +52,26 @@ function CreateExercise(props) {
     createExercise();
   };
 
+  function ExerciseHeader() {
+    return (
+      <HeaderStyle>
+        <div className="flex items-center" onClick={history.goBack}>
+          <button className="" to="/dashboard/exercise">
+            <FiArrowLeft />
+          </button>
+          Create exercise
+        </div>
+        <button
+          className="p-1 font-mono text-base text-blue-500"
+          onClick={handleSubmit}
+        >
+          SAVE
+        </button>
+      </HeaderStyle>
+    );
+  }
   return (
-    <div className="relative flex flex-col w-full h-screen overflow-auto">
+    <div className="relative flex flex-col w-full overflow-auto">
       <ExerciseHeader submit={handleSubmit} />
       <NormalContainer>
         {isWaiting ? (
@@ -112,4 +113,4 @@ function CreateExercise(props) {
   );
 }
 
-export default CreateExercise;
+export default ExerciseCreate;

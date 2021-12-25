@@ -11,7 +11,7 @@ function ExerciseHeader({ submit }) {
   return (
     <HeaderStyle>
       <div className="flex items-center">
-        <Link className="" to="/dashboard/exercise">
+        <Link to="/dashboard/exercise">
           <FiArrowLeft />
         </Link>
         Edit exercise

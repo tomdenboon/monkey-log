@@ -7,6 +7,7 @@ import ExerciseGroupGrid from "../components/workout/ExerciseGroupGrid";
 import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
+import Section from "../components/styled/Section";
 
 function WorkoutFormHeader({ workout_id, workout_name }) {
   const [workout, setWorkout] = useState({
@@ -22,7 +23,7 @@ function WorkoutFormHeader({ workout_id, workout_name }) {
   };
 
   return (
-    <div className="flex w-full bg-white rounded-none md:rounded-sm p-2">
+    <div className="flex w-full bg-white rounded-none md:rounded-sm h-12 p-2">
       <input
         className="text-base font-bold outline-none"
         type="name"
@@ -80,13 +81,12 @@ function TemplateEdit() {
   return (
     <ShadowyContainer header={Header} loading={loading}>
       <NormalContainer>
-        <div>
-          <h2 className="text-gray-400 font-bold text-xs pb-2">workout</h2>
+        <Section title="Workout">
           <WorkoutFormHeader
             workout_id={workout.id}
             workout_name={workout.name}
           />
-        </div>
+        </Section>
         <ExerciseGroupGrid
           workout_id={workout.id}
           exercise_groups={workout.exercise_groups}

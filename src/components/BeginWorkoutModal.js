@@ -10,11 +10,11 @@ function BeginWorkoutModal({ showModal, setShowModal, template }) {
   const goToActive = () => {
     if (template.id !== "") {
       axios.post("template/" + template.id + "/start").then((res) => {
-        history.push("/dashboard/workout/active");
+        history.push("/dashboard/workout/active/edit");
       });
     } else {
       axios.post("active/start_empty").then((res) => {
-        history.push("/dashboard/workout/active");
+        history.push("/dashboard/workout/active/edit");
       });
     }
   };

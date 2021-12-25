@@ -93,7 +93,7 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
           (!isActive
             ? "text-gray-300 pointer-events-none"
             : exerciseRow.is_lifted
-            ? "text-white  hover:bg-green-600 bg-green-500"
+            ? "text-white  hover:bg-green-500 bg-green-400"
             : "text-green-500 hover:bg-green-200 ")
         }
         type="button"

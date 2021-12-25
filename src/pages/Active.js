@@ -9,6 +9,7 @@ import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 import datesToTimer, { dateStringToDate } from "../util/datesToTimer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
+import Section from "../components/styled/Section";
 import FinishModal from "../components/FinishModal";
 
 function TemplateHeader({ workout_id, workout_name, start_date }) {
@@ -41,7 +42,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
   }, [start_date]);
 
   return (
-    <div className="flex gap-2 items-center w-full justify-between bg-white rounded py-2 px-3">
+    <div className="flex gap-2 items-center w-full justify-between bg-white rounded h-12 px-3">
       <input
         className="text-base font-bold outline-none"
         type="name"
@@ -55,7 +56,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
   );
 }
 
-function Active({ from }) {
+function Active() {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const [active, setActive] = useState({
@@ -100,7 +101,7 @@ function Active({ from }) {
             Active workout
           </div>
           <button
-            className="rounded-full pl-1 text-sm font-semibold text-blue-500"
+            className="rounded-full pl-1 text-base text-blue-500"
             onClick={() => setShowModal(true)}
           >
             FINISH
@@ -114,15 +115,14 @@ function Active({ from }) {
     <ShadowyContainer header={Header} loading={loading}>
       <FinishModal showModal={showModal} setShowModal={setShowModal} />
       <NormalContainer>
-        <div className="flex flex-col w-full gap-8">
-          <div>
-            <h2 className="text-gray-400 font-bold text-xs pb-2">workout</h2>
+        <div className="flex flex-col w-full gap-5">
+          <Section title="workout">
             <TemplateHeader
               workout_id={active.workout.id}
               workout_name={active.workout.name}
               start_date={active.started_at}
             />
-          </div>
+          </Section>
           <ExerciseGroupGrid
             workout_id={active.workout.id}
             exercise_groups={active.workout.exercise_groups}

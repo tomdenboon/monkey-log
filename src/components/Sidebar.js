@@ -21,8 +21,8 @@ function StyledSidebarItem({ to, Icon, text }) {
       className={(isActive) =>
         (isActive ? "bg-white shadow-sm text-blue-500 " : "") +
         (effect ? "animate-press " : "") +
-        "flex flex-col md:flex-row md:gap-2 gap-1 hover:bg-white focus:bg-white focus:shadow-sm " +
-        "md:p-2 p-1 h-14 md:h-10 w-full rounded items-center filter hover:shadow-sm outline-none justify-center md:justify-start"
+        "flex flex-col md:flex-row md:gap-2 gap-1" +
+        "md:p-2 p-1 h-14 md:h-10 w-full rounded items-center justify-center md:justify-start"
       }
       onClick={() => {
         setEffect(true);

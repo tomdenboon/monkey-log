@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import MonkeyAxios from "../../MonkeyAxios";
 import ExerciseGroupCard from "./ExerciseGroupCard";
-import ExerciseModal from "./ExerciseModal";
 import { FiPlus, FiX } from "react-icons/fi";
+import { useHistory } from "react-router";
 import CancelModal from "../CancelModal";
 import Section from "../styled/Section";
 
 function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
-  const [showModal, setShowModal] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [exerciseGroups, setExerciseGroups] = useState(exercise_groups);
   const axios = MonkeyAxios();
+  const history = useHistory();
 
   const deleteExerciseGroup = (id, i) => {
     axios
@@ -23,21 +23,12 @@ function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
       .catch((err) => {});
   };
 
-  const addExerciseGroups = (addExerciseGroups) => {
-    setExerciseGroups((exerciseGroups) => [
-      ...exerciseGroups,
-      ...addExerciseGroups,
-    ]);
+  const goToAddExercise = () => {
+    history.push("add-exercise");
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-8 ">
-      <ExerciseModal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        add={addExerciseGroups}
-        workoutId={workout_id}
-      />
+    <div className="flex flex-col items-center justify-center gap-5 ">
       <CancelModal
         showModal={showCancelModal}
         setShowModal={setShowCancelModal}
@@ -61,22 +52,22 @@ function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
           </div>
         )}
       </Section>
-      <Section title="edit list">
+      <Section title="edit">
         <button
-          className="flex w-full items-center justify-between px-2 py-1 text-blue-500 mb-2 self-center bg-white rounded"
+          className="flex w-full items-center justify-between px-2 py-2 text-blue-500 mb-2 self-center bg-white rounded"
           type="button"
-          onClick={() => setShowModal(true)}
+          onClick={goToAddExercise}
         >
-          <p className="p-1 font-semibold">Exercise</p>
+          <p className="p-1">EXERCISE</p>
           <FiPlus className="h-8 w-8 p-1" />
         </button>
         {isActive && (
           <button
-            className="flex w-full items-center justify-between px-2 py-1 text-red-500  self-center bg-white rounded"
+            className="flex w-full items-center justify-between px-2 py-2 text-red-500  self-center bg-white rounded"
             type="button"
             onClick={() => setShowCancelModal(true)}
           >
-            <p className="p-1 font-semibold">Cancel</p>
+            <p className="p-1">CANCEL</p>
             <FiX className="h-8 w-8 p-1" />
           </button>
         )}
