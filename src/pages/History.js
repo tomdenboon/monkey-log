@@ -21,6 +21,14 @@ function CompleteCard({ complete, deleteAt, at }) {
     });
   };
 
+  const completeToTemplate = () => {
+    axios
+      .post("workout/" + complete.workout.id + "/to-template")
+      .then((res) => {
+        history.push("/dashboard/workout/" + res.data.data.id + "/edit");
+      });
+  };
+
   const date = () => {
     return dateStringToDate(complete.started_at).toLocaleDateString();
   };
@@ -40,6 +48,7 @@ function CompleteCard({ complete, deleteAt, at }) {
         <Dropdown
           options={[
             { name: "Edit", func: toEditComplete },
+            { name: "To Template", func: completeToTemplate },
             { name: "Delete", func: deleteComplete },
           ]}
         />

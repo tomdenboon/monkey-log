@@ -25,9 +25,11 @@ function TemplateCard({ template, deleteAt, at, add }) {
   };
 
   const duplicateTemplate = () => {
-    axios.post("template/" + template.id + "/clone").then((res) => {
-      add(res.data.data);
-    });
+    axios
+      .post("workout/" + template.workout.id + "/to-template")
+      .then((res) => {
+        add(res.data.data);
+      });
   };
 
   return (

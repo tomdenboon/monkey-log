@@ -13,7 +13,7 @@ function CancelModal({ showModal, setShowModal, workoutId }) {
   const cancelActive = () => {
     axios.delete("workout/" + workoutId).then((res) => {
       dispatch(action.setActiveDate(null));
-      history.replace("template");
+      history.replace("/dashboard/workout");
     });
   };
 
