@@ -21,18 +21,20 @@ function BeginWorkoutModal({ showModal, setShowModal, template }) {
 
   return (
     <Modal showModal={showModal} setShowModal={setShowModal}>
-      <div className="flex flex-col w-64 p-2">
+      <div className="flex flex-col w-64 p-4 gap-4">
         <div className="text-lg font-bold ">Start workout</div>
         {template.workout.name}
-        <ul className="flex flex-col overflow-auto overscroll-contain">
-          {template.workout.exercise_groups.map((exercise_group, index) => (
-            <li key={index} className="truncate">
-              {exercise_group.sets} x {exercise_group.name}
-            </li>
-          ))}
-        </ul>
+        {template.workout.exercise_groups.length !== 0 && (
+          <ul className="flex flex-col overflow-auto overscroll-contain">
+            {template.workout.exercise_groups.map((exercise_group, index) => (
+              <li key={index} className="truncate">
+                {exercise_group.sets} x {exercise_group.name}
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="flex items-center w-full text-blue-500">
-          <button className="text-sm" type="button" onClick={goToActive}>
+          <button className="text-base" type="button" onClick={goToActive}>
             START
           </button>
         </div>

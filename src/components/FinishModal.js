@@ -19,7 +19,7 @@ function FinishModal({ showModal, setShowModal }) {
 
   return (
     <Modal showModal={showModal} setShowModal={setShowModal}>
-      <div className="flex flex-col w-64 p-2">
+      <div className="flex flex-col w-64 p-4 gap-4">
         <div className="text-lg font-bold ">Finish workout</div>
         All your uncompleted sets will not be saved. Are you sure you want to
         finish?
