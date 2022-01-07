@@ -42,7 +42,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
   }, [start_date]);
 
   return (
-    <div className="flex gap-2 items-center w-full justify-between bg-white rounded h-12 px-3">
+    <div className="flex gap-2 items-center w-full justify-between bg-white rounded h-10 px-3">
       <input
         className="text-base font-bold outline-none"
         type="name"

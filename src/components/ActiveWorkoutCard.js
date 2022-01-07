@@ -48,8 +48,8 @@ function ActiveWorkoutCard() {
         "w-full " +
         (location.pathname.startsWith("/dashboard/workout/active") ||
         active === null
-          ? "py-1"
-          : "py-7")
+          ? "py-4"
+          : "py-10")
       }
     >
       <Link

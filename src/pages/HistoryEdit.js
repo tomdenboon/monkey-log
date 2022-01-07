@@ -7,6 +7,7 @@ import HeaderStyle from "../components/headers";
 import NormalContainer from "../components/styled/NormalContainer";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
 import datesToTimer, { dateStringToDate } from "../util/datesToTimer";
+import Section from "../components/styled/Section";
 
 function HistoryFormHeader({
   workout_id,
@@ -27,7 +28,7 @@ function HistoryFormHeader({
   };
 
   return (
-    <div className="flex gap-2 items-center w-full justify-between bg-white rounded-none md:rounded-sm p-2">
+    <div className="flex gap-2 items-center w-full justify-between bg-white rounded-none md:rounded-sm px-2 py-2">
       <input
         className="text-base font-bold outline-none"
         type="name"
@@ -98,13 +99,14 @@ function TemplateEdit() {
       <NormalContainer>
         <div className="flex flex-col w-full gap-5">
           <div>
-            <h2 className="text-gray-400 font-bold text-xs pb-2">workout</h2>
-            <HistoryFormHeader
-              workout_id={complete.workout.id}
-              workout_name={complete.workout.name}
-              started_at={complete.started_at}
-              completed_at={complete.completed_at}
-            />
+            <Section title="workout">
+              <HistoryFormHeader
+                workout_id={complete.workout.id}
+                workout_name={complete.workout.name}
+                started_at={complete.started_at}
+                completed_at={complete.completed_at}
+              />
+            </Section>
           </div>
           <ExerciseGroupGrid
             workout_id={complete.workout.id}

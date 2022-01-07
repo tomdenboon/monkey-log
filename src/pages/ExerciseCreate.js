@@ -87,7 +87,7 @@ function ExerciseCreate() {
               placeholder="Name"
               onChange={(e) => setName(e.target.value)}
             />
-            <div className="relative inline-block w-full text-gray-700">
+            <div className="relative inline-block w-full ">
               <select
                 className="w-full p-2 text-base bg-white  rounded appearance-none"
                 id="exercise_type"

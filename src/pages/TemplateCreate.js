@@ -15,7 +15,7 @@ function Header({ submit }) {
         </Link>
         Create workout
       </div>
-      <button className="font-mono text-base" onClick={submit}>
+      <button className="font-mono text-base text-blue-500" onClick={submit}>
         SAVE
       </button>
     </HeaderStyle>
@@ -62,7 +62,7 @@ function TemplateCreate() {
         ) : (
           <form onSubmit={handleSubmit} autoComplete="off">
             <input
-              className="p-2 rounded-md border outline-none w-full "
+              className="p-2 rounded-md w-full "
               type="name"
               value={workout.name}
               placeholder="Name"

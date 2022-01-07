@@ -58,7 +58,7 @@ function LoginCard(props) {
         }
       >
         <div className="flex flex-col items-center w-full gap-1 pb-5">
-          <div className=" text-4xl font-bold text-gray-700">MonkeyLog</div>
+          <div className=" text-4xl font-bold">MonkeyLog</div>
           <div className=" text-sm">Minimalistic workout logger.</div>
         </div>
         <form

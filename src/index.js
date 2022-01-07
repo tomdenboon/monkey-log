@@ -18,7 +18,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <div className="text-gray-600 bg-gray-200 w-full h-full">
+        <div className="text-gray-700 bg-gray-100 w-full h-full">
           <Router>
             <CustomSwitch routes={routes} />
           </Router>

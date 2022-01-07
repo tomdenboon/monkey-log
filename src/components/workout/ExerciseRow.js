@@ -91,7 +91,7 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
         className={
           "h-8 w-8  flex-shrink-0 font-semibold p-1 rounded-lg " +
           (!isActive
-            ? "text-gray-300 pointer-events-none"
+            ? "text-gray-400 pointer-events-none"
             : exerciseRow.is_lifted
             ? "text-white  hover:bg-green-500 bg-green-400"
             : "text-green-500 hover:bg-green-200 ")

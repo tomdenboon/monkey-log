@@ -76,7 +76,7 @@ function RegisterCard(props) {
         }
       >
         <div className="flex flex-col items-center w-full gap-1 pb-5">
-          <div className=" text-4xl font-bold text-gray-700">Register</div>
+          <div className=" text-4xl font-bold">Register</div>
         </div>
         <form
           className="flex flex-col items-center justify-center w-full gap-5 "

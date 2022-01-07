@@ -9,7 +9,7 @@ function Dashboard(props) {
     <div className="flex min-h-screen w-full">
       <Sidebar />
       <div className="md:ml-72 w-full flex">
-        <div className="flex flex-col md:pb-0 pb-14 w-full">
+        <div className="flex flex-col md:pb-0 pb-24 w-full">
           <Switch>
             {props.routes.map((route) => {
               return <PrivateRoute key={route.path} {...route} />;

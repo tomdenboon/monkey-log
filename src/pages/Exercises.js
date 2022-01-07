@@ -139,7 +139,7 @@ function Exercises({ isSelectMode = false, workoutId }) {
             <input
               type="search"
               name="q"
-              className="flex py-2 h-12 w-full text-base bg-white rounded-sm pl-8"
+              className="flex py-2 h-10 w-full text-base bg-white rounded-full pl-8"
               placeholder=""
               autoComplete="off"
               onChange={(e) => changeSearch(e)}
@@ -150,7 +150,7 @@ function Exercises({ isSelectMode = false, workoutId }) {
         <Section title="exercises">
           {isSelectMode && (
             <button
-              className="flex justify-between w-full px-4 py-2 items-center rounded-sm text-blue-500 bg-white mb-4"
+              className="flex justify-between w-full px-4 py-1 items-center rounded-sm text-blue-500 bg-white mb-4"
               onClick={addExercises}
             >
               <p className="truncate ">ADD TO WORKOUT</p>
@@ -162,7 +162,7 @@ function Exercises({ isSelectMode = false, workoutId }) {
               <button
                 key={i}
                 className={
-                  "flex justify-between w-full px-4 py-2 items-center rounded-sm" +
+                  "flex justify-between w-full px-4 py-1 items-center rounded-sm" +
                   (isSelectMode && exerciseList[i].selected
                     ? " bg-blue-500 text-white"
                     : " bg-white")
