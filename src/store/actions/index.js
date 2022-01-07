@@ -19,3 +19,10 @@ export function setActiveDate(payload) {
     payload,
   };
 }
+
+export function setTheme(payload) {
+  return {
+    type: ActionTypes.SET_THEME,
+    payload,
+  };
+}

@@ -123,7 +123,7 @@ function Home(props) {
     if (props.history.location.from) {
       return <Redirect to={props.history.location.from} />;
     } else {
-      return <Redirect to="/dashboard/template" />;
+      return <Redirect to="/dashboard/workout" />;
     }
   } else {
     return (

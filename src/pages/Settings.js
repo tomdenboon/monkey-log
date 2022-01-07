@@ -3,8 +3,11 @@ import { FirstHeader } from "../components/headers";
 import ShadowyContainer from "../components/styled/ShadowyContainer";
 import NormalContainer from "../components/styled/NormalContainer";
 import Section from "../components/styled/Section";
+import { useDispatch } from "react-redux";
+import * as action from "../store/actions";
 
 function Settings() {
+  const dispatch = useDispatch();
   const Header = () => <FirstHeader title="Settings" />;
 
   return (
@@ -19,7 +22,10 @@ function Settings() {
         </Section>
         <Section title="Account">
           <div className="flex flex-col gap-px">
-            <button className="w-full h-10 bg-white rounded-sm text-red-500 font-bold">
+            <button
+              className="w-full h-10 bg-white rounded-sm text-warning font-bold"
+              onClick={() => dispatch(action.authLogout())}
+            >
               Log Out
             </button>
           </div>

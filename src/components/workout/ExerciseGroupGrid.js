@@ -63,7 +63,7 @@ function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
         </button>
         {isActive && (
           <button
-            className="flex w-full items-center justify-between px-2 py-1 text-red-500  self-center bg-white rounded"
+            className="flex w-full items-center justify-between px-2 py-1 text-warning  self-center bg-white rounded"
             type="button"
             onClick={() => setShowCancelModal(true)}
           >
