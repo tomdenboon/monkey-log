@@ -23,7 +23,7 @@ function FinishModal({ showModal, setShowModal }) {
         <div className="text-lg font-bold ">Finish workout</div>
         All your uncompleted sets will not be saved. Are you sure you want to
         finish?
-        <div className="flex items-center w-full text-blue-500">
+        <div className="flex items-center w-full text-secondary">
           <button className="text-sm" type="button" onClick={completeActive}>
             FINISH
           </button>

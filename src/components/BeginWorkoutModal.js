@@ -33,7 +33,7 @@ function BeginWorkoutModal({ showModal, setShowModal, template }) {
             ))}
           </ul>
         )}
-        <div className="flex items-center w-full text-blue-500">
+        <div className="flex items-center w-full text-secondary">
           <button className="text-base" type="button" onClick={goToActive}>
             START
           </button>

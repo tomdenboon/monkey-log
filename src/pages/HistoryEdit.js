@@ -28,7 +28,7 @@ function HistoryFormHeader({
   };
 
   return (
-    <div className="flex gap-2 items-center w-full justify-between bg-white rounded-none md:rounded-sm px-2 py-2">
+    <div className="flex gap-2 items-center w-full justify-between bg-primary-light rounded-none md:rounded-sm px-2 py-2">
       <input
         className="text-base font-bold outline-none"
         type="name"

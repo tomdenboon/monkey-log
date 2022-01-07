@@ -43,7 +43,7 @@ function LoginCard(props) {
   return (
     <div
       className={
-        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-white m-auto flex-shrink-0"
+        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-primary-light m-auto flex-shrink-0"
       }
     >
       {isLogin && (
@@ -66,7 +66,7 @@ function LoginCard(props) {
           onSubmit={handleSubmit}
         >
           {message ? (
-            <div className="text-xs text-blue-500 text-center">{message}</div>
+            <div className="text-xs text-secondary text-center">{message}</div>
           ) : (
             <div className="text-xs invisible">no error</div>
           )}
@@ -74,8 +74,8 @@ function LoginCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               (message
-                ? "border-blue-500 "
-                : "border-gray-300 focus:border-blue-500")
+                ? "border-secondary "
+                : "border-gray-300 focus:border-secondary")
             }
             type="text"
             value={email}
@@ -86,19 +86,19 @@ function LoginCard(props) {
             className={
               "p-2 rounded-md border outline-none w-full " +
               (message
-                ? "border-blue-500 "
-                : "border-gray-300 focus:border-blue-500")
+                ? "border-secondary "
+                : "border-gray-300 focus:border-secondary")
             }
             type="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="w-full py-2 font-bold rounded-md bg-blue-500 hover:bg-blue-600 text-white cursor-pointer">
+          <button className="w-full py-2 font-bold rounded-md bg-secondary hover:bg-blue-600 text-primary-light cursor-pointer">
             Sign in
           </button>
           <button
-            className="text-xs text-blue-500 cursor-pointer hover:underline"
+            className="text-xs text-secondary cursor-pointer hover:underline"
             type="button"
           >
             Forgot password?
@@ -106,7 +106,7 @@ function LoginCard(props) {
         </form>
         <div className="h-px flex-shrink-0 bg-gray-300 my-5 w-full" />
         <Link
-          className="rounded-md w-1/2 p-2 text-center font-bold bg-green-500 hover:bg-green-600 text-white cursor-pointer"
+          className="rounded-md w-1/2 p-2 text-center font-bold bg-green-500 hover:bg-green-600 text-primary-light cursor-pointer"
           to="/register"
         >
           Create account

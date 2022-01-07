@@ -62,7 +62,7 @@ function ExerciseCreate() {
           Create exercise
         </div>
         <button
-          className="p-1 font-mono text-base text-blue-500"
+          className="p-1 font-mono text-base text-secondary"
           onClick={handleSubmit}
         >
           SAVE
@@ -89,14 +89,14 @@ function ExerciseCreate() {
             />
             <div className="relative inline-block w-full ">
               <select
-                className="w-full p-2 text-base bg-white  rounded appearance-none"
+                className="w-full p-2 text-base bg-primary-light  rounded appearance-none"
                 id="exercise_type"
               >
                 {exerciseTypes.map((exerciseType) => (
                   <option
                     key={exerciseType.id}
                     value={exerciseType.id}
-                    className="bg-white"
+                    className="bg-primary-light"
                   >
                     {exerciseType.name}
                   </option>

@@ -23,7 +23,7 @@ function WorkoutFormHeader({ workout_id, workout_name }) {
   };
 
   return (
-    <div className="flex w-full bg-white rounded-none md:rounded-sm h-12 p-2">
+    <div className="flex w-full bg-primary-light rounded-none md:rounded-sm h-10 px-2">
       <input
         className="text-base font-bold outline-none"
         type="name"

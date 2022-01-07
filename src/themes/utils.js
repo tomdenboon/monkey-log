@@ -25,7 +25,7 @@ export function createTheme({
 }) {
   return {
     "--theme-primary": primary,
-    "--theme-primary-dark": primaryLight,
+    "--theme-primary-light": primaryLight,
     "--theme-secondary": secondary,
     "--theme-text-base": textBase,
     "--theme-text-dark": textLight,

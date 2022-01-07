@@ -33,9 +33,9 @@ function TemplateCard({ template, deleteAt, at, add }) {
   };
 
   return (
-    <div className="group flex w-full flex-col items-start text-left rounded p-4 bg-white cursor-pointer hover:shadow-md transition-all">
+    <div className="group flex w-full flex-col items-start text-left rounded p-4 bg-primary-light cursor-pointer hover:shadow-md transition-all">
       <div className="flex w-full pb-2 text-lg font-semibold items-center justify-between">
-        <p className="group-hover:text-blue-500 focus transition">
+        <p className="group-hover:text-secondary focus transition">
           {template.workout.name}
         </p>
         <Dropdown
@@ -130,7 +130,7 @@ function Template(props) {
       <NormalContainer>
         <Section title={"Quick Start"}>
           <button
-            className="flex w-full items-center justify-between px-2 py-1 text-blue-500  self-center bg-white rounded"
+            className="flex w-full items-center justify-between px-2 py-1 text-secondary  self-center bg-primary-light rounded"
             type="button"
             onClick={() => startTemplate(-1)}
           >

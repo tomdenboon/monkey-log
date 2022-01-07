@@ -19,7 +19,7 @@ function FirstHeader({ title, IconRight, linkToRight }) {
       {linkToRight && (
         <Link
           to={linkToRight}
-          className="flex rounded-full text-xl pl-2 h-8 w-8  text-blue-500"
+          className="flex rounded-full text-xl pl-2 h-8 w-8  text-secondary"
         >
           <IconRight className="w-full h-full" />
         </Link>

@@ -29,7 +29,10 @@ function Modal({ showModal, setShowModal, children }) {
           " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-20 z-40 md:pl-72"
         }
       >
-        <div className="relative flex bg-white m-auto rounded-lg" ref={ref}>
+        <div
+          className="relative flex bg-primary-light m-auto rounded-lg"
+          ref={ref}
+        >
           {children}
         </div>
       </div>

@@ -17,7 +17,7 @@ module.exports = {
       },
       colors: {
         primary: "var(--theme-primary)",
-        "primary-light": "var(--theme-primary-dark)",
+        "primary-light": "var(--theme-primary-light)",
         secondary: "var(--theme-secondary)",
         "text-base": "var(--theme-text-base)",
         "text-light": "var(--theme-text-dark)",

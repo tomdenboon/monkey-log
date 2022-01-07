@@ -22,7 +22,7 @@ function CancelModal({ showModal, setShowModal, workoutId }) {
       <div className="flex flex-col w-64 p-4 gap-4">
         <div className="text-lg font-bold ">Cancel workout</div>
         Are you sure you want to cancel your workout?
-        <div className="flex items-center w-full text-blue-500">
+        <div className="flex items-center w-full text-secondary">
           <button className="text-sm" type="button" onClick={cancelActive}>
             YES
           </button>

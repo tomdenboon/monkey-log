@@ -51,8 +51,8 @@ function ExerciseGroupCard({
   };
 
   return (
-    <div className="flex w-full flex-col rounded py-4 bg-white">
-      <div className="flex items-center justify-between pl-3 pr-2 text-blue-500">
+    <div className="flex w-full flex-col rounded py-4 bg-primary-light">
+      <div className="flex items-center justify-between pl-3 pr-2 text-secondary">
         <p className="truncate font-semibold">{exerciseGroup.name}</p>
 
         <Dropdown options={[{ name: "Delete", func: deleteThis }]} />
@@ -87,7 +87,7 @@ function ExerciseGroupCard({
         <li className="flex p-2 w-full justify-center items-center">
           <button
             type="button"
-            className="flex w-full justify-between text-blue-500  "
+            className="flex w-full justify-between text-secondary  "
             onClick={submitNewExercise}
           >
             <div className="h-8 w-8 p-1 font-semibold ">

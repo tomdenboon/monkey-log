@@ -19,7 +19,7 @@ function StyledSidebarItem({ to, Icon, text }) {
     <NavLink
       to={to}
       className={(isActive) =>
-        (isActive ? "bg-white shadow-sm text-blue-500 " : "") +
+        (isActive ? "bg-primary-light shadow-sm text-secondary " : "") +
         (effect ? "animate-press " : "") +
         "flex flex-col md:flex-row md:gap-2 gap-1" +
         "md:p-2 p-1 h-14 md:h-10 w-full rounded items-center justify-center md:justify-start"

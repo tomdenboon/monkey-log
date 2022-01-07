@@ -61,7 +61,7 @@ function RegisterCard(props) {
   return (
     <div
       className={
-        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-white m-auto flex-shrink-0"
+        "flex w-[350px] p-5 rounded-lg filter drop-shadow-md bg-primary-light m-auto flex-shrink-0"
       }
     >
       {isRegister && (
@@ -86,8 +86,8 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               ("name" in errors
-                ? "border-blue-500 "
-                : "border-gray-300 focus:border-blue-500")
+                ? "border-secondary "
+                : "border-gray-300 focus:border-secondary")
             }
             type="text"
             name="username"
@@ -99,8 +99,8 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border outline-none w-full " +
               ("email" in errors
-                ? "border-blue-500 "
-                : "border-gray-300 focus:border-blue-500")
+                ? "border-secondary "
+                : "border-gray-300 focus:border-secondary")
             }
             type="text"
             name="email"
@@ -112,8 +112,8 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               ("password" in errors
-                ? "border-blue-500 "
-                : "border-gray-300 focus:border-blue-500")
+                ? "border-secondary "
+                : "border-gray-300 focus:border-secondary")
             }
             type="password"
             name="password"
@@ -125,8 +125,8 @@ function RegisterCard(props) {
             className={
               "p-2 rounded-md border w-full outline-none " +
               ("password" in errors
-                ? "border-blue-500 "
-                : "border-gray-300 focus:border-blue-500")
+                ? "border-secondary "
+                : "border-gray-300 focus:border-secondary")
             }
             type="password"
             value={passwordConfirm}
@@ -134,13 +134,13 @@ function RegisterCard(props) {
             placeholder="Verify password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
           />
-          <button className="w-full py-2 font-bold rounded-md bg-green-500 hover:bg-green-600 text-white cursor-pointer">
+          <button className="w-full py-2 font-bold rounded-md bg-green-500 hover:bg-green-600 text-primary-light cursor-pointer">
             Create account
           </button>
         </form>
         <Link
           to="/"
-          className="text-xs text-blue-500 cursor-pointer hover:underline mt-5"
+          className="text-xs text-secondary cursor-pointer hover:underline mt-5"
         >
           Already have an account?
         </Link>

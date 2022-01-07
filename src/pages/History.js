@@ -35,12 +35,12 @@ function CompleteCard({ complete, deleteAt, at }) {
 
   return (
     <div
-      className="group flex w-full gap-5 flex-col rounded p-5 bg-white cursor-pointer hover:shadow-md transition-all"
+      className="group flex w-full gap-5 flex-col rounded p-5 bg-primary-light cursor-pointer hover:shadow-md transition-all"
       onClick={toEditComplete}
     >
       <div className="flex text-lg font-bold justify-between">
         <div>
-          <p className="group-hover:text-blue-500 focus transition truncate">
+          <p className="group-hover:text-secondary focus transition truncate">
             {complete.workout.name}
           </p>
           <div className="text-sm font-medium text-gray-500">{date()}</div>

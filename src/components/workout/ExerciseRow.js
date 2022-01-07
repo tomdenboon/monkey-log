@@ -59,13 +59,13 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
     <li
       key={index}
       className={
-        "flex w-full gap-2 p-2 items-center bg-split-white-green gradient bg-200% transition-all duration-300 " +
+        "flex w-full gap-2 p-2 items-center bg-split-primary-light-green gradient bg-200% transition-all duration-300 " +
         (exerciseRow.is_lifted ? "bg-left" : "bg-right")
       }
     >
       <button
         type="button"
-        className="h-8 w-8 text-blue-500 rounded-lg outline-none flex-shrink-0 font-semibold focus-visible:bg-blue-200 hover:bg-blue-200 "
+        className="h-8 w-8 text-secondary rounded-lg outline-none flex-shrink-0 font-semibold focus-visible:bg-blue-200 hover:bg-blue-200 "
       >
         {index + 1}
       </button>
@@ -93,7 +93,7 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
           (!isActive
             ? "text-gray-400 pointer-events-none"
             : exerciseRow.is_lifted
-            ? "text-white  hover:bg-green-500 bg-green-400"
+            ? "text-primary-light  hover:bg-green-500 bg-green-400"
             : "text-green-500 hover:bg-green-200 ")
         }
         type="button"

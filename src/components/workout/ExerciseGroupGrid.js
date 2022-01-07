@@ -54,7 +54,7 @@ function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
       </Section>
       <Section title="edit">
         <button
-          className="flex w-full items-center justify-between px-2 py-1 text-blue-500 mb-2 self-center bg-white rounded"
+          className="flex w-full items-center justify-between px-2 py-1 text-secondary mb-2 self-center bg-primary-light rounded"
           type="button"
           onClick={goToAddExercise}
         >
@@ -63,7 +63,7 @@ function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
         </button>
         {isActive && (
           <button
-            className="flex w-full items-center justify-between px-2 py-1 text-warning  self-center bg-white rounded"
+            className="flex w-full items-center justify-between px-2 py-1 text-warning  self-center bg-primary-light rounded"
             type="button"
             onClick={() => setShowCancelModal(true)}
           >

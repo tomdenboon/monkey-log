@@ -55,7 +55,7 @@ function ActiveWorkoutCard() {
       <Link
         className={
           "fixed flex items-center bottom-[72px] z-30 md:bottom-2 w-1/2 left-1/2 -translate-x-1/2 md:ml-36 " +
-          "text-white rounded bg-blue-500 justify-center gap-2 py-2 " +
+          "text-primary-light rounded bg-secondary justify-center gap-2 py-2 " +
           ((location.pathname.startsWith("/dashboard/workout/active") ||
             active === null) &&
             "invisible")

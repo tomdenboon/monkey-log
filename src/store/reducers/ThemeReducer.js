@@ -4,6 +4,7 @@ import { getThemes } from "../../themes/utils";
 
 const themes = getThemes();
 const initialTheme = themes[0];
+console.log(initialTheme);
 
 const ThemeReducer = (state = initialTheme, action) => {
   switch (action.type) {
