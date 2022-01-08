@@ -59,7 +59,7 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
     <li
       key={index}
       className={
-        "flex w-full gap-2 p-2 items-center bg-split-primary-light-green gradient bg-200% transition-all duration-300 " +
+        "flex w-full gap-2 p-2 items-center bg-split-primary-light-success gradient bg-200% transition-all duration-300 " +
         (exerciseRow.is_lifted ? "bg-left" : "bg-right")
       }
     >
@@ -75,7 +75,7 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
             "w-full h-full outline-none text-center box-border border rounded-lg pt-px bg-transparent transition-all duration-300  " +
             (exerciseRow.is_lifted
               ? " border-transparent "
-              : " border-gray-200")
+              : " border-text-lightest")
           }
           inputMode="numeric"
           key={index}
@@ -91,10 +91,10 @@ function ExerciseRow({ exercise_row, deleteItem, index, isActive }) {
         className={
           "h-8 w-8  flex-shrink-0 font-semibold p-1 rounded-lg " +
           (!isActive
-            ? "text-gray-400 pointer-events-none"
+            ? "text-text-lightest pointer-events-none"
             : exerciseRow.is_lifted
-            ? "text-primary-light  hover:bg-green-500 bg-green-400"
-            : "text-green-500 hover:bg-green-200 ")
+            ? "text-primary-light bg-success"
+            : "text-success")
         }
         type="button"
         disabled={!isActive}

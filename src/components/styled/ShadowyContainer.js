@@ -7,7 +7,7 @@ function ShadowyContainer({ header: Header, children, loading = false }) {
       <Header />
       <div className="sticky top-12 w-full shadow-header z-20"></div>
       <div className="relative w-full">
-        <div className="absolute bg-gray-100 h-[5px] z-20 w-full" />
+        <div className="absolute bg-primary h-[5px] z-20 w-full" />
         {loading ? (
           <div className="flex w-full">
             <FiLoader className="animate-spin-slow m-auto mt-20" />

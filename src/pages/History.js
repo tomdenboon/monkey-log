@@ -43,7 +43,7 @@ function CompleteCard({ complete, deleteAt, at }) {
           <p className="group-hover:text-secondary focus transition truncate">
             {complete.workout.name}
           </p>
-          <div className="text-sm font-medium text-gray-500">{date()}</div>
+          <div className="text-sm font-medium text-light">{date()}</div>
         </div>
         <Dropdown
           options={[

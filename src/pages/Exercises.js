@@ -139,7 +139,7 @@ function Exercises({ isSelectMode = false, workoutId }) {
             <input
               type="search"
               name="q"
-              className="flex py-2 h-10 w-full text-base bg-primary-lightry-light rounded-full pl-8"
+              className="flex py-2 h-10 w-full text-base bg-primary-light rounded-full pl-8"
               placeholder=""
               autoComplete="off"
               onChange={(e) => changeSearch(e)}

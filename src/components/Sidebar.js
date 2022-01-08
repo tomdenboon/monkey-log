@@ -59,12 +59,12 @@ function Sidebar(props) {
   return (
     <div
       ref={ref}
-      className="flex fixed md:flex-col gap-1 p-1 z-30 md:z-40 bottom-0 bg-gray-100 shadow-footer h-16 md:h-screen w-full md:w-72 max-w-full overflow-auto flex-shrink-0 justify-evenly md:justify-start"
+      className="flex fixed md:flex-col gap-1 p-1 z-30 md:z-40 bottom-0 bg-primary shadow-footer h-16 md:h-screen w-full md:w-72 max-w-full overflow-auto flex-shrink-0 justify-evenly md:justify-start"
     >
       <div className="hidden md:flex justify-between items-center p-2">
         <div className="font-bold text-2xl select-none">
           MonkeyLog
-          <div className="flex items-center gap-1 text-sm font-normal text-gray-500">
+          <div className="flex items-center gap-1 text-sm font-normal text-text-light">
             {user.name}
           </div>
         </div>

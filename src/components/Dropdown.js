@@ -34,7 +34,7 @@ function Dropdown({ options }) {
       <ul
         className={
           (show ? "flex" : "hidden") +
-          " flex flex-col absolute rounded bg-gray-800 z-20 text-sm text-primary-light right-0 w-32 overflow-hidden"
+          " flex flex-col absolute rounded bg-text-base z-20 text-sm text-primary-light right-0 w-32 overflow-hidden"
         }
       >
         {options.map((option, index) => (
@@ -45,7 +45,7 @@ function Dropdown({ options }) {
                 setShow(false);
               }}
               type="button"
-              className="w-full hover:bg-gray-900 text-left p-2 cursor-pointer outline-none focus-visible:bg-gray-900"
+              className="w-full text-left p-2 cursor-pointer outline-none"
             >
               {option.name}
             </button>

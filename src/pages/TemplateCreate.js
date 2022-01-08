@@ -62,7 +62,7 @@ function TemplateCreate() {
         ) : (
           <form onSubmit={handleSubmit} autoComplete="off">
             <input
-              className="p-2 rounded-md w-full "
+              className="p-2 rounded-md w-full bg-primary-light"
               type="name"
               value={workout.name}
               placeholder="Name"

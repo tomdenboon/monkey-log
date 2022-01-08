@@ -25,7 +25,7 @@ function WorkoutFormHeader({ workout_id, workout_name }) {
   return (
     <div className="flex w-full bg-primary-light rounded-none md:rounded-sm h-10 px-2">
       <input
-        className="text-base font-bold outline-none"
+        className="text-base font-bold outline-none bg-primary-light"
         type="name"
         value={workout.name}
         placeholder="Name"
@@ -66,10 +66,7 @@ function TemplateEdit() {
     return (
       <HeaderStyle>
         <div className="flex items-center">
-          <Link
-            className=" hover:bg-gray-300 rounded-full p-1 text-xl"
-            to="/dashboard/template"
-          >
+          <Link className="p-1 text-xl" to="/dashboard/template">
             <FiArrowLeft />
           </Link>
           Edit workout

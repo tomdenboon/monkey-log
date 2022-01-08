@@ -40,7 +40,6 @@ function ExerciseGroupGrid({ workout_id, exercise_groups, isActive = false }) {
             {exerciseGroups.map((exercise_group, index) => {
               return (
                 <ExerciseGroupCard
-                  className="w-full bg-gray-50"
                   key={index}
                   at={index}
                   deleteExerciseGroup={deleteExerciseGroup}

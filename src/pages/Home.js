@@ -72,10 +72,10 @@ function LoginCard(props) {
           )}
           <input
             className={
-              "p-2 rounded-md border w-full outline-none " +
+              "p-2 bg-primary-light rounded-md border w-full outline-none " +
               (message
                 ? "border-secondary "
-                : "border-gray-300 focus:border-secondary")
+                : "border-text-lightest focus:border-secondary")
             }
             type="text"
             value={email}
@@ -84,17 +84,17 @@ function LoginCard(props) {
           />
           <input
             className={
-              "p-2 rounded-md border outline-none w-full " +
+              "p-2 bg-primary-light rounded-md border outline-none w-full " +
               (message
                 ? "border-secondary "
-                : "border-gray-300 focus:border-secondary")
+                : "border-text-lightest focus:border-secondary")
             }
             type="password"
             value={password}
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="w-full py-2 font-bold rounded-md bg-secondary hover:bg-blue-600 text-primary-light cursor-pointer">
+          <button className="w-full py-2 font-bold rounded-md bg-secondary  text-primary-light cursor-pointer">
             Sign in
           </button>
           <button
@@ -104,9 +104,9 @@ function LoginCard(props) {
             Forgot password?
           </button>
         </form>
-        <div className="h-px flex-shrink-0 bg-gray-300 my-5 w-full" />
+        <div className="h-px flex-shrink-0 bg-text-lightest my-5 w-full" />
         <Link
-          className="rounded-md w-1/2 p-2 text-center font-bold bg-green-500 hover:bg-green-600 text-primary-light cursor-pointer"
+          className="rounded-md w-1/2 p-2 text-center font-bold bg-success  text-primary-light cursor-pointer"
           to="/register"
         >
           Create account

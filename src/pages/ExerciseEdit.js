@@ -73,7 +73,7 @@ function ExerciseEdit() {
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             <input
-              className="p-2 rounded-lg w-full "
+              className="p-2 rounded-lg w-full bg-primary-light"
               type="name"
               value={exercise.name}
               placeholder="Exercise name..."

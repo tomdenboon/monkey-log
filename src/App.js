@@ -9,7 +9,7 @@ function App() {
   const theme = useSelector((state) => state.theme);
 
   useEffect(() => {
-    applyTheme(theme);
+    applyTheme(theme.theme);
   }, [theme]);
 
   return (

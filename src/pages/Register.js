@@ -84,10 +84,10 @@ function RegisterCard(props) {
         >
           <input
             className={
-              "p-2 rounded-md border w-full outline-none " +
+              "p-2 bg-primary-light rounded-md border w-full outline-none " +
               ("name" in errors
-                ? "border-secondary "
-                : "border-gray-300 focus:border-secondary")
+                ? "border-warning "
+                : "border-text-lightest focus:border-secondary")
             }
             type="text"
             name="username"
@@ -97,10 +97,10 @@ function RegisterCard(props) {
           />
           <input
             className={
-              "p-2 rounded-md border outline-none w-full " +
+              "p-2 bg-primary-light rounded-md border outline-none w-full " +
               ("email" in errors
-                ? "border-secondary "
-                : "border-gray-300 focus:border-secondary")
+                ? "border-warning "
+                : "border-text-lightest focus:border-secondary")
             }
             type="text"
             name="email"
@@ -110,10 +110,10 @@ function RegisterCard(props) {
           />
           <input
             className={
-              "p-2 rounded-md border w-full outline-none " +
+              "p-2 bg-primary-light rounded-md border w-full outline-none " +
               ("password" in errors
-                ? "border-secondary "
-                : "border-gray-300 focus:border-secondary")
+                ? "border-warning "
+                : "border-text-lightest focus:border-secondary")
             }
             type="password"
             name="password"
@@ -123,10 +123,10 @@ function RegisterCard(props) {
           />
           <input
             className={
-              "p-2 rounded-md border w-full outline-none " +
+              "p-2 bg-primary-light rounded-md border w-full outline-none " +
               ("password" in errors
-                ? "border-secondary "
-                : "border-gray-300 focus:border-secondary")
+                ? "border-warning "
+                : "border-text-lightest focus:border-secondary")
             }
             type="password"
             value={passwordConfirm}

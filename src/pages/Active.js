@@ -44,7 +44,7 @@ function TemplateHeader({ workout_id, workout_name, start_date }) {
   return (
     <div className="flex gap-2 items-center w-full justify-between bg-primary-light rounded h-10 px-3">
       <input
-        className="text-base font-bold outline-none"
+        className="text-base font-bold outline-none bg-primary-light"
         type="name"
         value={workout.name}
         placeholder="Name"

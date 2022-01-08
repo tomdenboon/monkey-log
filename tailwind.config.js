@@ -8,8 +8,8 @@ module.exports = {
         "200%": "200%",
       },
       backgroundImage: {
-        "split-white-green":
-          "linear-gradient(to left, white 50%, #DCFCE7 50% );",
+        "split-primary-light-success":
+          "linear-gradient(to left, var(--theme-primary-light) 50%, var(--theme-success-light) 50% );",
       },
       boxShadow: {
         header: "0px 0px 2px 2px rgba(0,0,0,0.2)",
@@ -20,8 +20,8 @@ module.exports = {
         "primary-light": "var(--theme-primary-light)",
         secondary: "var(--theme-secondary)",
         "text-base": "var(--theme-text-base)",
-        "text-light": "var(--theme-text-dark)",
-        "text-lightest": "var(--theme-text-darkest)",
+        "text-light": "var(--theme-text-light)",
+        "text-lightest": "var(--theme-text-lightest)",
         warning: "var(--theme-warning)",
         success: "var(--theme-success)",
         "success-light": "var(--theme-success-light)",

@@ -26,11 +26,11 @@ function Modal({ showModal, setShowModal, children }) {
       <div
         className={
           (showModal ? "flex" : "hidden") +
-          " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-20 z-40 md:pl-72"
+          " fixed h-screen w-screen top-0 left-0 bg-black bg-opacity-20 z-40 md:pl-72 "
         }
       >
         <div
-          className="relative flex bg-primary-light m-auto rounded-lg"
+          className="relative flex bg-primary-light m-auto rounded-lg overflow-hidden"
           ref={ref}
         >
           {children}

@@ -58,7 +58,7 @@ function ExerciseGroupCard({
         <Dropdown options={[{ name: "Delete", func: deleteThis }]} />
       </div>
       <ul className="h-full flex flex-col ">
-        <li className="flex w-full px-2 pt-2 gap-2 text-xs text-center font-mono text-gray-400 ">
+        <li className="flex w-full px-2 pt-2 gap-2 text-xs text-center font-mono text-text-lightest">
           <div className="flex justify-center h-8 w-8 flex-shrink-0 items-center">
             SET
           </div>
