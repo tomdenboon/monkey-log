@@ -22,6 +22,7 @@ module.exports = {
         "text-base": "var(--theme-text-base)",
         "text-light": "var(--theme-text-light)",
         "text-lightest": "var(--theme-text-lightest)",
+        "text-ultra-light": "var(--theme-text-ultra-light)",
         warning: "var(--theme-warning)",
         success: "var(--theme-success)",
         "success-light": "var(--theme-success-light)",
