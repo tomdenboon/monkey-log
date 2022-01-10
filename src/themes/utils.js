@@ -16,7 +16,7 @@ export function getThemes() {
     createTheme({
       name: "MonkeyLog",
       primary: "#2d2f31",
-      primaryLight: "#323437",
+      primaryLight: "#343639",
       secondary: "#e2b714",
       textBase: "#d1d0c5",
       textLight: "#646669",
@@ -29,7 +29,7 @@ export function getThemes() {
     createTheme({
       name: "Hacker",
       primary: "#000000",
-      primaryLight: "#000909",
+      primaryLight: "#001818",
       secondary: "#15ff00",
       textBase: "#adffa7",
       textLight: "#206b20",
@@ -42,7 +42,7 @@ export function getThemes() {
     createTheme({
       name: "80s after dark",
       primary: "#181a31",
-      primaryLight: "#1b1d36",
+      primaryLight: "#2b2d46",
       secondary: "#fca6d1",
       textBase: "#99d6ea",
       textLight: "#5a7a90",
