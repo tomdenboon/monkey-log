@@ -81,7 +81,7 @@ function ExerciseCreate() {
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-2">
             <input
-              className="p-2 rounded w-full "
+              className="p-2 rounded w-full bg-primary-light"
               type="name"
               value={name}
               placeholder="Name"
@@ -89,7 +89,7 @@ function ExerciseCreate() {
             />
             <div className="relative inline-block w-full ">
               <select
-                className="w-full p-2 text-base bg-primary-light  rounded appearance-none"
+                className="w-full p-2 text-base bg-primary-light rounded appearance-none"
                 id="exercise_type"
               >
                 {exerciseTypes.map((exerciseType) => (

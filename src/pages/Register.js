@@ -87,7 +87,7 @@ function RegisterCard(props) {
               "p-2 bg-primary-light rounded-md border w-full outline-none " +
               ("name" in errors
                 ? "border-warning "
-                : "border-text-lightest focus:border-secondary")
+                : "border-text-ultra-light focus:border-secondary")
             }
             type="text"
             name="username"
@@ -100,7 +100,7 @@ function RegisterCard(props) {
               "p-2 bg-primary-light rounded-md border outline-none w-full " +
               ("email" in errors
                 ? "border-warning "
-                : "border-text-lightest focus:border-secondary")
+                : "border-text-ultra-light focus:border-secondary")
             }
             type="text"
             name="email"
@@ -113,7 +113,7 @@ function RegisterCard(props) {
               "p-2 bg-primary-light rounded-md border w-full outline-none " +
               ("password" in errors
                 ? "border-warning "
-                : "border-text-lightest focus:border-secondary")
+                : "border-text-ultra-light focus:border-secondary")
             }
             type="password"
             name="password"
@@ -126,7 +126,7 @@ function RegisterCard(props) {
               "p-2 bg-primary-light rounded-md border w-full outline-none " +
               ("password" in errors
                 ? "border-warning "
-                : "border-text-lightest focus:border-secondary")
+                : "border-text-ultra-light focus:border-secondary")
             }
             type="password"
             value={passwordConfirm}
@@ -134,7 +134,7 @@ function RegisterCard(props) {
             placeholder="Verify password"
             onChange={(e) => setPasswordConfirm(e.target.value)}
           />
-          <button className="w-full py-2 font-bold rounded-md bg-green-500 hover:bg-green-600 text-primary-light cursor-pointer">
+          <button className="w-full py-2 font-bold rounded-md bg-secondary text-primary-light cursor-pointer">
             Create account
           </button>
         </form>

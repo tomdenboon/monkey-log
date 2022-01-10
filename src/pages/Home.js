@@ -59,14 +59,16 @@ function LoginCard(props) {
       >
         <div className="flex flex-col items-center w-full gap-1 pb-5">
           <div className=" text-4xl font-bold">MonkeyLog</div>
-          <div className=" text-sm">Minimalistic workout logger.</div>
+          <div className="text-text-light text-sm">
+            Minimalistic workout logger.
+          </div>
         </div>
         <form
           className="flex flex-col items-center justify-center w-full gap-5 "
           onSubmit={handleSubmit}
         >
           {message ? (
-            <div className="text-xs text-secondary text-center">{message}</div>
+            <div className="text-xs text-warning text-center">{message}</div>
           ) : (
             <div className="text-xs invisible">no error</div>
           )}
@@ -74,8 +76,8 @@ function LoginCard(props) {
             className={
               "p-2 bg-primary-light rounded-md border w-full outline-none " +
               (message
-                ? "border-secondary "
-                : "border-text-lightest focus:border-secondary")
+                ? "border-warning "
+                : "border-text-ultra-light focus:border-secondary")
             }
             type="text"
             value={email}
@@ -86,8 +88,8 @@ function LoginCard(props) {
             className={
               "p-2 bg-primary-light rounded-md border outline-none w-full " +
               (message
-                ? "border-secondary "
-                : "border-text-lightest focus:border-secondary")
+                ? "border-warning "
+                : "border-text-ultra-light focus:border-secondary")
             }
             type="password"
             value={password}
@@ -104,9 +106,9 @@ function LoginCard(props) {
             Forgot password?
           </button>
         </form>
-        <div className="h-px flex-shrink-0 bg-text-lightest my-5 w-full" />
+        <div className="h-px flex-shrink-0 bg-text-ultra-light my-5 w-full" />
         <Link
-          className="rounded-md w-1/2 p-2 text-center font-bold bg-success  text-primary-light cursor-pointer"
+          className="rounded-md w-1/2 p-2 text-center font-bold bg-secondary  text-primary-light cursor-pointer"
           to="/register"
         >
           Create account

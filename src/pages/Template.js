@@ -130,7 +130,7 @@ function Template(props) {
       <NormalContainer>
         <Section title={"Quick Start"}>
           <button
-            className="flex w-full items-center justify-between px-2 py-1 text-secondary  self-center bg-primary-light rounded"
+            className="flex w-full items-center justify-between px-2 py-1 text-secondary self-center bg-primary-light rounded"
             type="button"
             onClick={() => startTemplate(-1)}
           >
