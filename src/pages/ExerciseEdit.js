@@ -16,7 +16,7 @@ function ExerciseHeader({ submit }) {
         </Link>
         Edit exercise
       </div>
-      <button className="p-1 font-mono text-base" onClick={submit}>
+      <button className="p-1 font-mono text-secondary" onClick={submit}>
         SAVE
       </button>
     </HeaderStyle>
@@ -67,7 +67,7 @@ function ExerciseEdit() {
       <ExerciseHeader submit={handleSubmit} />
       <NormalContainer>
         {isWaiting || isLoading ? (
-          <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2  flex ">
+          <div className="absolute bottom-1/2 left-1/2 -translate-x-1/2 translate-y-1/2 flex">
             <FiLoader className="animate-spin-slow" />
           </div>
         ) : (

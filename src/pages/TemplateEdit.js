@@ -66,7 +66,7 @@ function TemplateEdit() {
     return (
       <HeaderStyle>
         <div className="flex items-center">
-          <Link className="p-1 text-xl" to="/dashboard/template">
+          <Link className="p-1 text-xl" to="/dashboard/workout">
             <FiArrowLeft />
           </Link>
           Edit workout
